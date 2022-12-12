@@ -1,0 +1,19 @@
+server:
+  port: 8800
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 查看日志
+spring:
+  application:
+    name: share.luckyboy.cc
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://ali.luckyboy.cc:53306/helicarrier_lucky_cc?characterEncoding=utf-8&useSSL=false
+    username: helicarrier
+    password: Helicarrier12#$
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
