@@ -12,10 +12,7 @@ import luckyboy.util.TusharePost;
 public class test {
     public static void main(String[] args) {
         StockBasicParams basicParams = StockBasicParams.builder().build();
-        JSONObject params = ParamsToJson.toJsonObject(basicParams);
-        String fields = GetFields.getFields(new StockBasicResult());
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_basic").params(params).fields(fields).build();
-        System.out.println(tusharePostParam);
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_basic").params(basicParams.toJSONObject()).fields(new StockBasicResult().getFields()).build();
         System.out.println(TusharePost.httpPostForStockList(tusharePostParam));
     }
 }

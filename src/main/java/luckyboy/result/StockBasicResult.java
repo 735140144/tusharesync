@@ -1,12 +1,13 @@
 package luckyboy.result;
 
 import lombok.Data;
+import luckyboy.util.Formart;
 
 /**
  * 股票列表结果
  */
 @Data
-public class StockBasicResult {
+public class StockBasicResult extends Formart {
     /**
      * TS代码
      */
