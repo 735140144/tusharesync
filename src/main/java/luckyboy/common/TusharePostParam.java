@@ -19,8 +19,8 @@ public class TusharePostParam {
                 .append(token).append('\"');
         sb.append(",\"api_name\":\"")
                 .append(api_name).append('\"');
-        sb.append(",\"params\":\"")
-                .append(params).append('\"');
+        sb.append(",\"params\":")
+                .append(params);
         sb.append(",\"fields\":\"")
                 .append(fields).append('\"');
         sb.append('}');
