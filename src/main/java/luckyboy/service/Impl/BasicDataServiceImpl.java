@@ -10,6 +10,7 @@ import luckyboy.service.BasicDataService;
 import luckyboy.util.Result;
 import luckyboy.util.TusharePost;
 import luckyboy.util.transResult;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
