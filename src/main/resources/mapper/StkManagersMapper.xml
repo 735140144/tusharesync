@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.StkManagersMapper">
+
+
+    <insert id="insert" parameterType="java.util.List">
+        insert into STK_MANAGERS
+        (ts_code,ann_date,name,gender,lev,title,edu,national,birthday
+        ,begin_date,end_date,resume)
+        values
+        <foreach collection="list" item="StkManagersResult" separator=",">
+            (
+            #{StkManagersResult.ts_code,jdbcType=VARCHAR},
+            #{StkManagersResult.ann_date,jdbcType=VARCHAR},
+            #{StkManagersResult.name,jdbcType=VARCHAR},
+            #{StkManagersResult.gender,jdbcType=VARCHAR},
+            #{StkManagersResult.lev,jdbcType=VARCHAR},
+            #{StkManagersResult.title,jdbcType=VARCHAR},
+            #{StkManagersResult.edu,jdbcType=VARCHAR},
+            #{StkManagersResult.national,jdbcType=VARCHAR},
+            #{StkManagersResult.birthday,jdbcType=VARCHAR},
+            #{StkManagersResult.begin_date,jdbcType=VARCHAR},
+            #{StkManagersResult.end_date,jdbcType=VARCHAR},
+            #{StkManagersResult.resume,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+</mapper>

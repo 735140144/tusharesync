@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.HsConstMapper">
+
+    <insert id="h_insert" parameterType="java.util.List">
+        insert into H_CONST
+        (ts_code,hs_type,in_date,out_date,is_new)
+        values
+        <foreach collection="list" item="HsConstResult" separator=",">
+            (#{HsConstResult.ts_code,jdbcType=VARCHAR},
+            #{HsConstResult.hs_type,jdbcType=VARCHAR},
+            #{HsConstResult.in_date,jdbcType=VARCHAR},
+            #{HsConstResult.out_date,jdbcType=VARCHAR},
+            #{HsConstResult.is_new,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <insert id="s_insert" parameterType="java.util.List">
+        insert into S_CONST
+        (ts_code,hs_type,in_date,out_date,is_new)
+        values
+        <foreach collection="list" item="HsConstResult" separator=",">
+            (#{HsConstResult.ts_code,jdbcType=VARCHAR},
+            #{HsConstResult.hs_type,jdbcType=VARCHAR},
+            #{HsConstResult.in_date,jdbcType=VARCHAR},
+            #{HsConstResult.out_date,jdbcType=VARCHAR},
+            #{HsConstResult.is_new,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

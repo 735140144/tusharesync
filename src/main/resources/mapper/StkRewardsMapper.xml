@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.StkRewardsMapper">
+    <insert id="insert" parameterType="java.util.List">
+        insert into STK_REWARDS
+        (ts_code,ann_date,name,end_date,title,reward,hold_vol)
+        values
+        <foreach collection="list" item="StkRewardsResult" separator=",">
+            (
+            #{StkRewardsResult.ts_code,jdbcType=VARCHAR},
+            #{StkRewardsResult.ann_date,jdbcType=VARCHAR},
+            #{StkRewardsResult.name,jdbcType=VARCHAR},
+            #{StkRewardsResult.end_date,jdbcType=VARCHAR},
+            #{StkRewardsResult.title,jdbcType=VARCHAR},
+            #{StkRewardsResult.reward,jdbcType=VARCHAR},
+            #{StkRewardsResult.hold_vol,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+</mapper>

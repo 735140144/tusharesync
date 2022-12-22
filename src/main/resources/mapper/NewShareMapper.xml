@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.NewShareMapper">
+
+    <insert id="insert" parameterType="java.util.List">
+        insert into NEW_SHARE
+        (ts_code,sub_code,name,ipo_date,issue_date,amount,market_amount,
+        price,pe,limit_amount,funds,ballot)
+        values
+        <foreach collection="list" item="NewShareResult" separator=",">
+            (
+            #{NewShareResult.ts_code,jdbcType=VARCHAR},
+            #{NewShareResult.sub_code,jdbcType=VARCHAR},
+            #{NewShareResult.name,jdbcType=VARCHAR},
+            #{NewShareResult.ipo_date,jdbcType=VARCHAR},
+            #{NewShareResult.issue_date,jdbcType=VARCHAR},
+            #{NewShareResult.amount,jdbcType=VARCHAR},
+            #{NewShareResult.market_amount,jdbcType=VARCHAR},
+            #{NewShareResult.price,jdbcType=VARCHAR},
+            #{NewShareResult.pe,jdbcType=VARCHAR},
+            #{NewShareResult.limit_amount,jdbcType=VARCHAR},
+            #{NewShareResult.funds,jdbcType=VARCHAR},
+            #{NewShareResult.ballot,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+</mapper>

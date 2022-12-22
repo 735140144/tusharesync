@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.StockBasicMapper">
+
+    <insert id="insert" parameterType="java.util.List">
+        insert into STOCK_BASIC
+        (ts_code,symbol,name,area,industry,fullname,enname,cnspell,market,exchange,curr_type,list_status,list_date,delist_date,is_hs)
+        values
+        <foreach collection="list" item="StockBasicResult" separator=",">
+            (#{StockBasicResult.ts_code,jdbcType=VARCHAR},#{StockBasicResult.symbol,jdbcType=VARCHAR},#{StockBasicResult.name,jdbcType=VARCHAR},#{StockBasicResult.area,jdbcType=VARCHAR},#{StockBasicResult.industry,jdbcType=VARCHAR},#{StockBasicResult.fullname,jdbcType=VARCHAR},#{StockBasicResult.enname,jdbcType=VARCHAR},#{StockBasicResult.cnspell,jdbcType=VARCHAR},#{StockBasicResult.market,jdbcType=VARCHAR},#{StockBasicResult.exchange,jdbcType=VARCHAR},#{StockBasicResult.curr_type,jdbcType=VARCHAR},#{StockBasicResult.list_status,jdbcType=VARCHAR},#{StockBasicResult.list_date,jdbcType=VARCHAR},#{StockBasicResult.delist_date,jdbcType=VARCHAR},#{StockBasicResult.is_hs,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.TraderCalMapper">
+
+    <insert id="insert" parameterType="java.util.List">
+        insert into TRADE_CAL
+        (cal_date,exchange,is_open,pretrade_date)
+        values
+        <foreach collection="list" item="TraderCalResult" separator=",">
+            (#{TraderCalResult.cal_date,jdbcType=VARCHAR},#{TraderCalResult.exchange,jdbcType=VARCHAR},#{TraderCalResult.is_open,jdbcType=VARCHAR},#{TraderCalResult.pretrade_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

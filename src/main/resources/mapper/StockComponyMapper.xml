@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.StockComponyMapper">
+
+    <insert id="insert" parameterType="java.util.List">
+        insert into STOCK_COMPANY
+        (ts_code,exchange,chairman,manager,secretary,reg_capital,
+         setup_date,province,city,introduction,website,email,
+         office,employees,main_business,business_scope)
+        values
+        <foreach collection="list" item="StockCompanyResult" separator=",">
+            (
+             #{StockCompanyResult.ts_code,jdbcType=VARCHAR},
+            #{StockCompanyResult.exchange,jdbcType=VARCHAR},
+            #{StockCompanyResult.chairman,jdbcType=VARCHAR},
+            #{StockCompanyResult.manager,jdbcType=VARCHAR},
+            #{StockCompanyResult.secretary,jdbcType=VARCHAR},
+            #{StockCompanyResult.reg_capital,jdbcType=VARCHAR},
+            #{StockCompanyResult.setup_date,jdbcType=VARCHAR},
+            #{StockCompanyResult.province,jdbcType=VARCHAR},
+            #{StockCompanyResult.city,jdbcType=VARCHAR},
+            #{StockCompanyResult.introduction,jdbcType=VARCHAR},
+            #{StockCompanyResult.website,jdbcType=VARCHAR},
+            #{StockCompanyResult.email,jdbcType=VARCHAR},
+            #{StockCompanyResult.office,jdbcType=VARCHAR},
+            #{StockCompanyResult.employees,jdbcType=VARCHAR},
+            #{StockCompanyResult.main_business,jdbcType=VARCHAR},
+            #{StockCompanyResult.business_scope,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+</mapper>

@@ -13,12 +13,14 @@ import luckyboy.util.TusharePost;
 import luckyboy.util.transResult;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
+
 public class test {
     public static void main(String[] args) {
         StockBasicParams basicParams = StockBasicParams.builder().build();
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_basic").params(basicParams.toJSONObject()).fields(new StockBasicResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
-        TranResult trans = transResult.trans(jsonObject);
-
+        List<StockBasicResult> trans = transResult.trans(jsonObject, StockBasicResult.class);
+        System.out.println(trans);
     }
 }

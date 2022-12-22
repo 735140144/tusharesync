@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.NameChangeMapper">
+
+    <insert id="insert" parameterType="java.util.List">
+        insert into NAME_CHANGE
+        (ts_code,ann_date,name,start_date,end_date,change_reason)
+        values
+        <foreach collection="list" item="NameChangeResult" separator=",">
+            (#{NameChangeResult.ts_code,jdbcType=VARCHAR},
+             #{NameChangeResult.ann_date,jdbcType=VARCHAR},
+             #{NameChangeResult.name,jdbcType=VARCHAR},
+             #{NameChangeResult.start_date,jdbcType=VARCHAR},
+             #{NameChangeResult.end_date,jdbcType=VARCHAR},
+             #{NameChangeResult.change_reason,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>
