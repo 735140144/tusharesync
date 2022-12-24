@@ -1,6 +1,5 @@
 package luckyboy.service;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.util.Result;
@@ -47,7 +46,7 @@ public interface MarketDataService {
     Result<?> stkLimit(@Param("ts_code") String ts_code,@Param("trade_date")String trade_date,@Param("start_date")String start_date,@Param("end_date")String end_date);
 
     @ApiOperation("沪深港通资金流向")
-    @RequestMapping("/moneyflow_hsgt")
+        @RequestMapping("/moneyflow_hsgt")
     Result<?> moneyflowHsgt(@Param("trade_date")String trade_date,@Param("start_date")String start_date,@Param("end_date")String end_date);
 
     @ApiOperation("沪深股通十大成交股")

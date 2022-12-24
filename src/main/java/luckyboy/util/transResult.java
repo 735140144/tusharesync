@@ -12,7 +12,7 @@ public class transResult {
         log.info("开始转换，类型为:{}",clazz);
         Integer code = json.getInteger("code");
         String msg = json.getString("msg");
-        if (code!=200){
+        if (code!=0){
             log.error("请求错误,错误代码:{},错误信息:{}",code,msg);
         }
         JSONObject data = json.getJSONObject("data");

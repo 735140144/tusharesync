@@ -115,7 +115,7 @@ public class MarketDataServiceImpl implements MarketDataService {
     public Result<?> daily_basic(String ts_code, String trade_date, String start_date, String end_date) {
         log.info("开始拉取每日指标信息,时间戳：{}",System.currentTimeMillis());
         DailyBasicParams dailyBasicParams = DailyBasicParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("daily_basic").params(dailyBasicParams.toJSONObject()).fields(new DailyResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("daily_basic").params(dailyBasicParams.toJSONObject()).fields(new DailyBasicResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<DailyBasicResult> trans = transResult.trans(jsonObject, DailyBasicResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
@@ -174,7 +174,7 @@ public class MarketDataServiceImpl implements MarketDataService {
     @Override
     public Result<?> ggtTop10(String ts_code, String trade_date, String start_date, String end_date) {
         log.info("开始拉取港股通十大成交股信息,时间戳：{}",System.currentTimeMillis());
-        GgtTop10Params ggtTop10Params = GgtTop10Params.builder().ts_code(ts_code).start_date(start_date).end_date(end_date).build();
+        GgtTop10Params ggtTop10Params = GgtTop10Params.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("ggt_top10").params(ggtTop10Params.toJSONObject()).fields(new GgtTop10Result().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<GgtTop10Result> trans = transResult.trans(jsonObject, GgtTop10Result.class);
