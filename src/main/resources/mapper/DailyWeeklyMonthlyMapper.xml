@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.DailyWeeklyMonthlyMapper">
+
+    <insert id="insertDaily" parameterType="java.util.List">
+        insert into DAILY
+        (ts_code,trade_date,open,high,low,close,pre_close,change,pct_chg,vol,amount)
+        values
+        <foreach collection="list" item="DailyResult" separator=",">
+            (
+             #{DailyResult.ts_code,jdbcType=VARCHAR},
+            #{DailyResult.trade_date,jdbcType=VARCHAR},
+            #{DailyResult.open,jdbcType=VARCHAR},
+            #{DailyResult.high,jdbcType=VARCHAR},
+            #{DailyResult.low,jdbcType=VARCHAR},
+            #{DailyResult.close,jdbcType=VARCHAR},
+            #{DailyResult.pre_close,jdbcType=VARCHAR},
+            #{DailyResult.change,jdbcType=VARCHAR},
+            #{DailyResult.pct_chg,jdbcType=VARCHAR},
+            #{DailyResult.vol,jdbcType=VARCHAR},
+            #{DailyResult.amount,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertWeekly" parameterType="java.util.List">
+        insert into WEEKLY
+        (ts_code,trade_date,open,high,low,close,pre_close,change,pct_chg,vol,amount)
+        values
+        <foreach collection="list" item="WeeklyResult" separator=",">
+            (
+            #{WeeklyResult.ts_code,jdbcType=VARCHAR},
+            #{WeeklyResult.trade_date,jdbcType=VARCHAR},
+            #{WeeklyResult.open,jdbcType=VARCHAR},
+            #{WeeklyResult.high,jdbcType=VARCHAR},
+            #{WeeklyResult.low,jdbcType=VARCHAR},
+            #{WeeklyResult.close,jdbcType=VARCHAR},
+            #{WeeklyResult.pre_close,jdbcType=VARCHAR},
+            #{WeeklyResult.change,jdbcType=VARCHAR},
+            #{WeeklyResult.pct_chg,jdbcType=VARCHAR},
+            #{WeeklyResult.vol,jdbcType=VARCHAR},
+            #{WeeklyResult.amount,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertMonthly" parameterType="java.util.List">
+        insert into MONTHLY
+        (ts_code,trade_date,open,high,low,close,pre_close,change,pct_chg,vol,amount)
+        values
+        <foreach collection="list" item="MonthlyResult" separator=",">
+            (
+            #{MonthlyResult.ts_code,jdbcType=VARCHAR},
+            #{MonthlyResult.trade_date,jdbcType=VARCHAR},
+            #{MonthlyResult.open,jdbcType=VARCHAR},
+            #{MonthlyResult.high,jdbcType=VARCHAR},
+            #{MonthlyResult.low,jdbcType=VARCHAR},
+            #{MonthlyResult.close,jdbcType=VARCHAR},
+            #{MonthlyResult.pre_close,jdbcType=VARCHAR},
+            #{MonthlyResult.change,jdbcType=VARCHAR},
+            #{MonthlyResult.pct_chg,jdbcType=VARCHAR},
+            #{MonthlyResult.vol,jdbcType=VARCHAR},
+            #{MonthlyResult.amount,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+</mapper>
