@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.DailyBasicMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into DAILY_BASIC
+        (ts_code,trade_date,close,turnover_rate,turnover_rate_f,volume_ratio,pe,pe_ttm,pb,ps,ps_ttm,dv_ratio,dv_ttm,total_share,float_share,free_share,total_mv,circ_mv)
+        values
+        <foreach collection="list" item="DailyBasicResult" separator=",">
+           (#{DailyBasicResult.ts_code,jdbcType=VARCHAR},
+#{DailyBasicResult.trade_date,jdbcType=VARCHAR},
+#{DailyBasicResult.close,jdbcType=VARCHAR},
+#{DailyBasicResult.turnover_rate,jdbcType=VARCHAR},
+#{DailyBasicResult.turnover_rate_f,jdbcType=VARCHAR},
+#{DailyBasicResult.volume_ratio,jdbcType=VARCHAR},
+#{DailyBasicResult.pe,jdbcType=VARCHAR},
+#{DailyBasicResult.pe_ttm,jdbcType=VARCHAR},
+#{DailyBasicResult.pb,jdbcType=VARCHAR},
+#{DailyBasicResult.ps,jdbcType=VARCHAR},
+#{DailyBasicResult.ps_ttm,jdbcType=VARCHAR},
+#{DailyBasicResult.dv_ratio,jdbcType=VARCHAR},
+#{DailyBasicResult.dv_ttm,jdbcType=VARCHAR},
+#{DailyBasicResult.total_share,jdbcType=VARCHAR},
+#{DailyBasicResult.float_share,jdbcType=VARCHAR},
+#{DailyBasicResult.free_share,jdbcType=VARCHAR},
+#{DailyBasicResult.total_mv,jdbcType=VARCHAR},
+#{DailyBasicResult.circ_mv,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

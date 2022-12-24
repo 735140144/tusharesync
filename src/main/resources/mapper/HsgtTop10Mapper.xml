@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.HsgtTop10Mapper">
+<insert id="insert" parameterType="java.util.List">
+insert into HSGT_TOP10
+        (trade_date,ts_code,name,close,change,rank,market_type,amount,net_amount,buy,sell)
+        values
+        <foreach collection="list" item="HsgtTop10Result" separator=",">
+           (#{HsgtTop10Result.trade_date,jdbcType=VARCHAR},
+#{HsgtTop10Result.ts_code,jdbcType=VARCHAR},
+#{HsgtTop10Result.name,jdbcType=VARCHAR},
+#{HsgtTop10Result.close,jdbcType=VARCHAR},
+#{HsgtTop10Result.change,jdbcType=VARCHAR},
+#{HsgtTop10Result.rank,jdbcType=VARCHAR},
+#{HsgtTop10Result.market_type,jdbcType=VARCHAR},
+#{HsgtTop10Result.amount,jdbcType=VARCHAR},
+#{HsgtTop10Result.net_amount,jdbcType=VARCHAR},
+#{HsgtTop10Result.buy,jdbcType=VARCHAR},
+#{HsgtTop10Result.sell,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

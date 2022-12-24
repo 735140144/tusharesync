@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.GgtMonthlyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into GGT_MONTHLY
+        (month,day_buy_amt,day_buy_vol,day_sell_amt,day_sell_vol,total_buy_amt,total_buy_vol,total_sell_amt,total_sell_vol)
+        values
+        <foreach collection="list" item="GgtMonthlyResult" separator=",">
+           (#{GgtMonthlyResult.month,jdbcType=VARCHAR},
+#{GgtMonthlyResult.day_buy_amt,jdbcType=VARCHAR},
+#{GgtMonthlyResult.day_buy_vol,jdbcType=VARCHAR},
+#{GgtMonthlyResult.day_sell_amt,jdbcType=VARCHAR},
+#{GgtMonthlyResult.day_sell_vol,jdbcType=VARCHAR},
+#{GgtMonthlyResult.total_buy_amt,jdbcType=VARCHAR},
+#{GgtMonthlyResult.total_buy_vol,jdbcType=VARCHAR},
+#{GgtMonthlyResult.total_sell_amt,jdbcType=VARCHAR},
+#{GgtMonthlyResult.total_sell_vol,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

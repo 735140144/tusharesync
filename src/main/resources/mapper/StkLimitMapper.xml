@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.StkLimitMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into STK_LIMIT
+        (trade_date,ts_code,pre_close,up_limit,down_limit)
+        values
+        <foreach collection="list" item="StkLimitResult" separator=",">
+           (#{StkLimitResult.trade_date,jdbcType=VARCHAR},
+#{StkLimitResult.ts_code,jdbcType=VARCHAR},
+#{StkLimitResult.pre_close,jdbcType=VARCHAR},
+#{StkLimitResult.up_limit,jdbcType=VARCHAR},
+#{StkLimitResult.down_limit,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

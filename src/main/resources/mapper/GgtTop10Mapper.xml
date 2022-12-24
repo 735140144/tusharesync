@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.GgtTop10Mapper">
+<insert id="insert" parameterType="java.util.List">
+insert into GGT_TOP10
+        (trade_date,ts_code,name,close,p_change,rank,market_type,amount,net_amount,sh_amount,sh_net_amount,sh_buy,sh_sell,sz_amount,sz_net_amount,sz_buy,sz_sell)
+        values
+        <foreach collection="list" item="GgtTop10Result" separator=",">
+           (#{GgtTop10Result.trade_date,jdbcType=VARCHAR},
+#{GgtTop10Result.ts_code,jdbcType=VARCHAR},
+#{GgtTop10Result.name,jdbcType=VARCHAR},
+#{GgtTop10Result.close,jdbcType=VARCHAR},
+#{GgtTop10Result.p_change,jdbcType=VARCHAR},
+#{GgtTop10Result.rank,jdbcType=VARCHAR},
+#{GgtTop10Result.market_type,jdbcType=VARCHAR},
+#{GgtTop10Result.amount,jdbcType=VARCHAR},
+#{GgtTop10Result.net_amount,jdbcType=VARCHAR},
+#{GgtTop10Result.sh_amount,jdbcType=VARCHAR},
+#{GgtTop10Result.sh_net_amount,jdbcType=VARCHAR},
+#{GgtTop10Result.sh_buy,jdbcType=VARCHAR},
+#{GgtTop10Result.sh_sell,jdbcType=VARCHAR},
+#{GgtTop10Result.sz_amount,jdbcType=VARCHAR},
+#{GgtTop10Result.sz_net_amount,jdbcType=VARCHAR},
+#{GgtTop10Result.sz_buy,jdbcType=VARCHAR},
+#{GgtTop10Result.sz_sell,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

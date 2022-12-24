@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.GgtDailyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into GGT_DAILY
+        (trade_date,buy_amount,buy_volume,sell_amount,sell_volume)
+        values
+        <foreach collection="list" item="GgtDailyResult" separator=",">
+           (#{GgtDailyResult.trade_date,jdbcType=VARCHAR},
+#{GgtDailyResult.buy_amount,jdbcType=VARCHAR},
+#{GgtDailyResult.buy_volume,jdbcType=VARCHAR},
+#{GgtDailyResult.sell_amount,jdbcType=VARCHAR},
+#{GgtDailyResult.sell_volume,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

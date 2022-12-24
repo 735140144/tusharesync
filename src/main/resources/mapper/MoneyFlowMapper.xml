@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.MoneyFlowMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into MONEYFLOW
+        (ts_code,trade_date,buy_sm_vol,buy_sm_amount,sell_sm_vol,sell_sm_amount,buy_md_vol,buy_md_amount,sell_md_vol,sell_md_amount,buy_lg_vol,buy_lg_amount,sell_lg_vol,sell_lg_amount,buy_elg_vol,buy_elg_amount,sell_elg_vol,sell_elg_amount,net_mf_vol,net_mf_amount)
+        values
+        <foreach collection="list" item="MoneyFlowResult" separator=",">
+           (#{MoneyFlowResult.ts_code,jdbcType=VARCHAR},
+#{MoneyFlowResult.trade_date,jdbcType=VARCHAR},
+#{MoneyFlowResult.buy_sm_vol,jdbcType=VARCHAR},
+#{MoneyFlowResult.buy_sm_amount,jdbcType=VARCHAR},
+#{MoneyFlowResult.sell_sm_vol,jdbcType=VARCHAR},
+#{MoneyFlowResult.sell_sm_amount,jdbcType=VARCHAR},
+#{MoneyFlowResult.buy_md_vol,jdbcType=VARCHAR},
+#{MoneyFlowResult.buy_md_amount,jdbcType=VARCHAR},
+#{MoneyFlowResult.sell_md_vol,jdbcType=VARCHAR},
+#{MoneyFlowResult.sell_md_amount,jdbcType=VARCHAR},
+#{MoneyFlowResult.buy_lg_vol,jdbcType=VARCHAR},
+#{MoneyFlowResult.buy_lg_amount,jdbcType=VARCHAR},
+#{MoneyFlowResult.sell_lg_vol,jdbcType=VARCHAR},
+#{MoneyFlowResult.sell_lg_amount,jdbcType=VARCHAR},
+#{MoneyFlowResult.buy_elg_vol,jdbcType=VARCHAR},
+#{MoneyFlowResult.buy_elg_amount,jdbcType=VARCHAR},
+#{MoneyFlowResult.sell_elg_vol,jdbcType=VARCHAR},
+#{MoneyFlowResult.sell_elg_amount,jdbcType=VARCHAR},
+#{MoneyFlowResult.net_mf_vol,jdbcType=VARCHAR},
+#{MoneyFlowResult.net_mf_amount,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>
