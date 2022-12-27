@@ -32,7 +32,7 @@ public interface BasicDataService {
 
     @ApiOperation("上市公司基本信息")
     @RequestMapping("/stock_company")
-    Result<?> StockCompany();
+    Result<?> StockCompany(@Param("exchange") String exchange);
 
     @ApiOperation("上市公司管理层")
     @RequestMapping("/stk_managers")
@@ -40,7 +40,7 @@ public interface BasicDataService {
 
     @ApiOperation("管理层薪酬和持股")
     @RequestMapping("/stk_rewards")
-    Result<?> StkRewards(@Param("ts_code") String ts_code,@Param("end_date") String end_date);
+    Result<?> StkRewards(@Param("ts_code") String ts_code,@Param("ann_date") String ann_date);
 
     @ApiOperation("IPO新股列表")
     @RequestMapping("/new_share")

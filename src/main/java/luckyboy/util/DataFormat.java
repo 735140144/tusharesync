@@ -15,4 +15,8 @@ public class DataFormat {
         LocalDateTime localDateTime = LocalDateTime.parse(YmDHms, formator);
         return localDateTime.toInstant(ZoneOffset.of("+8")).toEpochMilli();
     }
+    public static String DTFormat(Long time) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        return simpleDateFormat.format(time);
+    }
 }

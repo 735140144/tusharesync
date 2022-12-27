@@ -14,4 +14,8 @@ public class StkRewardsParams extends Formart {
      * 报告期
      */
     private String end_date;
+    /**
+     *公告日期（YYYYMMDD格式，下同）
+     */
+    private String ann_date;
 }

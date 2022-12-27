@@ -60,7 +60,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<DailyResult> trans = transResult.trans(jsonObject, DailyResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         dailyWeeklyMonthlyMapper.insertDaily(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -72,7 +72,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<WeeklyResult> trans = transResult.trans(jsonObject, WeeklyResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         dailyWeeklyMonthlyMapper.insertWeekly(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<MonthlyResult> trans = transResult.trans(jsonObject, MonthlyResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         dailyWeeklyMonthlyMapper.insertMonthly(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -96,7 +96,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<AdjFactorResult> trans = transResult.trans(jsonObject, AdjFactorResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         adjFactorMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -108,7 +108,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<SuspendDResult> trans = transResult.trans(jsonObject, SuspendDResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         suspendDMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -120,7 +120,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<DailyBasicResult> trans = transResult.trans(jsonObject, DailyBasicResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         dailyBasicMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -132,7 +132,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<MoneyFlowResult> trans = transResult.trans(jsonObject, MoneyFlowResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         moneyFlowMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -144,7 +144,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<StkLimitResult> trans = transResult.trans(jsonObject, StkLimitResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         stkLimitMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -156,7 +156,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<MoneyFlowHsgtResult> trans = transResult.trans(jsonObject, MoneyFlowHsgtResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         moneyflowHsgtMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -168,7 +168,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<HsgtTop10Result> trans = transResult.trans(jsonObject, HsgtTop10Result.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         hsgtTop10Mapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -180,7 +180,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<GgtTop10Result> trans = transResult.trans(jsonObject, GgtTop10Result.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         ggtTop10Mapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -192,7 +192,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<GgtDailyResult> trans = transResult.trans(jsonObject, GgtDailyResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         ggtDailyMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -204,6 +204,6 @@ public class MarketDataServiceImpl implements MarketDataService {
         List<GgtMonthlyResult> trans = transResult.trans(jsonObject, GgtMonthlyResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         ggtMonthlyMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 }

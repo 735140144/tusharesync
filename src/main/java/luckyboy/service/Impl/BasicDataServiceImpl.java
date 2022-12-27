@@ -54,7 +54,7 @@ public class BasicDataServiceImpl implements BasicDataService {
         List<StockBasicResult> trans = transResult.trans(jsonObject, StockBasicResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         stockBasicMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -66,7 +66,7 @@ public class BasicDataServiceImpl implements BasicDataService {
         List<TraderCalResult> trans = transResult.trans(jsonObject, TraderCalResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         traderCalMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -78,7 +78,7 @@ public class BasicDataServiceImpl implements BasicDataService {
         List<NameChangeResult> trans = transResult.trans(jsonObject, NameChangeResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         nameChangeMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -94,19 +94,19 @@ public class BasicDataServiceImpl implements BasicDataService {
         }else {
             hsConstMapper.s_insert(trans);
         }
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
-    public Result<?> StockCompany() {
+    public Result<?> StockCompany(String exchange) {
         log.info("开始拉取上市公司基本信息,时间戳：{}",System.currentTimeMillis());
-        StockCompanyParams companyParams = StockCompanyParams.builder().build();
+        StockCompanyParams companyParams = StockCompanyParams.builder().exchange(exchange).build();
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_company").params(companyParams.toJSONObject()).fields(new StockCompanyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StockCompanyResult> trans = transResult.trans(jsonObject, StockCompanyResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         stockComponyMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -118,19 +118,19 @@ public class BasicDataServiceImpl implements BasicDataService {
         List<StkManagersResult> trans = transResult.trans(jsonObject, StkManagersResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         stkManagersMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
-    public Result<?> StkRewards(String ts_code,String end_date) {
-        log.info("开始拉取管理层薪酬和持股信息,时间戳：{},代码：{},结束时间：{}",System.currentTimeMillis(),ts_code,end_date);
-        StkRewardsParams rewardsParams = StkRewardsParams.builder().ts_code(ts_code).end_date(end_date).build();
+    public Result<?> StkRewards(String ts_code,String ann_date) {
+        log.info("开始拉取管理层薪酬和持股信息,时间戳：{},代码：{},结束时间：{}",System.currentTimeMillis(),ts_code,ann_date);
+        StkRewardsParams rewardsParams = StkRewardsParams.builder().ts_code(ts_code).ann_date(ann_date).build();
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stk_rewards").params(rewardsParams.toJSONObject()).fields(new StkRewardsResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StkRewardsResult> trans = transResult.trans(jsonObject, StkRewardsResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         stkRewardsMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 
     @Override
@@ -142,6 +142,6 @@ public class BasicDataServiceImpl implements BasicDataService {
         List<NewShareResult> trans = transResult.trans(jsonObject, NewShareResult.class);
         log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
         newShareMapper.insert(trans);
-        return Result.ok();
+        return Result.ok(jsonObject.getString("msg"));
     }
 }

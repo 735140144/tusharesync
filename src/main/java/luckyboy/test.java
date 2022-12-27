@@ -17,10 +17,6 @@ import java.util.List;
 
 public class test {
     public static void main(String[] args) {
-        StockBasicParams basicParams = StockBasicParams.builder().build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_basic").params(basicParams.toJSONObject()).fields(new StockBasicResult().getFields()).build();
-        JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
-        List<StockBasicResult> trans = transResult.trans(jsonObject, StockBasicResult.class);
-        System.out.println(trans);
+
     }
 }
