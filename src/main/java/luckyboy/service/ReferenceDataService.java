@@ -4,11 +4,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "市场参考数据")
+@Api(value = "市场参考数据",tags = "市场参考数据")
 @RestController
-@RequestMapping("/data/reference")
+@RequestMapping(value = "/data/reference",method = RequestMethod.GET)
 public interface ReferenceDataService {
     @ApiOperation("融资融券交易汇总")
     @RequestMapping("/margin")

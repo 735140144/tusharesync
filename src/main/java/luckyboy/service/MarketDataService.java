@@ -5,11 +5,12 @@ import io.swagger.annotations.ApiOperation;
 import luckyboy.util.Result;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "行情数据")
+@Api(value = "行情数据",tags = "行情数据")
 @RestController
-@RequestMapping("/data/market")
+@RequestMapping(value = "/data/market",method = RequestMethod.GET)
 public interface MarketDataService {
 
     @ApiOperation("A股日线行情")

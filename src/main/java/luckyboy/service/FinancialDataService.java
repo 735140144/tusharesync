@@ -4,11 +4,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "财务数据")
+@Api(value = "财务数据",tags = "财务数据")
 @RestController
-@RequestMapping("/data/financial")
+@RequestMapping(value = "/data/financial",method = RequestMethod.GET)
 public interface FinancialDataService {
 
     @ApiOperation("利润表")

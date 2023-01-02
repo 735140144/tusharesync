@@ -7,11 +7,12 @@ import luckyboy.util.Result;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "基础数据")
+@Api(value = "基础数据",tags = "基础数据")
 @RestController
-@RequestMapping("/data/basic")
+@RequestMapping(value = "/data/basic",method = RequestMethod.GET)
 public interface BasicDataService {
 
     @ApiOperation("股票列表")

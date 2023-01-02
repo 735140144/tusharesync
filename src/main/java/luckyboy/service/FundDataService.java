@@ -4,11 +4,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "基金数据")
+@Api(value = "基金数据",tags = "基金数据")
 @RestController
-@RequestMapping("/data/fund")
+@RequestMapping(value = "/data/fund",method = RequestMethod.GET)
 public interface FundDataService {
     @ApiOperation("公募基金列表")
     @RequestMapping("/fund_basic")

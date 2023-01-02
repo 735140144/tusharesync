@@ -4,11 +4,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "特色数据")
+@Api(value = "特色数据",tags = "特色数据")
 @RestController
-@RequestMapping("/data/characteristic")
+@RequestMapping(value = "/data/characteristic",method = RequestMethod.GET)
 public interface CharacteristicDataService {
     @ApiOperation("卖方盈利预测数据")
     @RequestMapping("/report_rc")

@@ -4,11 +4,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "指数数据")
+@Api(value = "指数数据",tags = "指数数据")
 @RestController
-@RequestMapping("/data/index")
+@RequestMapping(value = "/data/index",method = RequestMethod.GET)
 public interface IndexDataService {
 
     @ApiOperation("指数基本信息")

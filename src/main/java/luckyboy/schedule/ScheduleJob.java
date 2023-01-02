@@ -5,8 +5,6 @@ import luckyboy.service.MarketDataService;
 import luckyboy.util.DataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.retry.annotation.Backoff;
-import org.springframework.retry.annotation.Retryable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +16,7 @@ public class ScheduleJob {
     @Autowired
     private MarketDataService marketDataService;
 
-    @Scheduled(cron = "0 0 9 ? * 2-6")
+    @Scheduled(cron = "0 0 9 ? * 1-5")
     public void StockBasic(){
         basicDataService.StockBasic();
     }
@@ -29,7 +27,7 @@ public class ScheduleJob {
         basicDataService.TradeCal(s,null);
     }
 
-    @Scheduled(cron = "30 0 9 ? * 2-6")
+    @Scheduled(cron = "30 0 9 ? * 1-5")
     public void NameChange(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         basicDataService.NameChange(null,s,null);
@@ -59,7 +57,7 @@ public class ScheduleJob {
         basicDataService.NewShare(s,s);
     }
 
-    @Scheduled(cron = "0 0 19 ? * 2-6")
+    @Scheduled(cron = "0 0 19 ? * 1-5")
     public void daily(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.daily(null,s,null,null);
@@ -67,7 +65,7 @@ public class ScheduleJob {
 
     @Scheduled(cron = "30 0 19 ? * 6")
     public void weekly(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
+        String s = DataFormat.DTFormat(System.currentTimeMillis()-86400000);
         marketDataService.weekly(null,s,null,null);
     }
 
@@ -77,55 +75,55 @@ public class ScheduleJob {
         marketDataService.monthly(null,s,null,null);
     }
 
-    @Scheduled(cron = "0 2 19 ? * 2-6")
+    @Scheduled(cron = "0 2 19 ? * 1-5")
     public void adjFactor(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.adjFactor(null,s,null,null);
     }
 
-    @Scheduled(cron = "0 3 19 ? * 2-6")
+    @Scheduled(cron = "0 3 19 ? * 1-5")
     public void suspendD(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.suspendD(null,s,null,null);
     }
 
-    @Scheduled(cron = "0 4 19 ? * 2-6")
+    @Scheduled(cron = "0 4 19 ? * 1-5")
     public void daily_basic(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.daily_basic(null,s,null,null);
     }
 
-    @Scheduled(cron = "0 4 19 ? * 2-6")
+    @Scheduled(cron = "0 4 19 ? * 1-5")
     public void moneyflow(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.moneyflow(null,s,null,null);
     }
 
-    @Scheduled(cron = "0 2 9 ? * 2-6")
+    @Scheduled(cron = "0 20 9 ? * 1-5")
     public void stkLimit(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.stkLimit(null,s,null,null);
     }
 
-    @Scheduled(cron = "30 4 19 ? * 2-6")
+    @Scheduled(cron = "30 4 22 ? * 1-5")
     public void moneyflowHsgt(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.moneyflowHsgt(s,null,null);
     }
 
-    @Scheduled(cron = "0 5 19 ? * 2-6")
+    @Scheduled(cron = "0 5 22 ? * 1-5")
     public void hsgtTop10(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.hsgtTop10(null,s,null,null);
     }
 
-    @Scheduled(cron = "0 6 19 ? * 2-6")
+    @Scheduled(cron = "0 6 22 ? * 1-5")
     public void ggtTop10(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.hsgtTop10(null,s,null,null);
     }
 
-    @Scheduled(cron = "0 7 19 ? * 2-6")
+    @Scheduled(cron = "0 7 22 ? * 1-5")
     public void ggtDaily(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.ggtDaily(s,null,null);
