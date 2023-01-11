@@ -111,19 +111,19 @@ public class ScheduleJob {
         marketDataService.moneyflowHsgt(s,null,null);
     }
 
-    @Scheduled(cron = "0 5 22 ? * 1-5")
+    @Scheduled(cron = "0 5 23 ? * 1-5")
     public void hsgtTop10(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.hsgtTop10(null,s,null,null);
     }
 
-    @Scheduled(cron = "0 6 22 ? * 1-5")
+    @Scheduled(cron = "0 6 23 ? * 1-5")
     public void ggtTop10(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.hsgtTop10(null,s,null,null);
+        marketDataService.ggtTop10(null,s,null,null);
     }
 
-    @Scheduled(cron = "0 7 22 ? * 1-5")
+    @Scheduled(cron = "0 7 23 ? * 1-5")
     public void ggtDaily(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
         marketDataService.ggtDaily(s,null,null);

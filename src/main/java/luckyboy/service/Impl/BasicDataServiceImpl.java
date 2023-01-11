@@ -2,6 +2,7 @@ package luckyboy.service.Impl;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
+import luckyboy.common.FailLog;
 import luckyboy.common.TusharePostParam;
 import luckyboy.mapper.*;
 import luckyboy.params.*;
@@ -43,6 +44,9 @@ public class BasicDataServiceImpl implements BasicDataService {
     @Resource
     private NewShareMapper newShareMapper;
 
+    @Resource
+    private FailLogMapper failLogMapper;
+
     public static final String SH = "SH";
 
     @Override
@@ -52,8 +56,13 @@ public class BasicDataServiceImpl implements BasicDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_basic").params(basicParams.toJSONObject()).fields(new StockBasicResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StockBasicResult> trans = transResult.trans(jsonObject, StockBasicResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        stockBasicMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            stockBasicMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("stock_basic").comment("股票列表").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -64,8 +73,13 @@ public class BasicDataServiceImpl implements BasicDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("trade_cal").params(tradeCalParams.toJSONObject()).fields(new TraderCalResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<TraderCalResult> trans = transResult.trans(jsonObject, TraderCalResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        traderCalMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            traderCalMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("trade_cal").comment("交易日历").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -76,8 +90,13 @@ public class BasicDataServiceImpl implements BasicDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("namechange").params(nameChangeParams.toJSONObject()).fields(new NameChangeResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<NameChangeResult> trans = transResult.trans(jsonObject, NameChangeResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        nameChangeMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            nameChangeMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("namechange").comment("股票曾用名").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -88,11 +107,16 @@ public class BasicDataServiceImpl implements BasicDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("hs_const").params(hsConstParams.toJSONObject()).fields(new HsConstResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<HsConstResult> trans = transResult.trans(jsonObject, HsConstResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        if (SH.equals(hs_type)){
-            hsConstMapper.h_insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            if (SH.equals(hs_type)){
+                hsConstMapper.h_insert(trans);
+            }else {
+                hsConstMapper.s_insert(trans);
+            }
         }else {
-            hsConstMapper.s_insert(trans);
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("hs_const").comment("沪股通、深股通成分").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -104,8 +128,13 @@ public class BasicDataServiceImpl implements BasicDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_company").params(companyParams.toJSONObject()).fields(new StockCompanyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StockCompanyResult> trans = transResult.trans(jsonObject, StockCompanyResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        stockComponyMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            stockComponyMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("stock_company").comment("上市公司基本信息").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -116,8 +145,13 @@ public class BasicDataServiceImpl implements BasicDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stk_managers").params(managersParams.toJSONObject()).fields(new StkManagersResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StkManagersResult> trans = transResult.trans(jsonObject, StkManagersResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        stkManagersMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            stkManagersMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("stk_managers").comment("上市公司管理层信息").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -128,8 +162,13 @@ public class BasicDataServiceImpl implements BasicDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stk_rewards").params(rewardsParams.toJSONObject()).fields(new StkRewardsResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StkRewardsResult> trans = transResult.trans(jsonObject, StkRewardsResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        stkRewardsMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            stkRewardsMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("stk_rewards").comment("管理层薪酬和持股信息").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -140,8 +179,13 @@ public class BasicDataServiceImpl implements BasicDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("new_share").params(newShareParams.toJSONObject()).fields(new NewShareResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<NewShareResult> trans = transResult.trans(jsonObject, NewShareResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        newShareMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            newShareMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("new_share").comment("IPO新股列表").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 }

@@ -2,6 +2,7 @@ package luckyboy.service.Impl;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
+import luckyboy.common.FailLog;
 import luckyboy.common.TusharePostParam;
 import luckyboy.mapper.*;
 import luckyboy.params.*;
@@ -51,6 +52,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     @Resource
     private GgtMonthlyMapper ggtMonthlyMapper;
 
+    @Resource
+    private FailLogMapper failLogMapper;
+
     @Override
     public Result<?> daily(String ts_code, String trade_date, String start_date, String end_date) {
         log.info("开始拉取日线行情列表,时间戳：{}",System.currentTimeMillis());
@@ -58,8 +62,14 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("daily").params(dailyWeeklyMonthlyParams.toJSONObject()).fields(new DailyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<DailyResult> trans = transResult.trans(jsonObject, DailyResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        dailyWeeklyMonthlyMapper.insertDaily(trans);
+        if (trans.size() > 0){
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            dailyWeeklyMonthlyMapper.insertDaily(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("daily").comment("日线行情").build());
+        }
+
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -67,11 +77,16 @@ public class MarketDataServiceImpl implements MarketDataService {
     public Result<?> weekly(String ts_code, String trade_date, String start_date, String end_date) {
         log.info("开始拉取周线行情列表,时间戳：{}",System.currentTimeMillis());
         DailyWeeklyMonthlyParams dailyWeeklyMonthlyParams = DailyWeeklyMonthlyParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("daily").params(dailyWeeklyMonthlyParams.toJSONObject()).fields(new WeeklyResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("weekly").params(dailyWeeklyMonthlyParams.toJSONObject()).fields(new WeeklyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<WeeklyResult> trans = transResult.trans(jsonObject, WeeklyResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        dailyWeeklyMonthlyMapper.insertWeekly(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
+            dailyWeeklyMonthlyMapper.insertWeekly(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("weekly").comment("周线行情").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -79,11 +94,16 @@ public class MarketDataServiceImpl implements MarketDataService {
     public Result<?> monthly(String ts_code, String trade_date, String start_date, String end_date) {
         log.info("开始拉取月线行情列表,时间戳：{}",System.currentTimeMillis());
         DailyWeeklyMonthlyParams dailyWeeklyMonthlyParams = DailyWeeklyMonthlyParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("daily").params(dailyWeeklyMonthlyParams.toJSONObject()).fields(new MonthlyResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("monthly").params(dailyWeeklyMonthlyParams.toJSONObject()).fields(new MonthlyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<MonthlyResult> trans = transResult.trans(jsonObject, MonthlyResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        dailyWeeklyMonthlyMapper.insertMonthly(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            dailyWeeklyMonthlyMapper.insertMonthly(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("monthly").comment("月线行情").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -94,8 +114,13 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("adj_factor").params(factorParams.toJSONObject()).fields(new AdjFactorResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<AdjFactorResult> trans = transResult.trans(jsonObject, AdjFactorResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        adjFactorMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            adjFactorMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("adj_factor").comment("复权因子").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -106,8 +131,13 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("suspend_d").params(suspendDParams.toJSONObject()).fields(new SuspendDResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<SuspendDResult> trans = transResult.trans(jsonObject, SuspendDResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        suspendDMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            suspendDMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("suspend_d").comment("每日停复牌").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -118,8 +148,13 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("daily_basic").params(dailyBasicParams.toJSONObject()).fields(new DailyBasicResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<DailyBasicResult> trans = transResult.trans(jsonObject, DailyBasicResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        dailyBasicMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            dailyBasicMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("daily_basic").comment("每日指标").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -130,8 +165,13 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("moneyflow").params(moneyFlowParams.toJSONObject()).fields(new MoneyFlowResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<MoneyFlowResult> trans = transResult.trans(jsonObject, MoneyFlowResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        moneyFlowMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            moneyFlowMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("moneyflow").comment("个股资金流向").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -142,8 +182,13 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stk_limit").params(stkLimitParams.toJSONObject()).fields(new StkLimitResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StkLimitResult> trans = transResult.trans(jsonObject, StkLimitResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        stkLimitMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            stkLimitMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("stk_limit").comment("每日涨跌停价格").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -154,8 +199,13 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("moneyflow_hsgt").params(moneyFlowHsgtParams.toJSONObject()).fields(new MoneyFlowHsgtResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<MoneyFlowHsgtResult> trans = transResult.trans(jsonObject, MoneyFlowHsgtResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        moneyflowHsgtMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            moneyflowHsgtMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("moneyflow_hsgt").comment("沪深港通资金流向").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -166,8 +216,13 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("hsgt_top10").params(hsgtTop10Params.toJSONObject()).fields(new HsgtTop10Result().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<HsgtTop10Result> trans = transResult.trans(jsonObject, HsgtTop10Result.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        hsgtTop10Mapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            hsgtTop10Mapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("hsgt_top10").comment("沪深股通十大成交股").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -178,8 +233,13 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("ggt_top10").params(ggtTop10Params.toJSONObject()).fields(new GgtTop10Result().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<GgtTop10Result> trans = transResult.trans(jsonObject, GgtTop10Result.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        ggtTop10Mapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            ggtTop10Mapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("ggt_top10").comment("港股通十大成交股").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -190,8 +250,13 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("ggt_daily").params(ggtDailyParams.toJSONObject()).fields(new GgtDailyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<GgtDailyResult> trans = transResult.trans(jsonObject, GgtDailyResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        ggtDailyMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            ggtDailyMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("ggt_daily").comment("港股通每日成交统计").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 
@@ -202,8 +267,13 @@ public class MarketDataServiceImpl implements MarketDataService {
         TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("ggt_monthly").params(ggtMonthlyParams.toJSONObject()).fields(new GgtMonthlyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<GgtMonthlyResult> trans = transResult.trans(jsonObject, GgtMonthlyResult.class);
-        log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-        ggtMonthlyMapper.insert(trans);
+        if (trans.size() > 0) {
+            log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
+            ggtMonthlyMapper.insert(trans);
+        }else {
+            log.info("未获取到数据！");
+            failLogMapper.insert(FailLog.builder().api("ggt_monthly").comment("港股通每月成交统计").build());
+        }
         return Result.ok(jsonObject.getString("msg"));
     }
 }

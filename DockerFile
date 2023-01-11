@@ -3,5 +3,6 @@ MAINTAINER cty <735140144@qq.com>
 VOLUME /data/share/
 ADD /target/*.jar app.jar
 EXPOSE 8000
+ENV TZ=Asia/Shanghai
 ENV LANG=C.UTF-8 LANGUAGE=C.UTF-8 LC_ALL=C.UTF-8
 ENTRYPOINT ["java","-jar","app.jar"]
