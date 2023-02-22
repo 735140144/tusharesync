@@ -14,19 +14,32 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import com.google.common.base.CaseFormat;
 
 
 public class GenerateMapper {
     public static void main(String[] args) {
-        //mapper
-        Class<?> aClass = GgtMonthlyMapper.class;
         //result
         Class<?> resultClass = GgtMonthlyResult.class;
         //tablename
         String TABLE_NAME = "GGT_MONTHLY";
 
-        String MAPPER_CLASS_NAME =aClass.getName();
-        String simpleName = aClass.getSimpleName();
+        String mapperName = resultClass.getSimpleName().replace("Result", "Mapper");
+        String mapperHead = "package luckyboy.mapper;\n"+
+                "import luckyboy.result."+mapperName+";\n"+
+                "import java.util.List;\n\n"+
+                "public interface "+mapperName+" {\n" +
+                "    int insert (List<"+resultClass.getSimpleName()+"> "+CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,resultClass.getSimpleName())+"List);\n" +
+                "}";
+        String mapperFileName = "D:\\helicarrier.lucky.cc\\share.luckyboy.cc\\src\\main\\luckyboy\\mapper\\"+mapperName + ".java";
+        Path mapperPath = Paths.get(mapperFileName);
+        try (BufferedWriter writer =
+                     Files.newBufferedWriter(mapperPath, StandardCharsets.UTF_8)) {
+            writer.write(mapperHead);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String MAPPER_CLASS_NAME ="luckyboy.mapper."+mapperName;
         Field[] declaredFields = resultClass.getDeclaredFields();
         String fields = Arrays.stream(declaredFields).map(Field::getName).collect(Collectors.joining(","));
         String Result = resultClass.getSimpleName();
@@ -60,7 +73,7 @@ public class GenerateMapper {
         stringBuffer.append(end);
         System.out.println(stringBuffer);
 
-        String fileName = "D:\\helicarrier.lucky.cc\\share.luckyboy.cc\\src\\main\\resources\\mapper\\"+simpleName + ".xml";
+        String fileName = "D:\\helicarrier.lucky.cc\\share.luckyboy.cc\\src\\main\\resources\\mapper\\"+ mapperName + ".xml";
         Path path = Paths.get(fileName);
         try (BufferedWriter writer =
                      Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
