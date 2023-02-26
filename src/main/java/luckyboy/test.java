@@ -7,16 +7,20 @@ import luckyboy.common.TranResult;
 import luckyboy.common.TusharePostParam;
 import luckyboy.params.StockBasicParams;
 import luckyboy.result.StockBasicResult;
-import luckyboy.util.GetFields;
-import luckyboy.util.ParamsToJson;
-import luckyboy.util.TusharePost;
-import luckyboy.util.transResult;
+import luckyboy.util.*;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
 public class test {
     public static void main(String[] args) {
+        test test = new test();
+        Result<?> dothis = test.dothis();
+        System.out.println(dothis);
+    }
 
+    private Result<?> dothis(){
+        String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
+        return Result.ok(apiName);
     }
 }

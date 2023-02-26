@@ -37,8 +37,8 @@ public interface FinancialDataService {
     Result<?> dividend();
 
     @ApiOperation("财务指标数据")
-    @RequestMapping("/fina_indicator")
-    Result<?> fina_indicator();
+    @RequestMapping("/fina_indicator_vip")
+    Result<?> fina_indicator_vip();
 
     @ApiOperation("财务审计意见")
     @RequestMapping("/fina_audit")
