@@ -1,167 +1,326 @@
 package luckyboy.result;
 
 import lombok.Data;
+import luckyboy.common.ExplainAnnotation;
 import luckyboy.util.Formart;
 
 @Data
 public class BalanceSheetResult extends Formart {
+    @ExplainAnnotation(comment = "股票代码")
     private String ts_code;
+    @ExplainAnnotation(comment = "公告日期")
     private String ann_date;
+    @ExplainAnnotation(comment = "实际公告日期")
     private String f_ann_date;
+    @ExplainAnnotation(comment = "报告期")
     private String end_date;
+    @ExplainAnnotation(comment = "报表类型")
     private String report_type;
+    @ExplainAnnotation(comment = "公司类型(1一般工商业2银行3保险4证券)")
     private String comp_type;
+    @ExplainAnnotation(comment = "报告期类型")
     private String end_type;
+    @ExplainAnnotation(comment = "期末总股本")
     private String total_share;
+    @ExplainAnnotation(comment = "资本公积金")
     private String cap_rese;
+    @ExplainAnnotation(comment = "未分配利润")
     private String undistr_porfit;
+    @ExplainAnnotation(comment = "盈余公积金")
     private String surplus_rese;
+    @ExplainAnnotation(comment = "专项储备")
     private String special_rese;
+    @ExplainAnnotation(comment = "货币资金")
     private String money_cap;
+    @ExplainAnnotation(comment = "交易性金融资产")
     private String trad_asset;
+    @ExplainAnnotation(comment = "应收票据")
     private String notes_receiv;
+    @ExplainAnnotation(comment = "应收账款")
     private String accounts_receiv;
+    @ExplainAnnotation(comment = "其他应收款")
     private String oth_receiv;
+    @ExplainAnnotation(comment = "预付款项")
     private String prepayment;
+    @ExplainAnnotation(comment = "应收股利")
     private String div_receiv;
+    @ExplainAnnotation(comment = "应收利息")
     private String int_receiv;
+    @ExplainAnnotation(comment = "存货")
     private String inventories;
+    @ExplainAnnotation(comment = "待摊费用")
     private String amor_exp;
+    @ExplainAnnotation(comment = "一年内到期的非流动资产")
     private String nca_within_1y;
+    @ExplainAnnotation(comment = "结算备付金")
     private String sett_rsrv;
+    @ExplainAnnotation(comment = "拆出资金")
     private String loanto_oth_bank_fi;
+    @ExplainAnnotation(comment = "应收保费")
     private String premium_receiv;
+    @ExplainAnnotation(comment = "应收分保账款")
     private String reinsur_receiv;
+    @ExplainAnnotation(comment = "应收分保合同准备金")
     private String reinsur_res_receiv;
+    @ExplainAnnotation(comment = "买入返售金融资产")
     private String pur_resale_fa;
+    @ExplainAnnotation(comment = "其他流动资产")
     private String oth_cur_assets;
+    @ExplainAnnotation(comment = "流动资产合计")
     private String total_cur_assets;
+    @ExplainAnnotation(comment = "可供出售金融资产")
     private String fa_avail_for_sale;
+    @ExplainAnnotation(comment = "持有至到期投资")
     private String htm_invest;
+    @ExplainAnnotation(comment = "长期股权投资")
     private String lt_eqt_invest;
+    @ExplainAnnotation(comment = "投资性房地产")
     private String invest_real_estate;
+    @ExplainAnnotation(comment = "定期存款")
     private String time_deposits;
+    @ExplainAnnotation(comment = "其他资产")
     private String oth_assets;
+    @ExplainAnnotation(comment = "长期应收款")
     private String lt_rec;
+    @ExplainAnnotation(comment = "固定资产")
     private String fix_assets;
+    @ExplainAnnotation(comment = "在建工程")
     private String cip;
+    @ExplainAnnotation(comment = "工程物资")
     private String const_materials;
+    @ExplainAnnotation(comment = "固定资产清理")
     private String fixed_assets_disp;
+    @ExplainAnnotation(comment = "生产性生物资产")
     private String produc_bio_assets;
+    @ExplainAnnotation(comment = "油气资产")
     private String oil_and_gas_assets;
+    @ExplainAnnotation(comment = "无形资产")
     private String intan_assets;
+    @ExplainAnnotation(comment = "研发支出")
     private String r_and_d;
+    @ExplainAnnotation(comment = "商誉")
     private String goodwill;
+    @ExplainAnnotation(comment = "长期待摊费用")
     private String lt_amor_exp;
+    @ExplainAnnotation(comment = "递延所得税资产")
     private String defer_tax_assets;
+    @ExplainAnnotation(comment = "发放贷款及垫款")
     private String decr_in_disbur;
+    @ExplainAnnotation(comment = "其他非流动资产")
     private String oth_nca;
+    @ExplainAnnotation(comment = "非流动资产合计")
     private String total_nca;
+    @ExplainAnnotation(comment = "现金及存放中央银行款项")
     private String cash_reser_cb;
+    @ExplainAnnotation(comment = "存放同业和其它金融机构款项")
     private String depos_in_oth_bfi;
+    @ExplainAnnotation(comment = "贵金属")
     private String prec_metals;
+    @ExplainAnnotation(comment = "衍生金融资产")
     private String deriv_assets;
+    @ExplainAnnotation(comment = "应收分保未到期责任准备金")
     private String rr_reins_une_prem;
+    @ExplainAnnotation(comment = "应收分保未决赔款准备金")
     private String rr_reins_outstd_cla;
+    @ExplainAnnotation(comment = "应收分保寿险责任准备金")
     private String rr_reins_lins_liab;
+    @ExplainAnnotation(comment = "应收分保长期健康险责任准备金")
     private String rr_reins_lthins_liab;
+    @ExplainAnnotation(comment = "存出保证金")
     private String refund_depos;
+    @ExplainAnnotation(comment = "保户质押贷款")
     private String ph_pledge_loans;
+    @ExplainAnnotation(comment = "存出资本保证金")
     private String refund_cap_depos;
+    @ExplainAnnotation(comment = "独立账户资产")
     private String indep_acct_assets;
+    @ExplainAnnotation(comment = "其中：客户资金存款")
     private String client_depos;
+    @ExplainAnnotation(comment = "其中：客户备付金")
     private String client_prov;
+    @ExplainAnnotation(comment = "其中:交易席位费")
     private String transac_seat_fee;
+    @ExplainAnnotation(comment = "应收款项类投资")
     private String invest_as_receiv;
+    @ExplainAnnotation(comment = "资产总计")
     private String total_assets;
+    @ExplainAnnotation(comment = "长期借款")
     private String lt_borr;
+    @ExplainAnnotation(comment = "短期借款")
     private String st_borr;
+    @ExplainAnnotation(comment = "向中央银行借款")
     private String cb_borr;
+    @ExplainAnnotation(comment = "吸收存款及同业存放")
     private String depos_ib_deposits;
+    @ExplainAnnotation(comment = "拆入资金")
     private String loan_oth_bank;
+    @ExplainAnnotation(comment = "交易性金融负债")
     private String trading_fl;
+    @ExplainAnnotation(comment = "应付票据")
     private String notes_payable;
+    @ExplainAnnotation(comment = "应付账款")
     private String acct_payable;
+    @ExplainAnnotation(comment = "预收款项")
     private String adv_receipts;
+    @ExplainAnnotation(comment = "卖出回购金融资产款")
     private String sold_for_repur_fa;
+    @ExplainAnnotation(comment = "应付手续费及佣金")
     private String comm_payable;
+    @ExplainAnnotation(comment = "应付职工薪酬")
     private String payroll_payable;
+    @ExplainAnnotation(comment = "应交税费")
     private String taxes_payable;
+    @ExplainAnnotation(comment = "应付利息")
     private String int_payable;
+    @ExplainAnnotation(comment = "应付股利")
     private String div_payable;
+    @ExplainAnnotation(comment = "其他应付款")
     private String oth_payable;
+    @ExplainAnnotation(comment = "预提费用")
     private String acc_exp;
+    @ExplainAnnotation(comment = "递延收益")
     private String deferred_inc	;
+    @ExplainAnnotation(comment = "应付短期债券")
     private String st_bonds_payable;
+    @ExplainAnnotation(comment = "应付分保账款")
     private String payable_to_reinsurer;
+    @ExplainAnnotation(comment = "保险合同准备金")
     private String rsrv_insur_cont;
+    @ExplainAnnotation(comment = "代理买卖证券款")
     private String acting_trading_sec;
+    @ExplainAnnotation(comment = "代理承销证券款")
     private String acting_uw_sec;
+    @ExplainAnnotation(comment = "一年内到期的非流动负债")
     private String non_cur_liab_due_1y;
+    @ExplainAnnotation(comment = "其他流动负债")
     private String oth_cur_liab;
+    @ExplainAnnotation(comment = "流动负债合计")
     private String total_cur_liab;
+    @ExplainAnnotation(comment = "应付债券")
     private String bond_payable;
+    @ExplainAnnotation(comment = "长期应付款")
     private String lt_payable;
+    @ExplainAnnotation(comment = "专项应付款")
     private String specific_payables;
+    @ExplainAnnotation(comment = "预计负债")
     private String estimated_liab;
+    @ExplainAnnotation(comment = "递延所得税负债")
     private String defer_tax_liab;
+    @ExplainAnnotation(comment = "递延收益-非流动负债")
     private String defer_inc_non_cur_liab;
+    @ExplainAnnotation(comment = "其他非流动负债")
     private String oth_ncl;
+    @ExplainAnnotation(comment = "非流动负债合计")
     private String total_ncl;
+    @ExplainAnnotation(comment = "同业和其它金融机构存放款项")
     private String depos_oth_bfi;
+    @ExplainAnnotation(comment = "衍生金融负债")
     private String deriv_liab;
+    @ExplainAnnotation(comment = "吸收存款")
     private String depos;
+    @ExplainAnnotation(comment = "代理业务负债")
     private String agency_bus_liab;
+    @ExplainAnnotation(comment = "其他负债")
     private String oth_liab;
+    @ExplainAnnotation(comment = "预收保费")
     private String prem_receiv_adva;
+    @ExplainAnnotation(comment = "存入保证金")
     private String depos_received;
+    @ExplainAnnotation(comment = "保户储金及投资款")
     private String ph_invest;
+    @ExplainAnnotation(comment = "未到期责任准备金")
     private String reser_une_prem;
+    @ExplainAnnotation(comment = "未决赔款准备金")
     private String reser_outstd_claims;
+    @ExplainAnnotation(comment = "寿险责任准备金")
     private String reser_lins_liab;
+    @ExplainAnnotation(comment = "长期健康险责任准备金")
     private String reser_lthins_liab;
+    @ExplainAnnotation(comment = "独立账户负债")
     private String indept_acc_liab;
+    @ExplainAnnotation(comment = "其中:质押借款")
     private String pledge_borr;
+    @ExplainAnnotation(comment = "应付赔付款")
     private String indem_payable;
+    @ExplainAnnotation(comment = "应付保单红利")
     private String policy_div_payable;
+    @ExplainAnnotation(comment = "负债合计")
     private String total_liab;
+    @ExplainAnnotation(comment = "减:库存股")
     private String treasury_share;
+    @ExplainAnnotation(comment = "一般风险准备")
     private String ordin_risk_reser;
+    @ExplainAnnotation(comment = "外币报表折算差额")
     private String forex_differ;
+    @ExplainAnnotation(comment = "未确认的投资损失")
     private String invest_loss_unconf;
+    @ExplainAnnotation(comment = "少数股东权益")
     private String minority_int;
+    @ExplainAnnotation(comment = "股东权益合计(不含少数股东权益)")
     private String total_hldr_eqy_exc_min_int;
+    @ExplainAnnotation(comment = "股东权益合计(含少数股东权益)")
     private String total_hldr_eqy_inc_min_int;
+    @ExplainAnnotation(comment = "负债及股东权益总计")
     private String total_liab_hldr_eqy;
+    @ExplainAnnotation(comment = "长期应付职工薪酬")
     private String lt_payroll_payable;
+    @ExplainAnnotation(comment = "其他综合收益")
     private String oth_comp_income;
+    @ExplainAnnotation(comment = "其他权益工具")
     private String oth_eqt_tools;
+    @ExplainAnnotation(comment = "其他权益工具(优先股)")
     private String oth_eqt_tools_p_shr	;
+    @ExplainAnnotation(comment = "融出资金")
     private String lending_funds;
+    @ExplainAnnotation(comment = "应收款项")
     private String acc_receivable;
+    @ExplainAnnotation(comment = "应付短期融资款")
     private String st_fin_payable;
+    @ExplainAnnotation(comment = "应付款项")
     private String payables;
+    @ExplainAnnotation(comment = "持有待售的资产")
     private String hfs_assets;
+    @ExplainAnnotation(comment = "持有待售的负债")
     private String hfs_sales;
+    @ExplainAnnotation(comment = "以摊余成本计量的金融资产")
     private String cost_fin_assets;
+    @ExplainAnnotation(comment = "以公允价值计量且其变动计入其他综合收益的金融资产")
     private String fair_value_fin_assets;
+    @ExplainAnnotation(comment = "在建工程(合计)(元)")
     private String cip_total;
+    @ExplainAnnotation(comment = "其他应付款(合计)(元)")
     private String oth_pay_total;
+    @ExplainAnnotation(comment = "长期应付款(合计)(元)")
     private String long_pay_total;
+    @ExplainAnnotation(comment = "债权投资(元)")
     private String debt_invest;
+    @ExplainAnnotation(comment = "其他债权投资(元)")
     private String oth_debt_invest;
+    @ExplainAnnotation(comment = "其他权益工具投资(元)")
     private String oth_eq_invest;
+    @ExplainAnnotation(comment = "其他非流动金融资产(元)")
     private String oth_illiq_fin_assets;
+    @ExplainAnnotation(comment = "其他权益工具:永续债(元)")
     private String oth_eq_ppbond;
+    @ExplainAnnotation(comment = "应收款项融资")
     private String receiv_financing;
+    @ExplainAnnotation(comment = "使用权资产")
     private String use_right_assets;
+    @ExplainAnnotation(comment = "租赁负债")
     private String lease_liab;
+    @ExplainAnnotation(comment = "合同资产")
     private String contract_assets;
+    @ExplainAnnotation(comment = "合同负债")
     private String contract_liab;
+    @ExplainAnnotation(comment = "应收票据及应收账款")
     private String accounts_receiv_bill;
+    @ExplainAnnotation(comment = "应付票据及应付账款")
     private String accounts_pay;
+    @ExplainAnnotation(comment = "其他应收款(合计)（元）")
     private String oth_rcv_total;
+    @ExplainAnnotation(comment = "固定资产(合计)(元)")
     private String fix_assets_total;
+    @ExplainAnnotation(comment = "更新标识")
     private String update_flag;
 
 
