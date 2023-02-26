@@ -2,77 +2,60 @@ package luckyboy.service;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import luckyboy.params.*;
 import luckyboy.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @Api(value = "市场参考数据",tags = "市场参考数据")
-@RestController
-@RequestMapping(value = "/data/reference",method = RequestMethod.GET)
 public interface ReferenceDataService {
     @ApiOperation("融资融券交易汇总")
-    @RequestMapping("/margin")
-    Result<?> margin();
+    Result<?> margin(MarginParams params);
 
     @ApiOperation("融资融券交易明细")
-    @RequestMapping("/margin_detail")
-    Result<?> margin_detail();
+    Result<?> margin_detail(MarginDetailParams params);
 
     @ApiOperation("融资融券标的")
-    @RequestMapping("/margin_target")
-    Result<?> margin_target();
+    Result<?> margin_target(MarginTargetParams params);
 
     @ApiOperation("前十大股东")
-    @RequestMapping("/top10_holders")
-    Result<?> top10_holders();
+    Result<?> top10_holders(Top10HoldersParams params);
 
     @ApiOperation("前十大流通股东")
-    @RequestMapping("/top10_floatholders")
-    Result<?> top10_floatholders();
+    Result<?> top10_floatholders(Top10FloatholdersParams params);
 
     @ApiOperation("龙虎榜每日明细")
-    @RequestMapping("/top_list")
-    Result<?> top_list();
+    Result<?> top_list(TopListParams params);
 
     @ApiOperation("龙虎榜机构明细")
-    @RequestMapping("/top_inst")
-    Result<?> top_inst();
+    Result<?> top_inst(TopInstParams params);
 
     @ApiOperation("股权质押统计数据")
-    @RequestMapping("pledge_stat")
-    Result<?> pledge_stat();
+    Result<?> pledge_stat(PledgeStatParams params);
 
     @ApiOperation("股权质押明细")
-    @RequestMapping("/pledge_detail")
-    Result<?> pledge_detail();
+    Result<?> pledge_detail(PledgeDetailParams params);
 
     @ApiOperation("股票回购")
-    @RequestMapping("/repurchase")
-    Result<?> repurchase();
+    Result<?> repurchase(RepurchaseParams params);
 
     @ApiOperation("概念股分类")
-    @RequestMapping("/concept")
-    Result<?> concept();
+    Result<?> concept(ConceptParams params);
 
     @ApiOperation("概念股列表")
-    @RequestMapping("/concept_detail")
-    Result<?> concept_detail();
+    Result<?> concept_detail(ConceptDetailParams params);
 
     @ApiOperation("限售股解禁")
-    @RequestMapping("/share_float")
-    Result<?> share_float();
+    Result<?> share_float(ShareFloatParams params);
 
     @ApiOperation("大宗交易")
-    @RequestMapping("/block_trade")
-    Result<?> block_trade();
+    Result<?> block_trade(BlockTradeParams params);
 
     @ApiOperation("股东人数")
-    @RequestMapping("/stk_holdernumber")
-    Result<?> stk_holdernumber();
+    Result<?> stk_holdernumber(StkHoldernumberParams params);
 
     @ApiOperation("股东增减持")
-    @RequestMapping("/stk_holdertrade")
-    Result<?> stk_holdertrade();
+    Result<?> stk_holdertrade(StkHoldertradeParams params);
 
 }

@@ -25,11 +25,10 @@ public class FinancialDataServiceImpl implements FinancialDataService {
 
 
     @Override
-    public Result<?> income_vip() {
+    public Result<?> income_vip(InComeParams params) {
         log.info("开始拉取利润表,时间戳：{}", System.currentTimeMillis());
-        InComeParams inComeParams = InComeParams.builder().build();
         String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(inComeParams.toJSONObject()).fields(new InComeResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(params.toJSONObject()).fields(new InComeResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<InComeResult> trans = transResult.trans(jsonObject, InComeResult.class);
         if (trans.size() > 0) {
@@ -43,11 +42,10 @@ public class FinancialDataServiceImpl implements FinancialDataService {
     }
 
     @Override
-    public Result<?> balancesheet_vip() {
+    public Result<?> balancesheet_vip(BalanceSheetParams params) {
         log.info("开始拉取资产负债表,时间戳：{}", System.currentTimeMillis());
-        BalanceSheetParams balanceSheetParams = BalanceSheetParams.builder().build();
         String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(balanceSheetParams.toJSONObject()).fields(new BalanceSheetResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(params.toJSONObject()).fields(new BalanceSheetResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<BalanceSheetResult> trans = transResult.trans(jsonObject, BalanceSheetResult.class);
         if (trans.size() > 0) {
@@ -61,11 +59,10 @@ public class FinancialDataServiceImpl implements FinancialDataService {
     }
 
     @Override
-    public Result<?> cashflow_vip() {
+    public Result<?> cashflow_vip(CashFlowParams params) {
         log.info("开始拉取现金流量表,时间戳：{}", System.currentTimeMillis());
-        CashFlowParams cashFlowParams = CashFlowParams.builder().build();
         String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(cashFlowParams.toJSONObject()).fields(new CashFlowResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(params.toJSONObject()).fields(new CashFlowResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<CashFlowResult> trans = transResult.trans(jsonObject, CashFlowResult.class);
         if (trans.size() > 0) {
@@ -79,11 +76,10 @@ public class FinancialDataServiceImpl implements FinancialDataService {
     }
 
     @Override
-    public Result<?> forecast_vip() {
+    public Result<?> forecast_vip(ForecastParams params) {
         log.info("开始拉取业绩预告,时间戳：{}", System.currentTimeMillis());
-        ForecastParams forecastParams = ForecastParams.builder().build();
         String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(forecastParams.toJSONObject()).fields(new ForcecastResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(params.toJSONObject()).fields(new ForcecastResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<ForcecastResult> trans = transResult.trans(jsonObject, ForcecastResult.class);
         if (trans.size() > 0) {
@@ -97,11 +93,10 @@ public class FinancialDataServiceImpl implements FinancialDataService {
     }
 
     @Override
-    public Result<?> express_vip() {
+    public Result<?> express_vip(ExpressParams params) {
         log.info("开始拉取业绩快报,时间戳：{}", System.currentTimeMillis());
-        ExpressParams expressParams = ExpressParams.builder().build();
         String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(expressParams.toJSONObject()).fields(new ExpressResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(params.toJSONObject()).fields(new ExpressResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<ExpressResult> trans = transResult.trans(jsonObject, ExpressResult.class);
         if (trans.size() > 0) {
@@ -115,11 +110,10 @@ public class FinancialDataServiceImpl implements FinancialDataService {
     }
 
     @Override
-    public Result<?> dividend() {
+    public Result<?> dividend(DividendParams params) {
         log.info("开始拉取分红送股信息,时间戳：{}", System.currentTimeMillis());
-        DividendParams dividendParams = DividendParams.builder().build();
         String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(dividendParams.toJSONObject()).fields(new DividendResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(params.toJSONObject()).fields(new DividendResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<DividendResult> trans = transResult.trans(jsonObject, DividendResult.class);
         if (trans.size() > 0) {
@@ -133,11 +127,10 @@ public class FinancialDataServiceImpl implements FinancialDataService {
     }
 
     @Override
-    public Result<?> fina_indicator_vip() {
+    public Result<?> fina_indicator_vip(FinaIndicatorParams params) {
         log.info("开始拉取财务指标数据,时间戳：{}", System.currentTimeMillis());
-        FinaIndicatorParams finaIndicatorParams = FinaIndicatorParams.builder().build();
         String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(finaIndicatorParams.toJSONObject()).fields(new FinaIndicatorResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(params.toJSONObject()).fields(new FinaIndicatorResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<FinaIndicatorResult> trans = transResult.trans(jsonObject, FinaIndicatorResult.class);
         if (trans.size() > 0) {
@@ -151,11 +144,10 @@ public class FinancialDataServiceImpl implements FinancialDataService {
     }
 
     @Override
-    public Result<?> fina_audit() {
+    public Result<?> fina_audit(FinaAuditParams params) {
         log.info("开始拉取财务审计意见,时间戳：{}", System.currentTimeMillis());
-        FinaAuditParams finaAuditParams = FinaAuditParams.builder().build();
         String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(finaAuditParams.toJSONObject()).fields(new FinaAuditResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(params.toJSONObject()).fields(new FinaAuditResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<FinaAuditResult> trans = transResult.trans(jsonObject, FinaAuditResult.class);
         if (trans.size() > 0) {
@@ -169,11 +161,10 @@ public class FinancialDataServiceImpl implements FinancialDataService {
     }
 
     @Override
-    public Result<?> fina_mainbz_vip() {
+    public Result<?> fina_mainbz_vip(FinaMainbzParams params) {
         log.info("开始拉取主营业务构成,时间戳：{}", System.currentTimeMillis());
-        FinaMainbzParams finaMainbzParams = FinaMainbzParams.builder().build();
         String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(finaMainbzParams.toJSONObject()).fields(new FinaMainbzResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(params.toJSONObject()).fields(new FinaMainbzResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<FinaMainbzResult> trans = transResult.trans(jsonObject, FinaMainbzResult.class);
         if (trans.size() > 0) {
@@ -187,11 +178,10 @@ public class FinancialDataServiceImpl implements FinancialDataService {
     }
 
     @Override
-    public Result<?> disclosure_date() {
+    public Result<?> disclosure_date(DisclosureDateParams params) {
         log.info("开始拉取财报披露计划,时间戳：{}", System.currentTimeMillis());
-        DisclosureDateParams disclosureDateParams = DisclosureDateParams.builder().build();
         String apiName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(disclosureDateParams.toJSONObject()).fields(new DisclosureDateResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name(apiName).params(params.toJSONObject()).fields(new DisclosureDateResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<DisclosureDateResult> trans = transResult.trans(jsonObject, DisclosureDateResult.class);
         if (trans.size() > 0) {
