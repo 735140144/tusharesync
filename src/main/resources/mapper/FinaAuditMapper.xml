@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.FinaAuditMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FINA_AUDIT
+        (ts_code,ann_date,end_date,audit_result,audit_fees,audit_agency,audit_sign)
+        values
+        <foreach collection="list" item="FinaAuditResult" separator=",">
+           (#{FinaAuditResult.ts_code,jdbcType=VARCHAR},
+#{FinaAuditResult.ann_date,jdbcType=VARCHAR},
+#{FinaAuditResult.end_date,jdbcType=VARCHAR},
+#{FinaAuditResult.audit_result,jdbcType=VARCHAR},
+#{FinaAuditResult.audit_fees,jdbcType=VARCHAR},
+#{FinaAuditResult.audit_agency,jdbcType=VARCHAR},
+#{FinaAuditResult.audit_sign,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

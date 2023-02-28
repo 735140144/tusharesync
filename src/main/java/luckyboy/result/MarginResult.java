@@ -1,7 +1,9 @@
 package luckyboy.result;
 
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
 import luckyboy.util.Formart;
 
 import java.lang.annotation.Documented;
@@ -9,8 +11,11 @@ import java.lang.annotation.Documented;
 @Data
 public class MarginResult extends Formart {
     @ExplainAnnotation(comment="交易日期")
+    @KeyAnnotation
+    @BucketAnnotation
     private String trade_date;
     @ExplainAnnotation(comment="交易所代码（SSE上交所SZSE深交所")
+    @KeyAnnotation
     private String exchange_id;
     @ExplainAnnotation(comment="融资余额(元)")
     private String rzye;

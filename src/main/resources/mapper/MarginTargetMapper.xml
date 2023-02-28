@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.MarginTargetMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into MARGIN_TARGET
+        (ts_code,ann_date,mg_type,is_new,in_date,out_date)
+        values
+        <foreach collection="list" item="MarginTargetResult" separator=",">
+           (#{MarginTargetResult.ts_code,jdbcType=VARCHAR},
+#{MarginTargetResult.ann_date,jdbcType=VARCHAR},
+#{MarginTargetResult.mg_type,jdbcType=VARCHAR},
+#{MarginTargetResult.is_new,jdbcType=VARCHAR},
+#{MarginTargetResult.in_date,jdbcType=VARCHAR},
+#{MarginTargetResult.out_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

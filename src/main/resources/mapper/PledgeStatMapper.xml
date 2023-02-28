@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.PledgeStatMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into PLEDGE_STAT
+        (ts_code,end_date,pledge_count,unrest_pledge,rest_pledge,total_share,pledge_ratio)
+        values
+        <foreach collection="list" item="PledgeStatResult" separator=",">
+           (#{PledgeStatResult.ts_code,jdbcType=VARCHAR},
+#{PledgeStatResult.end_date,jdbcType=VARCHAR},
+#{PledgeStatResult.pledge_count,jdbcType=VARCHAR},
+#{PledgeStatResult.unrest_pledge,jdbcType=VARCHAR},
+#{PledgeStatResult.rest_pledge,jdbcType=VARCHAR},
+#{PledgeStatResult.total_share,jdbcType=VARCHAR},
+#{PledgeStatResult.pledge_ratio,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

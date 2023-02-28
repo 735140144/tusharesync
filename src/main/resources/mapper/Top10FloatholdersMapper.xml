@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.Top10FloatholdersMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into TOP10_FLOATHOLDERS
+        (ts_code,ann_date,holder_name,end_date,hold_amount)
+        values
+        <foreach collection="list" item="Top10FloatholdersResult" separator=",">
+           (#{Top10FloatholdersResult.ts_code,jdbcType=VARCHAR},
+#{Top10FloatholdersResult.ann_date,jdbcType=VARCHAR},
+#{Top10FloatholdersResult.holder_name,jdbcType=VARCHAR},
+#{Top10FloatholdersResult.end_date,jdbcType=VARCHAR},
+#{Top10FloatholdersResult.hold_amount,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

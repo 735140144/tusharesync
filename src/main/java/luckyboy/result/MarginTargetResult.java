@@ -1,12 +1,19 @@
 package luckyboy.result;
 
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
 import luckyboy.util.Formart;
 @Data
 public class MarginTargetResult extends Formart {
     @ExplainAnnotation(comment = "标的代码")
+    @KeyAnnotation
+    @BucketAnnotation
     private String ts_code;
+    @ExplainAnnotation(comment = "公布日期")
+    @KeyAnnotation
+    private String ann_date;
     @ExplainAnnotation(comment = "标的类型：B买入标的 S卖出标的  ")
     private String mg_type;
     @ExplainAnnotation(comment = "最新标记：Y是 N否")
@@ -15,6 +22,5 @@ public class MarginTargetResult extends Formart {
     private String in_date;
     @ExplainAnnotation(comment = "剔除日期")
     private String out_date;
-    @ExplainAnnotation(comment = "公布日期")
-    private String ann_date;
+
 }

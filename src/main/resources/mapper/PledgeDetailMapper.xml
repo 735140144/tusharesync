@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.PledgeDetailMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into PLEDGE_DETAIL
+        (ts_code,ann_date,holder_name,pledge_amount,start_date,end_date,is_release,release_date,pledgor,holding_amount,pledged_amount,p_total_ratio,h_total_ratio,is_buyback)
+        values
+        <foreach collection="list" item="PledgeDetailResult" separator=",">
+           (#{PledgeDetailResult.ts_code,jdbcType=VARCHAR},
+#{PledgeDetailResult.ann_date,jdbcType=VARCHAR},
+#{PledgeDetailResult.holder_name,jdbcType=VARCHAR},
+#{PledgeDetailResult.pledge_amount,jdbcType=VARCHAR},
+#{PledgeDetailResult.start_date,jdbcType=VARCHAR},
+#{PledgeDetailResult.end_date,jdbcType=VARCHAR},
+#{PledgeDetailResult.is_release,jdbcType=VARCHAR},
+#{PledgeDetailResult.release_date,jdbcType=VARCHAR},
+#{PledgeDetailResult.pledgor,jdbcType=VARCHAR},
+#{PledgeDetailResult.holding_amount,jdbcType=VARCHAR},
+#{PledgeDetailResult.pledged_amount,jdbcType=VARCHAR},
+#{PledgeDetailResult.p_total_ratio,jdbcType=VARCHAR},
+#{PledgeDetailResult.h_total_ratio,jdbcType=VARCHAR},
+#{PledgeDetailResult.is_buyback,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

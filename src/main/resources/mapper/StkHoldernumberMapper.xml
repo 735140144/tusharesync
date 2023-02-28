@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.StkHoldernumberMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into STK_HOLDERNUMBER
+        (ts_code,ann_date,end_date,holder_num)
+        values
+        <foreach collection="list" item="StkHoldernumberResult" separator=",">
+           (#{StkHoldernumberResult.ts_code,jdbcType=VARCHAR},
+#{StkHoldernumberResult.ann_date,jdbcType=VARCHAR},
+#{StkHoldernumberResult.end_date,jdbcType=VARCHAR},
+#{StkHoldernumberResult.holder_num,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

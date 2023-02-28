@@ -1,13 +1,18 @@
 package luckyboy.result;
 
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
 import luckyboy.util.Formart;
 @Data
 public class RepurchaseResult extends Formart {
     @ExplainAnnotation(comment = "代码")
+    @KeyAnnotation
+    @BucketAnnotation
     private String ts_code;
     @ExplainAnnotation(comment = "公告日期")
+    @KeyAnnotation
     private String ann_date;
     @ExplainAnnotation(comment = "截止日期")
     private String end_date;

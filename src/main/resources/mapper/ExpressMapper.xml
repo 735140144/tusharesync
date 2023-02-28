@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.ExpressMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into EXPRESS
+        (ts_code,ann_date,end_date,revenue,operate_profit,total_profit,n_income,total_assets,total_hldr_eqy_exc_min_int,diluted_eps,diluted_roe,yoy_net_profit,bps,yoy_sales,yoy_op,yoy_tp,yoy_dedu_np,yoy_eps,yoy_roe,growth_assets,yoy_equity,growth_bps,or_last_year,op_last_year,tp_last_year,np_last_year,eps_last_year,open_net_assets,open_bps,perf_summary,is_audit,remark)
+        values
+        <foreach collection="list" item="ExpressResult" separator=",">
+           (#{ExpressResult.ts_code,jdbcType=VARCHAR},
+#{ExpressResult.ann_date,jdbcType=VARCHAR},
+#{ExpressResult.end_date,jdbcType=VARCHAR},
+#{ExpressResult.revenue,jdbcType=VARCHAR},
+#{ExpressResult.operate_profit,jdbcType=VARCHAR},
+#{ExpressResult.total_profit,jdbcType=VARCHAR},
+#{ExpressResult.n_income,jdbcType=VARCHAR},
+#{ExpressResult.total_assets,jdbcType=VARCHAR},
+#{ExpressResult.total_hldr_eqy_exc_min_int,jdbcType=VARCHAR},
+#{ExpressResult.diluted_eps,jdbcType=VARCHAR},
+#{ExpressResult.diluted_roe,jdbcType=VARCHAR},
+#{ExpressResult.yoy_net_profit,jdbcType=VARCHAR},
+#{ExpressResult.bps,jdbcType=VARCHAR},
+#{ExpressResult.yoy_sales,jdbcType=VARCHAR},
+#{ExpressResult.yoy_op,jdbcType=VARCHAR},
+#{ExpressResult.yoy_tp,jdbcType=VARCHAR},
+#{ExpressResult.yoy_dedu_np,jdbcType=VARCHAR},
+#{ExpressResult.yoy_eps,jdbcType=VARCHAR},
+#{ExpressResult.yoy_roe,jdbcType=VARCHAR},
+#{ExpressResult.growth_assets,jdbcType=VARCHAR},
+#{ExpressResult.yoy_equity,jdbcType=VARCHAR},
+#{ExpressResult.growth_bps,jdbcType=VARCHAR},
+#{ExpressResult.or_last_year,jdbcType=VARCHAR},
+#{ExpressResult.op_last_year,jdbcType=VARCHAR},
+#{ExpressResult.tp_last_year,jdbcType=VARCHAR},
+#{ExpressResult.np_last_year,jdbcType=VARCHAR},
+#{ExpressResult.eps_last_year,jdbcType=VARCHAR},
+#{ExpressResult.open_net_assets,jdbcType=VARCHAR},
+#{ExpressResult.open_bps,jdbcType=VARCHAR},
+#{ExpressResult.perf_summary,jdbcType=VARCHAR},
+#{ExpressResult.is_audit,jdbcType=VARCHAR},
+#{ExpressResult.remark,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

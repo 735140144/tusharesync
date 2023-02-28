@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.RepurchaseMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into REPURCHASE
+        (ts_code,ann_date,end_date,proc,exp_date,vol,amount,high_limit,low_limit)
+        values
+        <foreach collection="list" item="RepurchaseResult" separator=",">
+           (#{RepurchaseResult.ts_code,jdbcType=VARCHAR},
+#{RepurchaseResult.ann_date,jdbcType=VARCHAR},
+#{RepurchaseResult.end_date,jdbcType=VARCHAR},
+#{RepurchaseResult.proc,jdbcType=VARCHAR},
+#{RepurchaseResult.exp_date,jdbcType=VARCHAR},
+#{RepurchaseResult.vol,jdbcType=VARCHAR},
+#{RepurchaseResult.amount,jdbcType=VARCHAR},
+#{RepurchaseResult.high_limit,jdbcType=VARCHAR},
+#{RepurchaseResult.low_limit,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

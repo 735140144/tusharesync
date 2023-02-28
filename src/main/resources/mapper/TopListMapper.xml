@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.TopListMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into TOP_LIST
+        (trade_date,ts_code,name,close,pct_change,turnover_rate,amount,l_sell,l_buy,l_amount,net_amount,net_rate,amount_rate,float_values,reason)
+        values
+        <foreach collection="list" item="TopListResult" separator=",">
+           (#{TopListResult.trade_date,jdbcType=VARCHAR},
+#{TopListResult.ts_code,jdbcType=VARCHAR},
+#{TopListResult.name,jdbcType=VARCHAR},
+#{TopListResult.close,jdbcType=VARCHAR},
+#{TopListResult.pct_change,jdbcType=VARCHAR},
+#{TopListResult.turnover_rate,jdbcType=VARCHAR},
+#{TopListResult.amount,jdbcType=VARCHAR},
+#{TopListResult.l_sell,jdbcType=VARCHAR},
+#{TopListResult.l_buy,jdbcType=VARCHAR},
+#{TopListResult.l_amount,jdbcType=VARCHAR},
+#{TopListResult.net_amount,jdbcType=VARCHAR},
+#{TopListResult.net_rate,jdbcType=VARCHAR},
+#{TopListResult.amount_rate,jdbcType=VARCHAR},
+#{TopListResult.float_values,jdbcType=VARCHAR},
+#{TopListResult.reason,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

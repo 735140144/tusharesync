@@ -18,20 +18,27 @@ import com.google.common.base.CaseFormat;
 
 
 public class GenerateMapper {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        Class<?> resultClass = StkHoldertradeResult.class;
+        GenerateSql.doSql(resultClass);
+        generateMapper(resultClass);
+
+    }
+
+    public static void generateMapper(Class<?> clasName){
         //result
-        Class<?> resultClass = GgtMonthlyResult.class;
+        Class<?> resultClass = clasName;
         //tablename
-        String TABLE_NAME = "GGT_MONTHLY";
+        String TABLE_NAME = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, resultClass.getSimpleName().replace("Result",""));
 
         String mapperName = resultClass.getSimpleName().replace("Result", "Mapper");
         String mapperHead = "package luckyboy.mapper;\n"+
-                "import luckyboy.result."+mapperName+";\n"+
+                "import luckyboy.result."+resultClass.getSimpleName()+";\n"+
                 "import java.util.List;\n\n"+
                 "public interface "+mapperName+" {\n" +
                 "    int insert (List<"+resultClass.getSimpleName()+"> "+CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,resultClass.getSimpleName())+"List);\n" +
                 "}";
-        String mapperFileName = "D:\\helicarrier.lucky.cc\\share.luckyboy.cc\\src\\main\\luckyboy\\mapper\\"+mapperName + ".java";
+        String mapperFileName = "D:\\tusharesynchronous\\src\\main\\java\\luckyboy\\mapper\\"+mapperName + ".java";
         Path mapperPath = Paths.get(mapperFileName);
         try (BufferedWriter writer =
                      Files.newBufferedWriter(mapperPath, StandardCharsets.UTF_8)) {
@@ -73,7 +80,7 @@ public class GenerateMapper {
         stringBuffer.append(end);
         System.out.println(stringBuffer);
 
-        String fileName = "D:\\helicarrier.lucky.cc\\share.luckyboy.cc\\src\\main\\resources\\mapper\\"+ mapperName + ".xml";
+        String fileName = "D:\\tusharesynchronous\\src\\main\\resources\\mapper\\"+ mapperName + ".xml";
         Path path = Paths.get(fileName);
         try (BufferedWriter writer =
                      Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
@@ -81,7 +88,5 @@ public class GenerateMapper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-    }
+    };
 }

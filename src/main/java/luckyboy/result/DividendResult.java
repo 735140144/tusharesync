@@ -1,16 +1,21 @@
 package luckyboy.result;
 
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
 import luckyboy.util.Formart;
 @Data
 public class DividendResult extends Formart {
     @ExplainAnnotation(comment = "代码")
+    @KeyAnnotation
     private String ts_code;
+    @ExplainAnnotation(comment = "预案公告日")
+    @KeyAnnotation
+    @BucketAnnotation
+    private String ann_date;
     @ExplainAnnotation(comment = "分红年度")
     private String end_date;
-    @ExplainAnnotation(comment = "预案公告日")
-    private String ann_date;
     @ExplainAnnotation(comment = "实施进度")
     private String div_proc;
     @ExplainAnnotation(comment = "每股送转")

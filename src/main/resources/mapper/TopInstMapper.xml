@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.TopInstMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into TOP_INST
+        (trade_date,ts_code,exalter,side,buy,buy_rate,sell,sell_rate,net_buy,reason)
+        values
+        <foreach collection="list" item="TopInstResult" separator=",">
+           (#{TopInstResult.trade_date,jdbcType=VARCHAR},
+#{TopInstResult.ts_code,jdbcType=VARCHAR},
+#{TopInstResult.exalter,jdbcType=VARCHAR},
+#{TopInstResult.side,jdbcType=VARCHAR},
+#{TopInstResult.buy,jdbcType=VARCHAR},
+#{TopInstResult.buy_rate,jdbcType=VARCHAR},
+#{TopInstResult.sell,jdbcType=VARCHAR},
+#{TopInstResult.sell_rate,jdbcType=VARCHAR},
+#{TopInstResult.net_buy,jdbcType=VARCHAR},
+#{TopInstResult.reason,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

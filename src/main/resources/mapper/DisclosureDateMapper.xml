@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.DisclosureDateMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into DISCLOSURE_DATE
+        (ts_code,ann_date,end_date,pre_date,actual_date,modify_date)
+        values
+        <foreach collection="list" item="DisclosureDateResult" separator=",">
+           (#{DisclosureDateResult.ts_code,jdbcType=VARCHAR},
+#{DisclosureDateResult.ann_date,jdbcType=VARCHAR},
+#{DisclosureDateResult.end_date,jdbcType=VARCHAR},
+#{DisclosureDateResult.pre_date,jdbcType=VARCHAR},
+#{DisclosureDateResult.actual_date,jdbcType=VARCHAR},
+#{DisclosureDateResult.modify_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

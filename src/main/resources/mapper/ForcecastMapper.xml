@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.ForcecastMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FORCECAST
+        (ts_code,ann_date,end_date,type,p_change_min,p_change_max,net_profit_min,net_profit_max,last_parent_net,first_ann_date,summary,change_reason)
+        values
+        <foreach collection="list" item="ForcecastResult" separator=",">
+           (#{ForcecastResult.ts_code,jdbcType=VARCHAR},
+#{ForcecastResult.ann_date,jdbcType=VARCHAR},
+#{ForcecastResult.end_date,jdbcType=VARCHAR},
+#{ForcecastResult.type,jdbcType=VARCHAR},
+#{ForcecastResult.p_change_min,jdbcType=VARCHAR},
+#{ForcecastResult.p_change_max,jdbcType=VARCHAR},
+#{ForcecastResult.net_profit_min,jdbcType=VARCHAR},
+#{ForcecastResult.net_profit_max,jdbcType=VARCHAR},
+#{ForcecastResult.last_parent_net,jdbcType=VARCHAR},
+#{ForcecastResult.first_ann_date,jdbcType=VARCHAR},
+#{ForcecastResult.summary,jdbcType=VARCHAR},
+#{ForcecastResult.change_reason,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

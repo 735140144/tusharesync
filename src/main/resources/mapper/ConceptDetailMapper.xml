@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.ConceptDetailMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into CONCEPT_DETAIL
+        (id,ts_code,concept_name,name,in_date,out_date)
+        values
+        <foreach collection="list" item="ConceptDetailResult" separator=",">
+           (#{ConceptDetailResult.id,jdbcType=VARCHAR},
+#{ConceptDetailResult.ts_code,jdbcType=VARCHAR},
+#{ConceptDetailResult.concept_name,jdbcType=VARCHAR},
+#{ConceptDetailResult.name,jdbcType=VARCHAR},
+#{ConceptDetailResult.in_date,jdbcType=VARCHAR},
+#{ConceptDetailResult.out_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

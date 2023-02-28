@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.MarginDetailMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into MARGIN_DETAIL
+        (trade_date,ts_code,name,rzye,rqye,rzmre,rqyl,rzche,rqchl,rqmcl,rzrqye)
+        values
+        <foreach collection="list" item="MarginDetailResult" separator=",">
+           (#{MarginDetailResult.trade_date,jdbcType=VARCHAR},
+#{MarginDetailResult.ts_code,jdbcType=VARCHAR},
+#{MarginDetailResult.name,jdbcType=VARCHAR},
+#{MarginDetailResult.rzye,jdbcType=VARCHAR},
+#{MarginDetailResult.rqye,jdbcType=VARCHAR},
+#{MarginDetailResult.rzmre,jdbcType=VARCHAR},
+#{MarginDetailResult.rqyl,jdbcType=VARCHAR},
+#{MarginDetailResult.rzche,jdbcType=VARCHAR},
+#{MarginDetailResult.rqchl,jdbcType=VARCHAR},
+#{MarginDetailResult.rqmcl,jdbcType=VARCHAR},
+#{MarginDetailResult.rzrqye,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

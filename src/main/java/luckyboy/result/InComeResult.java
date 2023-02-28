@@ -2,14 +2,19 @@ package luckyboy.result;
 
 import lombok.Builder;
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
 import luckyboy.util.Formart;
 
 @Data
 public class InComeResult extends Formart {
     @ExplainAnnotation(comment = "代码")
+    @KeyAnnotation
     private String ts_code;
     @ExplainAnnotation(comment = "公告日期")
+    @KeyAnnotation
+    @BucketAnnotation
     private String ann_date;
     @ExplainAnnotation(comment = "实际公告日期")
     private String f_ann_date;
