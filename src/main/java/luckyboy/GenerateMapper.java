@@ -19,7 +19,7 @@ import com.google.common.base.CaseFormat;
 
 public class GenerateMapper {
     public static void main(String[] args) throws Exception {
-        Class<?> resultClass = StkHoldertradeResult.class;
+        Class<?> resultClass = BrokerRecommendResult.class;
         GenerateSql.doSql(resultClass);
         generateMapper(resultClass);
 
@@ -38,7 +38,7 @@ public class GenerateMapper {
                 "public interface "+mapperName+" {\n" +
                 "    int insert (List<"+resultClass.getSimpleName()+"> "+CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,resultClass.getSimpleName())+"List);\n" +
                 "}";
-        String mapperFileName = "D:\\tusharesynchronous\\src\\main\\java\\luckyboy\\mapper\\"+mapperName + ".java";
+        String mapperFileName = "/Users/mtlroyal/opt/tusharesynchronous/src/main/java/luckyboy/mapper/"+mapperName + ".java";
         Path mapperPath = Paths.get(mapperFileName);
         try (BufferedWriter writer =
                      Files.newBufferedWriter(mapperPath, StandardCharsets.UTF_8)) {
@@ -80,7 +80,7 @@ public class GenerateMapper {
         stringBuffer.append(end);
         System.out.println(stringBuffer);
 
-        String fileName = "D:\\tusharesynchronous\\src\\main\\resources\\mapper\\"+ mapperName + ".xml";
+        String fileName = "/Users/mtlroyal/opt/tusharesynchronous/src/main/resources/mapper/"+ mapperName + ".xml";
         Path path = Paths.get(fileName);
         try (BufferedWriter writer =
                      Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {

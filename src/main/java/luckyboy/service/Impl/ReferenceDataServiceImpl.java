@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import luckyboy.common.FailLog;
 import luckyboy.common.TusharePostParam;
-import luckyboy.mapper.FailLogMapper;
+import luckyboy.mapper.*;
 import luckyboy.params.*;
 import luckyboy.result.*;
 import luckyboy.service.ReferenceDataService;
@@ -22,6 +22,54 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
     @Resource
     private FailLogMapper failLogMapper;
 
+    @Resource
+    private MarginMapper marginMapper;
+
+    @Resource
+    private MarginDetailMapper marginDetailMapper;
+
+    @Resource
+    private MarginTargetMapper marginTargetMapper;
+
+    @Resource
+    private Top10HoldersMapper top10HoldersMapper;
+
+    @Resource
+    private Top10FloatholdersMapper top10FloatholdersMapper;
+
+    @Resource
+    private TopListMapper topListMapper;
+
+    @Resource
+    private TopInstMapper topInstMapper;
+
+    @Resource
+    private PledgeStatMapper pledgeStatMapper;
+
+    @Resource
+    private PledgeDetailMapper pledgeDetailMapper;
+
+    @Resource
+    private RepurchaseMapper repurchaseMapper;
+
+    @Resource
+    private ConceptMapper conceptMapper;
+
+    @Resource
+    private ConceptDetailMapper conceptDetailMapper;
+
+    @Resource
+    private ShareFloatMapper shareFloatMapper;
+
+    @Resource
+    private BlockTradeMapper blockTradeMapper;
+
+    @Resource
+    private StkHoldernumberMapper stkHoldernumberMapper;
+
+    @Resource
+    private StkHoldertradeMapper stkHoldertradeMapper;
+
     @Override
     public Result<?> margin(MarginParams params) {
         log.info("开始拉取融资融券交易汇总,时间戳：{}", System.currentTimeMillis());
@@ -31,7 +79,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<MarginResult> trans = transResult.trans(jsonObject, MarginResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            marginMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("融资融券交易汇总").build());
@@ -48,7 +96,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<MarginDetailResult> trans = transResult.trans(jsonObject, MarginDetailResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            marginDetailMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("融资融券交易明细").build());
@@ -65,7 +113,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<MarginTargetResult> trans = transResult.trans(jsonObject, MarginTargetResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            marginTargetMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("融资融券标的").build());
@@ -82,7 +130,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<Top10HoldersResult> trans = transResult.trans(jsonObject, Top10HoldersResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            top10HoldersMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("前十大股东").build());
@@ -99,7 +147,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<Top10FloatholdersResult> trans = transResult.trans(jsonObject, Top10FloatholdersResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            top10FloatholdersMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("前十大流通股东").build());
@@ -116,7 +164,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<TopListResult> trans = transResult.trans(jsonObject, TopListResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            topListMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("龙虎榜每日明细").build());
@@ -133,7 +181,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<TopInstResult> trans = transResult.trans(jsonObject, TopInstResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            topInstMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("龙虎榜机构明细").build());
@@ -150,7 +198,11 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<PledgeStatResult> trans = transResult.trans(jsonObject, PledgeStatResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            pledgeStatMapper.insert(trans);
+            for (PledgeStatResult tran : trans) {
+                PledgeDetailParams detailParams = PledgeDetailParams.builder().ts_code(tran.getTs_code()).build();
+                this.pledge_detail(detailParams);
+            }
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("股权质押统计数据").build());
@@ -167,7 +219,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<PledgeDetailResult> trans = transResult.trans(jsonObject, PledgeDetailResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            pledgeDetailMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("股权质押明细").build());
@@ -184,7 +236,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<RepurchaseResult> trans = transResult.trans(jsonObject, RepurchaseResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            repurchaseMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("股票回购").build());
@@ -201,7 +253,11 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<ConceptResult> trans = transResult.trans(jsonObject, ConceptResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            conceptMapper.insert(trans);
+            for (ConceptResult tran : trans) {
+                ConceptDetailParams detailParams = ConceptDetailParams.builder().id(tran.getCode()).build();
+                this.concept_detail(detailParams);
+            }
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("概念股分类").build());
@@ -218,7 +274,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<ConceptDetailResult> trans = transResult.trans(jsonObject, ConceptDetailResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            conceptDetailMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("概念股列表").build());
@@ -235,7 +291,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<ShareFloatResult> trans = transResult.trans(jsonObject, ShareFloatResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            shareFloatMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("限售股解禁").build());
@@ -252,7 +308,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<BlockTradeResult> trans = transResult.trans(jsonObject, BlockTradeResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            blockTradeMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("大宗交易").build());
@@ -269,7 +325,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<StkHoldernumberResult> trans = transResult.trans(jsonObject, StkHoldernumberResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            stkHoldernumberMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("股东人数").build());
@@ -286,7 +342,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
         List<StkHoldertradeResult> trans = transResult.trans(jsonObject, StkHoldertradeResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            stkHoldertradeMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("股东增减持").build());

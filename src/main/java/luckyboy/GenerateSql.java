@@ -32,7 +32,7 @@ public class GenerateSql {
             Field field = declaredFields[i];
             //设置私有熟悉可访问
             field.setAccessible(true);
-            create.append(field.getName()).append(" varchar(255) ");
+            create.append("`").append(field.getName()).append("`").append(" varchar(255) ");
             //获取字段上注解
             ExplainAnnotation annotation = field.getAnnotation(ExplainAnnotation.class);
             if (annotation != null) {

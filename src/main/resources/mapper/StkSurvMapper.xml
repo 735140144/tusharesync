@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.StkSurvMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into STK_SURV
+        (ts_code,surv_date,name,fund_visitors,rece_place,rece_mode,rece_org,org_type,comp_rece,content)
+        values
+        <foreach collection="list" item="StkSurvResult" separator=",">
+           (#{StkSurvResult.ts_code,jdbcType=VARCHAR},
+#{StkSurvResult.surv_date,jdbcType=VARCHAR},
+#{StkSurvResult.name,jdbcType=VARCHAR},
+#{StkSurvResult.fund_visitors,jdbcType=VARCHAR},
+#{StkSurvResult.rece_place,jdbcType=VARCHAR},
+#{StkSurvResult.rece_mode,jdbcType=VARCHAR},
+#{StkSurvResult.rece_org,jdbcType=VARCHAR},
+#{StkSurvResult.org_type,jdbcType=VARCHAR},
+#{StkSurvResult.comp_rece,jdbcType=VARCHAR},
+#{StkSurvResult.content,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

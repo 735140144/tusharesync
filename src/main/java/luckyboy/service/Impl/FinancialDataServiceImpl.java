@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import luckyboy.common.FailLog;
 import luckyboy.common.TusharePostParam;
-import luckyboy.mapper.FailLogMapper;
+import luckyboy.mapper.*;
 import luckyboy.params.*;
 import luckyboy.result.*;
 import luckyboy.service.FinancialDataService;
@@ -23,6 +23,37 @@ public class FinancialDataServiceImpl implements FinancialDataService {
     @Resource
     private FailLogMapper failLogMapper;
 
+    @Resource
+    private InComeMapper inComeMapper;
+
+    @Resource
+    private BalanceSheetMapper balanceSheetMapper;
+
+    @Resource
+    private CashFlowMapper cashFlowMapper;
+
+    @Resource
+    private ForcecastMapper forcecastMapper;
+
+    @Resource
+    private ExpressMapper expressMapper;
+
+    @Resource
+    private DividendMapper dividendMapper;
+
+    @Resource
+    private FinaIndicatorMapper finaIndicatorMapper;
+
+    @Resource
+    private FinaAuditMapper finaAuditMapper;
+
+    @Resource
+    private FinaMainbzMapper finaMainbzMapper;
+
+    @Resource
+    private DisclosureDateMapper disclosureDateMapper;
+
+
 
     @Override
     public Result<?> income_vip(InComeParams params) {
@@ -33,7 +64,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
         List<InComeResult> trans = transResult.trans(jsonObject, InComeResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            inComeMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("利润表").build());
@@ -50,7 +81,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
         List<BalanceSheetResult> trans = transResult.trans(jsonObject, BalanceSheetResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            balanceSheetMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("资产负债表").build());
@@ -67,7 +98,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
         List<CashFlowResult> trans = transResult.trans(jsonObject, CashFlowResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            cashFlowMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("现金流量表").build());
@@ -84,7 +115,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
         List<ForcecastResult> trans = transResult.trans(jsonObject, ForcecastResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            forcecastMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("业绩预告").build());
@@ -101,7 +132,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
         List<ExpressResult> trans = transResult.trans(jsonObject, ExpressResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            expressMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("业绩快报").build());
@@ -118,7 +149,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
         List<DividendResult> trans = transResult.trans(jsonObject, DividendResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            dividendMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("分红送股信息").build());
@@ -135,7 +166,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
         List<FinaIndicatorResult> trans = transResult.trans(jsonObject, FinaIndicatorResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            finaIndicatorMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("财务指标数据").build());
@@ -152,7 +183,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
         List<FinaAuditResult> trans = transResult.trans(jsonObject, FinaAuditResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            finaAuditMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("财务审计意见").build());
@@ -169,7 +200,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
         List<FinaMainbzResult> trans = transResult.trans(jsonObject, FinaMainbzResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            finaMainbzMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("主营业务构成").build());
@@ -186,7 +217,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
         List<DisclosureDateResult> trans = transResult.trans(jsonObject, DisclosureDateResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}", System.currentTimeMillis());
-//            stockBasicMapper.insert(trans);
+            disclosureDateMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
             failLogMapper.insert(FailLog.builder().api(apiName).comment("财报披露计划").build());

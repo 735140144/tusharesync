@@ -7,10 +7,13 @@ import luckyboy.common.TusharePostParam;
 import luckyboy.mapper.*;
 import luckyboy.params.*;
 import luckyboy.result.*;
+import luckyboy.service.CharacteristicDataService;
 import luckyboy.service.MarketDataService;
+import luckyboy.util.DataFormat;
 import luckyboy.util.Result;
 import luckyboy.util.TusharePost;
 import luckyboy.util.transResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

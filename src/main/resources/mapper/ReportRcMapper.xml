@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.ReportRcMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into REPORT_RC
+        (ts_code,report_date,org_name,name,report_title,report_type,classify,author_name,quarter,op_rt,op_pr,tp,np,eps,pe,rd,roe,ev_ebitda,rating,max_price,min_price,imp_dg,create_time)
+        values
+        <foreach collection="list" item="ReportRcResult" separator=",">
+           (#{ReportRcResult.ts_code,jdbcType=VARCHAR},
+#{ReportRcResult.report_date,jdbcType=VARCHAR},
+#{ReportRcResult.org_name,jdbcType=VARCHAR},
+#{ReportRcResult.name,jdbcType=VARCHAR},
+#{ReportRcResult.report_title,jdbcType=VARCHAR},
+#{ReportRcResult.report_type,jdbcType=VARCHAR},
+#{ReportRcResult.classify,jdbcType=VARCHAR},
+#{ReportRcResult.author_name,jdbcType=VARCHAR},
+#{ReportRcResult.quarter,jdbcType=VARCHAR},
+#{ReportRcResult.op_rt,jdbcType=VARCHAR},
+#{ReportRcResult.op_pr,jdbcType=VARCHAR},
+#{ReportRcResult.tp,jdbcType=VARCHAR},
+#{ReportRcResult.np,jdbcType=VARCHAR},
+#{ReportRcResult.eps,jdbcType=VARCHAR},
+#{ReportRcResult.pe,jdbcType=VARCHAR},
+#{ReportRcResult.rd,jdbcType=VARCHAR},
+#{ReportRcResult.roe,jdbcType=VARCHAR},
+#{ReportRcResult.ev_ebitda,jdbcType=VARCHAR},
+#{ReportRcResult.rating,jdbcType=VARCHAR},
+#{ReportRcResult.max_price,jdbcType=VARCHAR},
+#{ReportRcResult.min_price,jdbcType=VARCHAR},
+#{ReportRcResult.imp_dg,jdbcType=VARCHAR},
+#{ReportRcResult.create_time,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

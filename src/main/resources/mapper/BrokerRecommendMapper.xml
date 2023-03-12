@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.BrokerRecommendMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into BROKER_RECOMMEND
+        (month,broker,ts_code,name)
+        values
+        <foreach collection="list" item="BrokerRecommendResult" separator=",">
+           (#{BrokerRecommendResult.month,jdbcType=VARCHAR},
+#{BrokerRecommendResult.broker,jdbcType=VARCHAR},
+#{BrokerRecommendResult.ts_code,jdbcType=VARCHAR},
+#{BrokerRecommendResult.name,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

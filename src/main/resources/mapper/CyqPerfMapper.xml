@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.CyqPerfMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into CYQ_PERF
+        (ts_code,trade_date,his_low,his_high,cost_5pct,cost_15pct,cost_50pct,cost_85pct,cost_95pct,weight_avg,winner_rate)
+        values
+        <foreach collection="list" item="CyqPerfResult" separator=",">
+           (#{CyqPerfResult.ts_code,jdbcType=VARCHAR},
+#{CyqPerfResult.trade_date,jdbcType=VARCHAR},
+#{CyqPerfResult.his_low,jdbcType=VARCHAR},
+#{CyqPerfResult.his_high,jdbcType=VARCHAR},
+#{CyqPerfResult.cost_5pct,jdbcType=VARCHAR},
+#{CyqPerfResult.cost_15pct,jdbcType=VARCHAR},
+#{CyqPerfResult.cost_50pct,jdbcType=VARCHAR},
+#{CyqPerfResult.cost_85pct,jdbcType=VARCHAR},
+#{CyqPerfResult.cost_95pct,jdbcType=VARCHAR},
+#{CyqPerfResult.weight_avg,jdbcType=VARCHAR},
+#{CyqPerfResult.winner_rate,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

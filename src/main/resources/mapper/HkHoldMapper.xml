@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.HkHoldMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into HK_HOLD
+        (code,trade_date,ts_code,name,vol,ratio,exchange)
+        values
+        <foreach collection="list" item="HkHoldResult" separator=",">
+           (#{HkHoldResult.code,jdbcType=VARCHAR},
+#{HkHoldResult.trade_date,jdbcType=VARCHAR},
+#{HkHoldResult.ts_code,jdbcType=VARCHAR},
+#{HkHoldResult.name,jdbcType=VARCHAR},
+#{HkHoldResult.vol,jdbcType=VARCHAR},
+#{HkHoldResult.ratio,jdbcType=VARCHAR},
+#{HkHoldResult.exchange,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

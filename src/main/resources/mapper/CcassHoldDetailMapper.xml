@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.CcassHoldDetailMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into CCASS_HOLD_DETAIL
+        (trade_date,ts_code,name,col_participant_id,col_participant_name,col_shareholding,col_shareholding_percent)
+        values
+        <foreach collection="list" item="CcassHoldDetailResult" separator=",">
+           (#{CcassHoldDetailResult.trade_date,jdbcType=VARCHAR},
+#{CcassHoldDetailResult.ts_code,jdbcType=VARCHAR},
+#{CcassHoldDetailResult.name,jdbcType=VARCHAR},
+#{CcassHoldDetailResult.col_participant_id,jdbcType=VARCHAR},
+#{CcassHoldDetailResult.col_participant_name,jdbcType=VARCHAR},
+#{CcassHoldDetailResult.col_shareholding,jdbcType=VARCHAR},
+#{CcassHoldDetailResult.col_shareholding_percent,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

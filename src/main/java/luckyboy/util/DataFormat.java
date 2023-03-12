@@ -19,4 +19,51 @@ public class DataFormat {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
         return simpleDateFormat.format(time);
     }
+    public static String MonFormat(Long time){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMM");
+        return simpleDateFormat.format(time);
+    }
+
+    public static String NowDay(){
+        return DataFormat.DTFormat(System.currentTimeMillis());
+    }
+
+    public static String YesterDay(){
+        return DataFormat.DTFormat(System.currentTimeMillis()-86400000);
+    }
+
+    public static String NowMonth(){
+        return DataFormat.MonFormat(System.currentTimeMillis());
+    }
+    public static String Report(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM");
+        SimpleDateFormat year = new SimpleDateFormat("yyyy");
+        String format = simpleDateFormat.format(System.currentTimeMillis());
+        Integer month = Integer.valueOf(format);
+        if (month<4){
+            return Integer.parseInt(year.format(System.currentTimeMillis())) - 1 + "1231";
+        }else if (month<5){
+            return year.format(System.currentTimeMillis()) + "0331";
+        }else if (month <9){
+            return year.format(System.currentTimeMillis()) + "0630";
+        }else {
+            return year.format(System.currentTimeMillis()) + "0930";
+        }
+    }
+
+    public static String NextReport(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM");
+        SimpleDateFormat year = new SimpleDateFormat("yyyy");
+        String format = simpleDateFormat.format(System.currentTimeMillis());
+        Integer month = Integer.valueOf(format);
+        if (month<=3){
+            return year+"0331";
+        }else if (month<=6){
+            return year+"0630";
+        }else if (month<=9){
+            return year+"0930";
+        }else {
+            return year+"1231";
+        }
+    }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.LimitListDMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into LIMIT_LIST_D
+        (trade_date,ts_code,industry,name,close,pct_chg,amount,limit_amount,float_mv,total_mv,turnover_ratio,fd_amount,first_time,last_time,open_times,up_stat,limit_times,limit)
+        values
+        <foreach collection="list" item="LimitListDResult" separator=",">
+           (#{LimitListDResult.trade_date,jdbcType=VARCHAR},
+#{LimitListDResult.ts_code,jdbcType=VARCHAR},
+#{LimitListDResult.industry,jdbcType=VARCHAR},
+#{LimitListDResult.name,jdbcType=VARCHAR},
+#{LimitListDResult.close,jdbcType=VARCHAR},
+#{LimitListDResult.pct_chg,jdbcType=VARCHAR},
+#{LimitListDResult.amount,jdbcType=VARCHAR},
+#{LimitListDResult.limit_amount,jdbcType=VARCHAR},
+#{LimitListDResult.float_mv,jdbcType=VARCHAR},
+#{LimitListDResult.total_mv,jdbcType=VARCHAR},
+#{LimitListDResult.turnover_ratio,jdbcType=VARCHAR},
+#{LimitListDResult.fd_amount,jdbcType=VARCHAR},
+#{LimitListDResult.first_time,jdbcType=VARCHAR},
+#{LimitListDResult.last_time,jdbcType=VARCHAR},
+#{LimitListDResult.open_times,jdbcType=VARCHAR},
+#{LimitListDResult.up_stat,jdbcType=VARCHAR},
+#{LimitListDResult.limit_times,jdbcType=VARCHAR},
+#{LimitListDResult.limit,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

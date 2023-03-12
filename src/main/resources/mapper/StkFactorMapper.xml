@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.StkFactorMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into STK_FACTOR
+        (ts_code,trade_date,close,open,high,low,pre_close,change,pct_change,vol,amount,adj_factor,open_hfq,open_qfq,close_hfq,close_qfq,high_hfq,high_qfq,low_hfq,low_qfq,pre_close_hfq,pre_close_qfq,macd_dif,macd_dea,macd,kdj_k,kdj_d,kdj_j,rsi_6,rsi_12,rsi_24,boll_upper,boll_mid,boll_lower,cci)
+        values
+        <foreach collection="list" item="StkFactorResult" separator=",">
+           (#{StkFactorResult.ts_code,jdbcType=VARCHAR},
+#{StkFactorResult.trade_date,jdbcType=VARCHAR},
+#{StkFactorResult.close,jdbcType=VARCHAR},
+#{StkFactorResult.open,jdbcType=VARCHAR},
+#{StkFactorResult.high,jdbcType=VARCHAR},
+#{StkFactorResult.low,jdbcType=VARCHAR},
+#{StkFactorResult.pre_close,jdbcType=VARCHAR},
+#{StkFactorResult.change,jdbcType=VARCHAR},
+#{StkFactorResult.pct_change,jdbcType=VARCHAR},
+#{StkFactorResult.vol,jdbcType=VARCHAR},
+#{StkFactorResult.amount,jdbcType=VARCHAR},
+#{StkFactorResult.adj_factor,jdbcType=VARCHAR},
+#{StkFactorResult.open_hfq,jdbcType=VARCHAR},
+#{StkFactorResult.open_qfq,jdbcType=VARCHAR},
+#{StkFactorResult.close_hfq,jdbcType=VARCHAR},
+#{StkFactorResult.close_qfq,jdbcType=VARCHAR},
+#{StkFactorResult.high_hfq,jdbcType=VARCHAR},
+#{StkFactorResult.high_qfq,jdbcType=VARCHAR},
+#{StkFactorResult.low_hfq,jdbcType=VARCHAR},
+#{StkFactorResult.low_qfq,jdbcType=VARCHAR},
+#{StkFactorResult.pre_close_hfq,jdbcType=VARCHAR},
+#{StkFactorResult.pre_close_qfq,jdbcType=VARCHAR},
+#{StkFactorResult.macd_dif,jdbcType=VARCHAR},
+#{StkFactorResult.macd_dea,jdbcType=VARCHAR},
+#{StkFactorResult.macd,jdbcType=VARCHAR},
+#{StkFactorResult.kdj_k,jdbcType=VARCHAR},
+#{StkFactorResult.kdj_d,jdbcType=VARCHAR},
+#{StkFactorResult.kdj_j,jdbcType=VARCHAR},
+#{StkFactorResult.rsi_6,jdbcType=VARCHAR},
+#{StkFactorResult.rsi_12,jdbcType=VARCHAR},
+#{StkFactorResult.rsi_24,jdbcType=VARCHAR},
+#{StkFactorResult.boll_upper,jdbcType=VARCHAR},
+#{StkFactorResult.boll_mid,jdbcType=VARCHAR},
+#{StkFactorResult.boll_lower,jdbcType=VARCHAR},
+#{StkFactorResult.cci,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>
