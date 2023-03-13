@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="luckyboy.mapper.GgtTop10Mapper">
+<mapper namespace="luckyboy.mapper.hsStock.GgtTop10Mapper">
 <insert id="insert" parameterType="java.util.List">
 insert into GGT_TOP10
         (trade_date,ts_code,name,close,p_change,rank,market_type,amount,net_amount,sh_amount,sh_net_amount,sh_buy,sh_sell,sz_amount,sz_net_amount,sz_buy,sz_sell)

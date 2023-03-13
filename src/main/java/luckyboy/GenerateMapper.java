@@ -1,10 +1,6 @@
 package luckyboy;
 
 
-import luckyboy.mapper.*;
-import luckyboy.result.*;
-
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -15,30 +11,31 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import com.google.common.base.CaseFormat;
+import luckyboy.result.hsStock.BrokerRecommendResult;
 
 
 public class GenerateMapper {
     public static void main(String[] args) throws Exception {
         Class<?> resultClass = BrokerRecommendResult.class;
         GenerateSql.doSql(resultClass);
-        generateMapper(resultClass);
+        generateMapper(resultClass,"index");
 
     }
 
-    public static void generateMapper(Class<?> clasName){
+    public static void generateMapper(Class<?> clasName,String pkgName){
         //result
         Class<?> resultClass = clasName;
         //tablename
         String TABLE_NAME = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, resultClass.getSimpleName().replace("Result",""));
 
         String mapperName = resultClass.getSimpleName().replace("Result", "Mapper");
-        String mapperHead = "package luckyboy.mapper;\n"+
-                "import luckyboy.result."+resultClass.getSimpleName()+";\n"+
+        String mapperHead = "package luckyboy.mapper."+pkgName+";\n"+
+                "import luckyboy.result."+pkgName+"."+resultClass.getSimpleName()+";\n"+
                 "import java.util.List;\n\n"+
                 "public interface "+mapperName+" {\n" +
                 "    int insert (List<"+resultClass.getSimpleName()+"> "+CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,resultClass.getSimpleName())+"List);\n" +
                 "}";
-        String mapperFileName = "/Users/mtlroyal/opt/tusharesynchronous/src/main/java/luckyboy/mapper/"+mapperName + ".java";
+        String mapperFileName = "/Users/mtlroyal/opt/tusharesynchronous/src/main/java/luckyboy/mapper/"+pkgName+"/"+mapperName + ".java";
         Path mapperPath = Paths.get(mapperFileName);
         try (BufferedWriter writer =
                      Files.newBufferedWriter(mapperPath, StandardCharsets.UTF_8)) {
@@ -46,7 +43,7 @@ public class GenerateMapper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String MAPPER_CLASS_NAME ="luckyboy.mapper."+mapperName;
+        String MAPPER_CLASS_NAME ="luckyboy.mapper."+pkgName+"."+mapperName;
         Field[] declaredFields = resultClass.getDeclaredFields();
         String fields = Arrays.stream(declaredFields).map(Field::getName).collect(Collectors.joining(","));
         String Result = resultClass.getSimpleName();

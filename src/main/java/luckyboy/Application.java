@@ -12,7 +12,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 @EnableCaching // 启用缓存功能
 @EnableScheduling // 开启定时任务功能
 @SpringBootApplication
-@MapperScan("luckyboy.mapper")
+@MapperScan("luckyboy.mapper.*")
 public class Application {
 
     public static void main(String[] args) {

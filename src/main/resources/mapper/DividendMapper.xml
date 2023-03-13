@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="luckyboy.mapper.DividendMapper">
+<mapper namespace="luckyboy.mapper.hsStock.DividendMapper">
 <insert id="insert" parameterType="java.util.List">
 insert into DIVIDEND
         (ts_code,ann_date,end_date,div_proc,stk_div,stk_bo_rate,stk_co_rate,cash_div,cash_div_tax,record_date,ex_date,pay_date,div_listdate,imp_ann_date,base_date,base_share)

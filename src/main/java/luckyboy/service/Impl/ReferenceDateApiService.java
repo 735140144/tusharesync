@@ -1,7 +1,7 @@
 package luckyboy.service.Impl;
 
 import luckyboy.api.ReferenceDataApi;
-import luckyboy.params.*;
+import luckyboy.params.hsStock.*;
 import luckyboy.service.ReferenceDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;

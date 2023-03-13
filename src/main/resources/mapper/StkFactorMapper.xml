@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="luckyboy.mapper.StkFactorMapper">
+<mapper namespace="luckyboy.mapper.hsStock.StkFactorMapper">
 <insert id="insert" parameterType="java.util.List">
 insert into STK_FACTOR
         (ts_code,trade_date,close,open,high,low,pre_close,change,pct_change,vol,amount,adj_factor,open_hfq,open_qfq,close_hfq,close_qfq,high_hfq,high_qfq,low_hfq,low_qfq,pre_close_hfq,pre_close_qfq,macd_dif,macd_dea,macd,kdj_k,kdj_d,kdj_j,rsi_6,rsi_12,rsi_24,boll_upper,boll_mid,boll_lower,cci)

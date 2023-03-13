@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="luckyboy.mapper.Top10FloatholdersMapper">
+<mapper namespace="luckyboy.mapper.hsStock.Top10FloatholdersMapper">
 <insert id="insert" parameterType="java.util.List">
 insert into TOP10_FLOATHOLDERS
         (ts_code,ann_date,holder_name,end_date,hold_amount)

@@ -1,7 +1,7 @@
 package luckyboy.service.Impl;
 
 import luckyboy.api.CharacteristicDataApi;
-import luckyboy.params.*;
+import luckyboy.params.hsStock.*;
 import luckyboy.service.CharacteristicDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;

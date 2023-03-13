@@ -1,6 +1,6 @@
 package luckyboy.schedule;
 
-import luckyboy.params.*;
+import luckyboy.params.hsStock.*;
 import luckyboy.service.*;
 import luckyboy.util.DataFormat;
 import org.springframework.beans.factory.annotation.Autowired;

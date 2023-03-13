@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="luckyboy.mapper.MoneyflowHsgtMapper">
+<mapper namespace="luckyboy.mapper.hsStock.MoneyflowHsgtMapper">
 <insert id="insert" parameterType="java.util.List">
 insert into MONEYFLOW_HSGT
         (trade_date,ggt_ss,ggt_sz,hgt,sgt,north_money,south_money)

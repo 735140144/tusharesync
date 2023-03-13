@@ -2,10 +2,9 @@ package luckyboy.service.Impl;
 
 import lombok.extern.slf4j.Slf4j;
 import luckyboy.api.FinancialDataApi;
-import luckyboy.params.*;
+import luckyboy.params.hsStock.*;
 import luckyboy.service.FinancialDataService;
 import luckyboy.util.Result;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Slf4j

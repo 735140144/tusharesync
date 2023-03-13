@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="luckyboy.mapper.MarginMapper">
+<mapper namespace="luckyboy.mapper.hsStock.MarginMapper">
 <insert id="insert" parameterType="java.util.List">
 insert into MARGIN
         (trade_date,exchange_id,rzye,rzmre,rzche,rqye,rqmcl,rzrqye,rqyl)

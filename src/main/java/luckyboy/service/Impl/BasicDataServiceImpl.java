@@ -5,13 +5,13 @@ import lombok.extern.slf4j.Slf4j;
 import luckyboy.common.FailLog;
 import luckyboy.common.TusharePostParam;
 import luckyboy.mapper.*;
-import luckyboy.params.*;
-import luckyboy.result.*;
+import luckyboy.mapper.hsStock.*;
+import luckyboy.params.hsStock.*;
+import luckyboy.result.hsStock.*;
 import luckyboy.service.BasicDataService;
 import luckyboy.util.Result;
 import luckyboy.util.TusharePost;
 import luckyboy.util.transResult;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
