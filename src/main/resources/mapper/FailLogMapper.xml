@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="luckyboy.mapper.FailLogMapper">
+<mapper namespace="luckyboy.mapper.failLog.FailLogMapper">
 
     <insert id="insert" parameterType="luckyboy.common.FailLog">
         insert into FAIL_LOG

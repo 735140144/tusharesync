@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import luckyboy.common.FailLog;
 import luckyboy.common.TusharePostParam;
-import luckyboy.mapper.*;
+import luckyboy.mapper.failLog.FailLogMapper;
 import luckyboy.mapper.hsStock.*;
 import luckyboy.params.hsStock.*;
 import luckyboy.result.hsStock.*;

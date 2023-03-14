@@ -1,4 +1,4 @@
-package luckyboy.mapper;
+package luckyboy.mapper.failLog;
 
 import luckyboy.common.FailLog;
 
