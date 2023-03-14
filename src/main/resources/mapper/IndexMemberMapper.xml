@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.index.IndexMemberMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into INDEX_MEMBER
+        (index_code,con_code,index_name,con_name,in_date,out_date,is_new)
+        values
+        <foreach collection="list" item="IndexMemberResult" separator=",">
+           (#{IndexMemberResult.index_code,jdbcType=VARCHAR},
+#{IndexMemberResult.con_code,jdbcType=VARCHAR},
+#{IndexMemberResult.index_name,jdbcType=VARCHAR},
+#{IndexMemberResult.con_name,jdbcType=VARCHAR},
+#{IndexMemberResult.in_date,jdbcType=VARCHAR},
+#{IndexMemberResult.out_date,jdbcType=VARCHAR},
+#{IndexMemberResult.is_new,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

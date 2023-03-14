@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.index.IndexWeightMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into INDEX_WEIGHT
+        (index_code,con_code,trade_date,weight)
+        values
+        <foreach collection="list" item="IndexWeightResult" separator=",">
+           (#{IndexWeightResult.index_code,jdbcType=VARCHAR},
+#{IndexWeightResult.con_code,jdbcType=VARCHAR},
+#{IndexWeightResult.trade_date,jdbcType=VARCHAR},
+#{IndexWeightResult.weight,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

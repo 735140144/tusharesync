@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.index.DailyInfoMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into DAILY_INFO
+        (trade_date,ts_code,ts_name,com_count,total_share,float_share,total_mv,float_mv,amount,vol,trans_count,pe,tr,exchange)
+        values
+        <foreach collection="list" item="DailyInfoResult" separator=",">
+           (#{DailyInfoResult.trade_date,jdbcType=VARCHAR},
+#{DailyInfoResult.ts_code,jdbcType=VARCHAR},
+#{DailyInfoResult.ts_name,jdbcType=VARCHAR},
+#{DailyInfoResult.com_count,jdbcType=VARCHAR},
+#{DailyInfoResult.total_share,jdbcType=VARCHAR},
+#{DailyInfoResult.float_share,jdbcType=VARCHAR},
+#{DailyInfoResult.total_mv,jdbcType=VARCHAR},
+#{DailyInfoResult.float_mv,jdbcType=VARCHAR},
+#{DailyInfoResult.amount,jdbcType=VARCHAR},
+#{DailyInfoResult.vol,jdbcType=VARCHAR},
+#{DailyInfoResult.trans_count,jdbcType=VARCHAR},
+#{DailyInfoResult.pe,jdbcType=VARCHAR},
+#{DailyInfoResult.tr,jdbcType=VARCHAR},
+#{DailyInfoResult.exchange,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

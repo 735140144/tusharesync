@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.index.ThsDailyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into THS_DAILY
+        (ts_code,trade_date,close,open,high,low,pre_close,avg_price,change,pct_change,vol,turnover_rate,total_mv,float_mv)
+        values
+        <foreach collection="list" item="ThsDailyResult" separator=",">
+           (#{ThsDailyResult.ts_code,jdbcType=VARCHAR},
+#{ThsDailyResult.trade_date,jdbcType=VARCHAR},
+#{ThsDailyResult.close,jdbcType=VARCHAR},
+#{ThsDailyResult.open,jdbcType=VARCHAR},
+#{ThsDailyResult.high,jdbcType=VARCHAR},
+#{ThsDailyResult.low,jdbcType=VARCHAR},
+#{ThsDailyResult.pre_close,jdbcType=VARCHAR},
+#{ThsDailyResult.avg_price,jdbcType=VARCHAR},
+#{ThsDailyResult.change,jdbcType=VARCHAR},
+#{ThsDailyResult.pct_change,jdbcType=VARCHAR},
+#{ThsDailyResult.vol,jdbcType=VARCHAR},
+#{ThsDailyResult.turnover_rate,jdbcType=VARCHAR},
+#{ThsDailyResult.total_mv,jdbcType=VARCHAR},
+#{ThsDailyResult.float_mv,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

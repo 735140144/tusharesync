@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.index.IndexBasicMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into INDEX_BASIC
+        (ts_code,name,fullname,market,publisher,index_type,category,base_date,base_point,list_date,weight_rule,desc,exp_date)
+        values
+        <foreach collection="list" item="IndexBasicResult" separator=",">
+           (#{IndexBasicResult.ts_code,jdbcType=VARCHAR},
+#{IndexBasicResult.name,jdbcType=VARCHAR},
+#{IndexBasicResult.fullname,jdbcType=VARCHAR},
+#{IndexBasicResult.market,jdbcType=VARCHAR},
+#{IndexBasicResult.publisher,jdbcType=VARCHAR},
+#{IndexBasicResult.index_type,jdbcType=VARCHAR},
+#{IndexBasicResult.category,jdbcType=VARCHAR},
+#{IndexBasicResult.base_date,jdbcType=VARCHAR},
+#{IndexBasicResult.base_point,jdbcType=VARCHAR},
+#{IndexBasicResult.list_date,jdbcType=VARCHAR},
+#{IndexBasicResult.weight_rule,jdbcType=VARCHAR},
+#{IndexBasicResult.desc,jdbcType=VARCHAR},
+#{IndexBasicResult.exp_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

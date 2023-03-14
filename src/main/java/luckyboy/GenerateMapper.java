@@ -12,11 +12,12 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import com.google.common.base.CaseFormat;
 import luckyboy.result.hsStock.BrokerRecommendResult;
+import luckyboy.result.index.*;
 
 
 public class GenerateMapper {
     public static void main(String[] args) throws Exception {
-        Class<?> resultClass = BrokerRecommendResult.class;
+        Class<?> resultClass = ThsMemberResult.class;
         GenerateSql.doSql(resultClass);
         generateMapper(resultClass,"index");
 

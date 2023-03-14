@@ -1,10 +1,11 @@
 package luckyboy.result.index;
 
+import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
 import luckyboy.util.Formart;
-
+@Data
 public class IndexBasicResult extends Formart {
     @ExplainAnnotation(comment = "TS代码")
     @KeyAnnotation

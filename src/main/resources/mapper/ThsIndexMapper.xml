@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.index.ThsIndexMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into THS_INDEX
+        (ts_code,name,count,exchange,list_date,type)
+        values
+        <foreach collection="list" item="ThsIndexResult" separator=",">
+           (#{ThsIndexResult.ts_code,jdbcType=VARCHAR},
+#{ThsIndexResult.name,jdbcType=VARCHAR},
+#{ThsIndexResult.count,jdbcType=VARCHAR},
+#{ThsIndexResult.exchange,jdbcType=VARCHAR},
+#{ThsIndexResult.list_date,jdbcType=VARCHAR},
+#{ThsIndexResult.type,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

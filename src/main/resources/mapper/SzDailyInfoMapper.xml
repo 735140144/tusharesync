@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.index.SzDailyInfoMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into SZ_DAILY_INFO
+        (trade_date,ts_code,count,amount,vol,total_share,total_mv,float_share,float_mv)
+        values
+        <foreach collection="list" item="SzDailyInfoResult" separator=",">
+           (#{SzDailyInfoResult.trade_date,jdbcType=VARCHAR},
+#{SzDailyInfoResult.ts_code,jdbcType=VARCHAR},
+#{SzDailyInfoResult.count,jdbcType=VARCHAR},
+#{SzDailyInfoResult.amount,jdbcType=VARCHAR},
+#{SzDailyInfoResult.vol,jdbcType=VARCHAR},
+#{SzDailyInfoResult.total_share,jdbcType=VARCHAR},
+#{SzDailyInfoResult.total_mv,jdbcType=VARCHAR},
+#{SzDailyInfoResult.float_share,jdbcType=VARCHAR},
+#{SzDailyInfoResult.float_mv,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

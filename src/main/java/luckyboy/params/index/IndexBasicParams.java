@@ -1,8 +1,11 @@
 package luckyboy.params.index;
 
+import lombok.Builder;
+import lombok.Data;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.util.Formart;
-
+@Data
+@Builder
 public class IndexBasicParams extends Formart {
     @ExplainAnnotation(comment = "指数代码")
     private String ts_code;

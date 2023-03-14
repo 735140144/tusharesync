@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.index.IndexGlobalMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into INDEX_GLOBAL
+        (ts_code,trade_date,open,close,high,low,pre_close,change,pct_chg,swing,vol,amount)
+        values
+        <foreach collection="list" item="IndexGlobalResult" separator=",">
+           (#{IndexGlobalResult.ts_code,jdbcType=VARCHAR},
+#{IndexGlobalResult.trade_date,jdbcType=VARCHAR},
+#{IndexGlobalResult.open,jdbcType=VARCHAR},
+#{IndexGlobalResult.close,jdbcType=VARCHAR},
+#{IndexGlobalResult.high,jdbcType=VARCHAR},
+#{IndexGlobalResult.low,jdbcType=VARCHAR},
+#{IndexGlobalResult.pre_close,jdbcType=VARCHAR},
+#{IndexGlobalResult.change,jdbcType=VARCHAR},
+#{IndexGlobalResult.pct_chg,jdbcType=VARCHAR},
+#{IndexGlobalResult.swing,jdbcType=VARCHAR},
+#{IndexGlobalResult.vol,jdbcType=VARCHAR},
+#{IndexGlobalResult.amount,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

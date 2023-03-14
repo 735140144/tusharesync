@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.index.IndexDailybasicMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into INDEX_DAILYBASIC
+        (ts_code,trade_date,total_mv,float_mv,total_share,float_share,free_share,turnover_rate,turnover_rate_f,pe,pe_ttm,pb)
+        values
+        <foreach collection="list" item="IndexDailybasicResult" separator=",">
+           (#{IndexDailybasicResult.ts_code,jdbcType=VARCHAR},
+#{IndexDailybasicResult.trade_date,jdbcType=VARCHAR},
+#{IndexDailybasicResult.total_mv,jdbcType=VARCHAR},
+#{IndexDailybasicResult.float_mv,jdbcType=VARCHAR},
+#{IndexDailybasicResult.total_share,jdbcType=VARCHAR},
+#{IndexDailybasicResult.float_share,jdbcType=VARCHAR},
+#{IndexDailybasicResult.free_share,jdbcType=VARCHAR},
+#{IndexDailybasicResult.turnover_rate,jdbcType=VARCHAR},
+#{IndexDailybasicResult.turnover_rate_f,jdbcType=VARCHAR},
+#{IndexDailybasicResult.pe,jdbcType=VARCHAR},
+#{IndexDailybasicResult.pe_ttm,jdbcType=VARCHAR},
+#{IndexDailybasicResult.pb,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>
