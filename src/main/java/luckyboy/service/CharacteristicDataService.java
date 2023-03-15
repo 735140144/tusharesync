@@ -1,10 +1,11 @@
 package luckyboy.service;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.params.hsStock.*;
 import luckyboy.util.Result;
 
-
+@Api(value = "特色数据",tags = "特色数据")
 public interface CharacteristicDataService {
     @ApiOperation("卖方盈利预测数据")
     Result<?> report_rc(ReportRcParams params);

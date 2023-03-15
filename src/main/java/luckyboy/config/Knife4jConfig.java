@@ -1,7 +1,9 @@
 package luckyboy.config;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -41,8 +43,9 @@ public class Knife4jConfig {
                 .apiInfo(adminApiInfo())
                 .select()
                 //只显示admin路径下的页面
-                .apis(RequestHandlerSelectors.basePackage("luckyboy"))
-                .paths(PathSelectors.regex("/.*"))
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+                .paths(PathSelectors.any())
                 .build()
                 .globalOperationParameters(pars);
         return adminApi;
