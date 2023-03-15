@@ -301,4 +301,9 @@ public class IndexDataServiceImpl implements IndexDataService {
         }
         return Result.ok(jsonObject.getString("msg"));
     }
+
+    @Override
+    public List<ThsIndexResult> getAllThs() {
+        return thsIndexMapper.selectAll();
+    }
 }

@@ -3,10 +3,13 @@ package luckyboy.service;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.params.index.*;
+import luckyboy.result.index.ThsIndexResult;
 import luckyboy.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Api(value = "指数数据",tags = "指数数据")
 @RestController
@@ -53,4 +56,7 @@ public interface IndexDataService {
 
     @ApiOperation("国际指数")
     Result<?> index_global(IndexGlobalParams params);
+
+    @ApiOperation("获取所有同花顺概念")
+    List<ThsIndexResult> getAllThs();
 }
