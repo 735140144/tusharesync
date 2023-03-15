@@ -1,11 +1,15 @@
 package luckyboy.service.Impl;
 
+import lombok.extern.slf4j.Slf4j;
 import luckyboy.api.CharacteristicDataApi;
 import luckyboy.params.hsStock.*;
 import luckyboy.service.CharacteristicDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+@Slf4j
 public class CharacteristicDataApiImpl implements CharacteristicDataApi {
     @Autowired
     private CharacteristicDataService characteristicDataService;

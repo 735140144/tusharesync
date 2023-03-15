@@ -1,11 +1,15 @@
 package luckyboy.service.Impl;
 
+import lombok.extern.slf4j.Slf4j;
 import luckyboy.api.IndexDataApi;
 import luckyboy.params.index.*;
 import luckyboy.service.IndexDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+@Slf4j
 public class IndexDataApiImpl implements IndexDataApi {
     @Autowired
     private IndexDataService indexDataService;
