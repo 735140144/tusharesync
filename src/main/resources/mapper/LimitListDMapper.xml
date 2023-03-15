@@ -5,7 +5,7 @@
 <mapper namespace="luckyboy.mapper.hsStock.LimitListDMapper">
 <insert id="insert" parameterType="java.util.List">
 insert into LIMIT_LIST_D
-        (trade_date,ts_code,industry,name,close,pct_chg,amount,limit_amount,float_mv,total_mv,turnover_ratio,fd_amount,first_time,last_time,open_times,up_stat,limit_times,limit)
+        (trade_date,ts_code,industry,name,close,pct_chg,amount,limit_amount,float_mv,total_mv,turnover_ratio,fd_amount,first_time,last_time,open_times,up_stat,limit_times,`limit`)
         values
         <foreach collection="list" item="LimitListDResult" separator=",">
            (#{LimitListDResult.trade_date,jdbcType=VARCHAR},
