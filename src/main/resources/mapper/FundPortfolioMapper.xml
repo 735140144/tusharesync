@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fund.FundPortfolioMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUND_PORTFOLIO
+        (ts_code,ann_date,end_date,symbol,mkv,amount,stk_mkv_ratio,stk_float_ratio)
+        values
+        <foreach collection="list" item="FundPortfolioResult" separator=",">
+           (#{FundPortfolioResult.ts_code,jdbcType=VARCHAR},
+#{FundPortfolioResult.ann_date,jdbcType=VARCHAR},
+#{FundPortfolioResult.end_date,jdbcType=VARCHAR},
+#{FundPortfolioResult.symbol,jdbcType=VARCHAR},
+#{FundPortfolioResult.mkv,jdbcType=VARCHAR},
+#{FundPortfolioResult.amount,jdbcType=VARCHAR},
+#{FundPortfolioResult.stk_mkv_ratio,jdbcType=VARCHAR},
+#{FundPortfolioResult.stk_float_ratio,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

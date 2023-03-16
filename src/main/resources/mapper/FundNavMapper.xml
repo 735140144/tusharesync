@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fund.FundNavMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUND_NAV
+        (ts_code,ann_date,nav_date,unit_nav,accum_nav,accum_div,net_asset,total_netasset,adj_nav)
+        values
+        <foreach collection="list" item="FundNavResult" separator=",">
+           (#{FundNavResult.ts_code,jdbcType=VARCHAR},
+#{FundNavResult.ann_date,jdbcType=VARCHAR},
+#{FundNavResult.nav_date,jdbcType=VARCHAR},
+#{FundNavResult.unit_nav,jdbcType=VARCHAR},
+#{FundNavResult.accum_nav,jdbcType=VARCHAR},
+#{FundNavResult.accum_div,jdbcType=VARCHAR},
+#{FundNavResult.net_asset,jdbcType=VARCHAR},
+#{FundNavResult.total_netasset,jdbcType=VARCHAR},
+#{FundNavResult.adj_nav,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

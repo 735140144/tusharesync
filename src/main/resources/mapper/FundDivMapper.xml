@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fund.FundDivMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUND_DIV
+        (ts_code,ann_date,imp_anndate,base_date,div_proc,record_date,ex_date,pay_date,earpay_date,net_ex_date,div_cash,base_unit,ear_distr,ear_amount,account_date,base_year)
+        values
+        <foreach collection="list" item="FundDivResult" separator=",">
+           (#{FundDivResult.ts_code,jdbcType=VARCHAR},
+#{FundDivResult.ann_date,jdbcType=VARCHAR},
+#{FundDivResult.imp_anndate,jdbcType=VARCHAR},
+#{FundDivResult.base_date,jdbcType=VARCHAR},
+#{FundDivResult.div_proc,jdbcType=VARCHAR},
+#{FundDivResult.record_date,jdbcType=VARCHAR},
+#{FundDivResult.ex_date,jdbcType=VARCHAR},
+#{FundDivResult.pay_date,jdbcType=VARCHAR},
+#{FundDivResult.earpay_date,jdbcType=VARCHAR},
+#{FundDivResult.net_ex_date,jdbcType=VARCHAR},
+#{FundDivResult.div_cash,jdbcType=VARCHAR},
+#{FundDivResult.base_unit,jdbcType=VARCHAR},
+#{FundDivResult.ear_distr,jdbcType=VARCHAR},
+#{FundDivResult.ear_amount,jdbcType=VARCHAR},
+#{FundDivResult.account_date,jdbcType=VARCHAR},
+#{FundDivResult.base_year,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

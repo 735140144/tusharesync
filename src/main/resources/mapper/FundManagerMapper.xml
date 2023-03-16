@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fund.FundManagerMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUND_MANAGER
+        (ts_code,ann_date,name,gender,birth_year,edu,nationality,begin_date,end_date,resume)
+        values
+        <foreach collection="list" item="FundManagerResult" separator=",">
+           (#{FundManagerResult.ts_code,jdbcType=VARCHAR},
+#{FundManagerResult.ann_date,jdbcType=VARCHAR},
+#{FundManagerResult.name,jdbcType=VARCHAR},
+#{FundManagerResult.gender,jdbcType=VARCHAR},
+#{FundManagerResult.birth_year,jdbcType=VARCHAR},
+#{FundManagerResult.edu,jdbcType=VARCHAR},
+#{FundManagerResult.nationality,jdbcType=VARCHAR},
+#{FundManagerResult.begin_date,jdbcType=VARCHAR},
+#{FundManagerResult.end_date,jdbcType=VARCHAR},
+#{FundManagerResult.resume,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

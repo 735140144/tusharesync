@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fund.FundDailyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUND_DAILY
+        (ts_code,trade_date,open,high,low,close,pre_close,change,pct_chg,vol,amount)
+        values
+        <foreach collection="list" item="FundDailyResult" separator=",">
+           (#{FundDailyResult.ts_code,jdbcType=VARCHAR},
+#{FundDailyResult.trade_date,jdbcType=VARCHAR},
+#{FundDailyResult.open,jdbcType=VARCHAR},
+#{FundDailyResult.high,jdbcType=VARCHAR},
+#{FundDailyResult.low,jdbcType=VARCHAR},
+#{FundDailyResult.close,jdbcType=VARCHAR},
+#{FundDailyResult.pre_close,jdbcType=VARCHAR},
+#{FundDailyResult.change,jdbcType=VARCHAR},
+#{FundDailyResult.pct_chg,jdbcType=VARCHAR},
+#{FundDailyResult.vol,jdbcType=VARCHAR},
+#{FundDailyResult.amount,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

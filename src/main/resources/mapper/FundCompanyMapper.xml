@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fund.FundCompanyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUND_COMPANY
+        (name,shortname,short_enname,province,city,address,phone,office,website,chairman,manager,reg_capital,setup_date,end_date,employees,main_business,org_code,credit_code)
+        values
+        <foreach collection="list" item="FundCompanyResult" separator=",">
+           (#{FundCompanyResult.name,jdbcType=VARCHAR},
+#{FundCompanyResult.shortname,jdbcType=VARCHAR},
+#{FundCompanyResult.short_enname,jdbcType=VARCHAR},
+#{FundCompanyResult.province,jdbcType=VARCHAR},
+#{FundCompanyResult.city,jdbcType=VARCHAR},
+#{FundCompanyResult.address,jdbcType=VARCHAR},
+#{FundCompanyResult.phone,jdbcType=VARCHAR},
+#{FundCompanyResult.office,jdbcType=VARCHAR},
+#{FundCompanyResult.website,jdbcType=VARCHAR},
+#{FundCompanyResult.chairman,jdbcType=VARCHAR},
+#{FundCompanyResult.manager,jdbcType=VARCHAR},
+#{FundCompanyResult.reg_capital,jdbcType=VARCHAR},
+#{FundCompanyResult.setup_date,jdbcType=VARCHAR},
+#{FundCompanyResult.end_date,jdbcType=VARCHAR},
+#{FundCompanyResult.employees,jdbcType=VARCHAR},
+#{FundCompanyResult.main_business,jdbcType=VARCHAR},
+#{FundCompanyResult.org_code,jdbcType=VARCHAR},
+#{FundCompanyResult.credit_code,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

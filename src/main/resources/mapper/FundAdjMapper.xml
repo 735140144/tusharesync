@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fund.FundAdjMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUND_ADJ
+        (ts_code,trade_date,adj_factor)
+        values
+        <foreach collection="list" item="FundAdjResult" separator=",">
+           (#{FundAdjResult.ts_code,jdbcType=VARCHAR},
+#{FundAdjResult.trade_date,jdbcType=VARCHAR},
+#{FundAdjResult.adj_factor,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>
