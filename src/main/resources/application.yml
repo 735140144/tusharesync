@@ -3,6 +3,10 @@ server:
 #mybatis-plus:
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 查看日志
+logging:
+  config: logback.xml
+  level:
+    luckyboy.mapper: trace
 spring:
   application:
     name: share.luckyboy.cc

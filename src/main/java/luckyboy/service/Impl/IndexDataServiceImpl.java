@@ -306,4 +306,9 @@ public class IndexDataServiceImpl implements IndexDataService {
     public List<ThsIndexResult> getAllThs() {
         return thsIndexMapper.selectAll();
     }
+
+    @Override
+    public List<IndexBasicResult> getAllIndex() {
+        return indexBasicMapper.getAll();
+    }
 }

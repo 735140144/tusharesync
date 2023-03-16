@@ -23,4 +23,7 @@ insert into INDEX_BASIC
 #{IndexBasicResult.exp_date,jdbcType=VARCHAR})
         </foreach>
     </insert>
+    <select id="getAll" resultType="luckyboy.result.index.IndexBasicResult">
+        select * from INDEX_BASIC
+    </select>
 </mapper>

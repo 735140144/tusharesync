@@ -1,6 +1,7 @@
 package luckyboy.schedule;
 
 import luckyboy.params.index.*;
+import luckyboy.result.index.IndexBasicResult;
 import luckyboy.result.index.ThsIndexResult;
 import luckyboy.service.IndexDataService;
 import luckyboy.util.DataFormat;
@@ -23,8 +24,12 @@ public class IndexScheduleJob {
 
     @Scheduled(cron = "10 5 21 ? * 1-5")
     public void index_daily(){
-        IndexDailyParams build = IndexDailyParams.builder().trade_date(DataFormat.NowDay()).build();
-        indexDataService.index_daily(build);
+        List<IndexBasicResult> allIndex = indexDataService.getAllIndex();
+        for (IndexBasicResult index : allIndex) {
+            IndexDailyParams build = IndexDailyParams.builder().ts_code(index.getTs_code()).trade_date(DataFormat.NowDay()).build();
+            indexDataService.index_daily(build);
+        }
+
     }
 
     @Scheduled(cron = "10 5 21 ? * 5")

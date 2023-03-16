@@ -3,6 +3,7 @@ package luckyboy.service;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.params.index.*;
+import luckyboy.result.index.IndexBasicResult;
 import luckyboy.result.index.ThsIndexResult;
 import luckyboy.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,4 +60,7 @@ public interface IndexDataService {
 
     @ApiOperation("获取所有同花顺概念")
     List<ThsIndexResult> getAllThs();
+
+    @ApiOperation("获取所有指数代码")
+    List<IndexBasicResult> getAllIndex();
 }
