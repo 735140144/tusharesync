@@ -12,15 +12,20 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import com.google.common.base.CaseFormat;
 import luckyboy.result.fund.*;
+import luckyboy.result.fut.*;
 import luckyboy.result.hsStock.BrokerRecommendResult;
 import luckyboy.result.index.*;
+import luckyboy.result.opt.OptBasicResult;
+import luckyboy.result.opt.OptDailyResult;
+import luckyboy.result.sge.SgeBasicResult;
+import luckyboy.result.sge.SgeDailyResult;
 
 
 public class GenerateMapper {
     public static void main(String[] args) throws Exception {
-        Class<?> resultClass = FundShareResult.class;
+        Class<?> resultClass = OptDailyResult.class;
         GenerateSql.doSql(resultClass);
-        generateMapper(resultClass,"fund");
+        generateMapper(resultClass,"opt");
 
     }
 

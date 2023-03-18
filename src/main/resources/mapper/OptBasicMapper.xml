@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.opt.OptBasicMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into OPT_BASIC
+        (ts_code,exchange,name,per_unit,opt_code,opt_type,call_put,exercise_type,exercise_price,s_month,maturity_date,list_price,list_date,delist_date,last_edate,last_ddate,quote_unit,min_price_chg)
+        values
+        <foreach collection="list" item="OptBasicResult" separator=",">
+           (#{OptBasicResult.ts_code,jdbcType=VARCHAR},
+#{OptBasicResult.exchange,jdbcType=VARCHAR},
+#{OptBasicResult.name,jdbcType=VARCHAR},
+#{OptBasicResult.per_unit,jdbcType=VARCHAR},
+#{OptBasicResult.opt_code,jdbcType=VARCHAR},
+#{OptBasicResult.opt_type,jdbcType=VARCHAR},
+#{OptBasicResult.call_put,jdbcType=VARCHAR},
+#{OptBasicResult.exercise_type,jdbcType=VARCHAR},
+#{OptBasicResult.exercise_price,jdbcType=VARCHAR},
+#{OptBasicResult.s_month,jdbcType=VARCHAR},
+#{OptBasicResult.maturity_date,jdbcType=VARCHAR},
+#{OptBasicResult.list_price,jdbcType=VARCHAR},
+#{OptBasicResult.list_date,jdbcType=VARCHAR},
+#{OptBasicResult.delist_date,jdbcType=VARCHAR},
+#{OptBasicResult.last_edate,jdbcType=VARCHAR},
+#{OptBasicResult.last_ddate,jdbcType=VARCHAR},
+#{OptBasicResult.quote_unit,jdbcType=VARCHAR},
+#{OptBasicResult.min_price_chg,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

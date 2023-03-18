@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fut.FutMappingMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUT_MAPPING
+        (ts_code,trade_date,mapping_ts_code)
+        values
+        <foreach collection="list" item="FutMappingResult" separator=",">
+           (#{FutMappingResult.ts_code,jdbcType=VARCHAR},
+#{FutMappingResult.trade_date,jdbcType=VARCHAR},
+#{FutMappingResult.mapping_ts_code,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fut.FutWsrMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUT_WSR
+        (trade_date,symbol,fut_name,warehouse,wh_id,pre_vol,vol,vol_chg,area,year,grade,brand,place,pd,is_ct,unit,exchange)
+        values
+        <foreach collection="list" item="FutWsrResult" separator=",">
+           (#{FutWsrResult.trade_date,jdbcType=VARCHAR},
+#{FutWsrResult.symbol,jdbcType=VARCHAR},
+#{FutWsrResult.fut_name,jdbcType=VARCHAR},
+#{FutWsrResult.warehouse,jdbcType=VARCHAR},
+#{FutWsrResult.wh_id,jdbcType=VARCHAR},
+#{FutWsrResult.pre_vol,jdbcType=VARCHAR},
+#{FutWsrResult.vol,jdbcType=VARCHAR},
+#{FutWsrResult.vol_chg,jdbcType=VARCHAR},
+#{FutWsrResult.area,jdbcType=VARCHAR},
+#{FutWsrResult.year,jdbcType=VARCHAR},
+#{FutWsrResult.grade,jdbcType=VARCHAR},
+#{FutWsrResult.brand,jdbcType=VARCHAR},
+#{FutWsrResult.place,jdbcType=VARCHAR},
+#{FutWsrResult.pd,jdbcType=VARCHAR},
+#{FutWsrResult.is_ct,jdbcType=VARCHAR},
+#{FutWsrResult.unit,jdbcType=VARCHAR},
+#{FutWsrResult.exchange,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

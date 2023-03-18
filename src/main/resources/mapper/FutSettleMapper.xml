@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fut.FutSettleMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUT_SETTLE
+        (ts_code,trade_date,settle,trading_fee_rate,trading_fee,delivery_fee,b_hedging_margin_rate,s_hedging_margin_rate,long_margin_rate,short_margin_rate,offset_today_fee,exchange)
+        values
+        <foreach collection="list" item="FutSettleResult" separator=",">
+           (#{FutSettleResult.ts_code,jdbcType=VARCHAR},
+#{FutSettleResult.trade_date,jdbcType=VARCHAR},
+#{FutSettleResult.settle,jdbcType=VARCHAR},
+#{FutSettleResult.trading_fee_rate,jdbcType=VARCHAR},
+#{FutSettleResult.trading_fee,jdbcType=VARCHAR},
+#{FutSettleResult.delivery_fee,jdbcType=VARCHAR},
+#{FutSettleResult.b_hedging_margin_rate,jdbcType=VARCHAR},
+#{FutSettleResult.s_hedging_margin_rate,jdbcType=VARCHAR},
+#{FutSettleResult.long_margin_rate,jdbcType=VARCHAR},
+#{FutSettleResult.short_margin_rate,jdbcType=VARCHAR},
+#{FutSettleResult.offset_today_fee,jdbcType=VARCHAR},
+#{FutSettleResult.exchange,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

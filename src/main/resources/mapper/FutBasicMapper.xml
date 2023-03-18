@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fut.FutBasicMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUT_BASIC
+        (ts_code,symbol,exchange,name,fut_code,multiplier,trade_unit,per_unit,quote_unit,quote_unit_desc,d_mode_desc,list_date,delist_date,d_month,last_ddate,trade_time_desc)
+        values
+        <foreach collection="list" item="FutBasicResult" separator=",">
+           (#{FutBasicResult.ts_code,jdbcType=VARCHAR},
+#{FutBasicResult.symbol,jdbcType=VARCHAR},
+#{FutBasicResult.exchange,jdbcType=VARCHAR},
+#{FutBasicResult.name,jdbcType=VARCHAR},
+#{FutBasicResult.fut_code,jdbcType=VARCHAR},
+#{FutBasicResult.multiplier,jdbcType=VARCHAR},
+#{FutBasicResult.trade_unit,jdbcType=VARCHAR},
+#{FutBasicResult.per_unit,jdbcType=VARCHAR},
+#{FutBasicResult.quote_unit,jdbcType=VARCHAR},
+#{FutBasicResult.quote_unit_desc,jdbcType=VARCHAR},
+#{FutBasicResult.d_mode_desc,jdbcType=VARCHAR},
+#{FutBasicResult.list_date,jdbcType=VARCHAR},
+#{FutBasicResult.delist_date,jdbcType=VARCHAR},
+#{FutBasicResult.d_month,jdbcType=VARCHAR},
+#{FutBasicResult.last_ddate,jdbcType=VARCHAR},
+#{FutBasicResult.trade_time_desc,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

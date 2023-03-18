@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fut.FutDailyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUT_DAILY
+        (ts_code,trade_date,pre_close,pre_settle,open,high,low,close,settle,change1,change2,vol,amount,oi,oi_chg,delv_settle)
+        values
+        <foreach collection="list" item="FutDailyResult" separator=",">
+           (#{FutDailyResult.ts_code,jdbcType=VARCHAR},
+#{FutDailyResult.trade_date,jdbcType=VARCHAR},
+#{FutDailyResult.pre_close,jdbcType=VARCHAR},
+#{FutDailyResult.pre_settle,jdbcType=VARCHAR},
+#{FutDailyResult.open,jdbcType=VARCHAR},
+#{FutDailyResult.high,jdbcType=VARCHAR},
+#{FutDailyResult.low,jdbcType=VARCHAR},
+#{FutDailyResult.close,jdbcType=VARCHAR},
+#{FutDailyResult.settle,jdbcType=VARCHAR},
+#{FutDailyResult.change1,jdbcType=VARCHAR},
+#{FutDailyResult.change2,jdbcType=VARCHAR},
+#{FutDailyResult.vol,jdbcType=VARCHAR},
+#{FutDailyResult.amount,jdbcType=VARCHAR},
+#{FutDailyResult.oi,jdbcType=VARCHAR},
+#{FutDailyResult.oi_chg,jdbcType=VARCHAR},
+#{FutDailyResult.delv_settle,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.opt.OptDailyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into OPT_DAILY
+        (ts_code,trade_date,exchange,pre_settle,pre_close,open,high,low,close,settle,vol,amount,oi)
+        values
+        <foreach collection="list" item="OptDailyResult" separator=",">
+           (#{OptDailyResult.ts_code,jdbcType=VARCHAR},
+#{OptDailyResult.trade_date,jdbcType=VARCHAR},
+#{OptDailyResult.exchange,jdbcType=VARCHAR},
+#{OptDailyResult.pre_settle,jdbcType=VARCHAR},
+#{OptDailyResult.pre_close,jdbcType=VARCHAR},
+#{OptDailyResult.open,jdbcType=VARCHAR},
+#{OptDailyResult.high,jdbcType=VARCHAR},
+#{OptDailyResult.low,jdbcType=VARCHAR},
+#{OptDailyResult.close,jdbcType=VARCHAR},
+#{OptDailyResult.settle,jdbcType=VARCHAR},
+#{OptDailyResult.vol,jdbcType=VARCHAR},
+#{OptDailyResult.amount,jdbcType=VARCHAR},
+#{OptDailyResult.oi,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

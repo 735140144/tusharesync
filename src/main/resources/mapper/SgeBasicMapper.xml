@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.sge.SgeBasicMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into SGE_BASIC
+        (ts_code,ts_name,trade_type,t_unit,p_unit,min_change,price_limit,min_vol,max_vol,trade_mode,margin_rate,liq_rate,trade_time,list_date)
+        values
+        <foreach collection="list" item="SgeBasicResult" separator=",">
+           (#{SgeBasicResult.ts_code,jdbcType=VARCHAR},
+#{SgeBasicResult.ts_name,jdbcType=VARCHAR},
+#{SgeBasicResult.trade_type,jdbcType=VARCHAR},
+#{SgeBasicResult.t_unit,jdbcType=VARCHAR},
+#{SgeBasicResult.p_unit,jdbcType=VARCHAR},
+#{SgeBasicResult.min_change,jdbcType=VARCHAR},
+#{SgeBasicResult.price_limit,jdbcType=VARCHAR},
+#{SgeBasicResult.min_vol,jdbcType=VARCHAR},
+#{SgeBasicResult.max_vol,jdbcType=VARCHAR},
+#{SgeBasicResult.trade_mode,jdbcType=VARCHAR},
+#{SgeBasicResult.margin_rate,jdbcType=VARCHAR},
+#{SgeBasicResult.liq_rate,jdbcType=VARCHAR},
+#{SgeBasicResult.trade_time,jdbcType=VARCHAR},
+#{SgeBasicResult.list_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

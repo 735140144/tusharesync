@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fut.FutHoldingMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUT_HOLDING
+        (trade_date,symbol,broker,vol,vol_chg,long_hld,long_chg,short_hld,short_chg,exchange)
+        values
+        <foreach collection="list" item="FutHoldingResult" separator=",">
+           (#{FutHoldingResult.trade_date,jdbcType=VARCHAR},
+#{FutHoldingResult.symbol,jdbcType=VARCHAR},
+#{FutHoldingResult.broker,jdbcType=VARCHAR},
+#{FutHoldingResult.vol,jdbcType=VARCHAR},
+#{FutHoldingResult.vol_chg,jdbcType=VARCHAR},
+#{FutHoldingResult.long_hld,jdbcType=VARCHAR},
+#{FutHoldingResult.long_chg,jdbcType=VARCHAR},
+#{FutHoldingResult.short_hld,jdbcType=VARCHAR},
+#{FutHoldingResult.short_chg,jdbcType=VARCHAR},
+#{FutHoldingResult.exchange,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

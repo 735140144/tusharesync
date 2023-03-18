@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.sge.SgeDailyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into SGE_DAILY
+        (ts_code,trade_date,close,open,high,low,price_avg,change,pct_change,vol,amount,oi,settle_vol,settle_dire)
+        values
+        <foreach collection="list" item="SgeDailyResult" separator=",">
+           (#{SgeDailyResult.ts_code,jdbcType=VARCHAR},
+#{SgeDailyResult.trade_date,jdbcType=VARCHAR},
+#{SgeDailyResult.close,jdbcType=VARCHAR},
+#{SgeDailyResult.open,jdbcType=VARCHAR},
+#{SgeDailyResult.high,jdbcType=VARCHAR},
+#{SgeDailyResult.low,jdbcType=VARCHAR},
+#{SgeDailyResult.price_avg,jdbcType=VARCHAR},
+#{SgeDailyResult.change,jdbcType=VARCHAR},
+#{SgeDailyResult.pct_change,jdbcType=VARCHAR},
+#{SgeDailyResult.vol,jdbcType=VARCHAR},
+#{SgeDailyResult.amount,jdbcType=VARCHAR},
+#{SgeDailyResult.oi,jdbcType=VARCHAR},
+#{SgeDailyResult.settle_vol,jdbcType=VARCHAR},
+#{SgeDailyResult.settle_dire,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

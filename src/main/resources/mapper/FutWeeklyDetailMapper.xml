@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fut.FutWeeklyDetailMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FUT_WEEKLY_DETAIL
+        (exchange,prd,week,name,vol,vol_yoy,amount,amout_yoy,cumvol,cumvol_yoy,cumamt,cumamt_yoy,open_interest,interest_wow,mc_close,close_wow,week_date)
+        values
+        <foreach collection="list" item="FutWeeklyDetailResult" separator=",">
+           (#{FutWeeklyDetailResult.exchange,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.prd,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.week,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.name,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.vol,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.vol_yoy,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.amount,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.amout_yoy,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.cumvol,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.cumvol_yoy,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.cumamt,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.cumamt_yoy,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.open_interest,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.interest_wow,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.mc_close,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.close_wow,jdbcType=VARCHAR},
+#{FutWeeklyDetailResult.week_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>
