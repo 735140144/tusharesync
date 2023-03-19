@@ -19,7 +19,7 @@ import luckyboy.util.GetResults;
 
 public class GenerateMapper {
     public static void main(String[] args) throws Exception {
-        String pkg = "tmt";
+        String pkg = "stock";
         String url = "/Users/mtlroyal/opt/tusharesynchronous/src/main/java/luckyboy/result/" + pkg;
         GetResults getResults = new GetResults();
         List<String> fileNames = getResults.getFileNames(url);

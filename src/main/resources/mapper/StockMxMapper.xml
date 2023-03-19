@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.stock.StockMxMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into STOCK_MX
+        (trade_date,ts_code,mx_grade,com_stock,evd_v,zt_sum_z,wma250_z)
+        values
+        <foreach collection="list" item="StockMxResult" separator=",">
+           (#{StockMxResult.trade_date,jdbcType=VARCHAR},
+#{StockMxResult.ts_code,jdbcType=VARCHAR},
+#{StockMxResult.mx_grade,jdbcType=VARCHAR},
+#{StockMxResult.com_stock,jdbcType=VARCHAR},
+#{StockMxResult.evd_v,jdbcType=VARCHAR},
+#{StockMxResult.zt_sum_z,jdbcType=VARCHAR},
+#{StockMxResult.wma250_z,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

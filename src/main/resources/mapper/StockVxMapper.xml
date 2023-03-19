@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.stock.StockVxMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into STOCK_VX
+        (trade_date,ts_code,level1,level2,vx_life_v_l4,vx_3excellent_v_l4,vx_past_5q_avg_l4,vx_grow_worse_v_l4,vx_life_v_l8,vx_3excellent_v_l8,vx_past_5q_avg_l8,vx_grow_worse_v_l8,vxx,vs,vz11,vz24,vz_lms)
+        values
+        <foreach collection="list" item="StockVxResult" separator=",">
+           (#{StockVxResult.trade_date,jdbcType=VARCHAR},
+#{StockVxResult.ts_code,jdbcType=VARCHAR},
+#{StockVxResult.level1,jdbcType=VARCHAR},
+#{StockVxResult.level2,jdbcType=VARCHAR},
+#{StockVxResult.vx_life_v_l4,jdbcType=VARCHAR},
+#{StockVxResult.vx_3excellent_v_l4,jdbcType=VARCHAR},
+#{StockVxResult.vx_past_5q_avg_l4,jdbcType=VARCHAR},
+#{StockVxResult.vx_grow_worse_v_l4,jdbcType=VARCHAR},
+#{StockVxResult.vx_life_v_l8,jdbcType=VARCHAR},
+#{StockVxResult.vx_3excellent_v_l8,jdbcType=VARCHAR},
+#{StockVxResult.vx_past_5q_avg_l8,jdbcType=VARCHAR},
+#{StockVxResult.vx_grow_worse_v_l8,jdbcType=VARCHAR},
+#{StockVxResult.vxx,jdbcType=VARCHAR},
+#{StockVxResult.vs,jdbcType=VARCHAR},
+#{StockVxResult.vz11,jdbcType=VARCHAR},
+#{StockVxResult.vz24,jdbcType=VARCHAR},
+#{StockVxResult.vz_lms,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>
