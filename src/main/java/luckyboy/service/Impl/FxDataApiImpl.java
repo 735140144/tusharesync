@@ -6,8 +6,10 @@ import luckyboy.params.fx.*;
 import luckyboy.service.FxDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
 public class FxDataApiImpl implements FxDataApi {
     @Autowired
     private FxDataService fxDataService;

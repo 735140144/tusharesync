@@ -7,8 +7,10 @@ import luckyboy.params.opt.OptDailyParams;
 import luckyboy.service.OptDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
 public class OptDataApiImpl implements OptDataApi {
     @Autowired
     private OptDataService optDataService;

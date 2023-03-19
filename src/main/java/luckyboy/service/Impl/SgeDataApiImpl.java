@@ -6,7 +6,9 @@ import luckyboy.params.sge.SgeDailyParams;
 import luckyboy.service.SgeDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SgeDataApiImpl implements SgeDataApi {
     @Autowired
     private SgeDataService sgeDataService;

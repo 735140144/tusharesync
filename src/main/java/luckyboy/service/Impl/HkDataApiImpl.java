@@ -6,8 +6,10 @@ import luckyboy.params.hk.*;
 import luckyboy.service.HkDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
 public class HkDataApiImpl implements HkDataApi {
     @Autowired
     private HkDataService hkDataService;

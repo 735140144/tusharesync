@@ -179,8 +179,10 @@ public class GetResults {
                 "import luckyboy.service." + FirstTrans.captureName(pkg) + "DataService;\n" +
                 "import luckyboy.util.Result;\n" +
                 "import org.springframework.beans.factory.annotation.Autowired;\n" +
+                "import org.springframework.stereotype.Service;\n"+
                 "\n" +
                 "@Slf4j\n" +
+                "@Service\n" +
                 "public class " + FirstTrans.captureName(pkg) + "DataApiImpl implements " + FirstTrans.captureName(pkg) + "DataApi {\n" +
                 "    @Autowired\n" +
                 "    private "+FirstTrans.captureName(pkg)+"DataService "+pkg+"DataService;\n\n";

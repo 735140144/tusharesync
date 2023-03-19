@@ -6,8 +6,10 @@ import luckyboy.params.tmt.*;
 import luckyboy.service.TmtDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
 public class TmtDataApiImpl implements TmtDataApi {
     @Autowired
     private TmtDataService tmtDataService;

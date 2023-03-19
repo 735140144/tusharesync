@@ -6,8 +6,10 @@ import luckyboy.params.cb.*;
 import luckyboy.service.CbDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
 public class CbDataApiImpl implements CbDataApi {
     @Autowired
     private CbDataService cbDataService;
