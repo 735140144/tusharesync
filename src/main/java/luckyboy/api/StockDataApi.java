@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "",tags = "")
+@Api(value = "小沛数据",tags = "小沛数据")
 @RestController
 @RequestMapping(value = "/data/stock",method = RequestMethod.GET)
 public interface StockDataApi {
