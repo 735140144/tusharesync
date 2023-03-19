@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.tmt.TeleplayRecordMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into TELEPLAY_RECORD
+        (name,classify,types,org,report_date,license_key,episodes,shooting_date,prod_cycle,content,pro_opi,dept_opi,remarks)
+        values
+        <foreach collection="list" item="TeleplayRecordResult" separator=",">
+           (#{TeleplayRecordResult.name,jdbcType=VARCHAR},
+#{TeleplayRecordResult.classify,jdbcType=VARCHAR},
+#{TeleplayRecordResult.types,jdbcType=VARCHAR},
+#{TeleplayRecordResult.org,jdbcType=VARCHAR},
+#{TeleplayRecordResult.report_date,jdbcType=VARCHAR},
+#{TeleplayRecordResult.license_key,jdbcType=VARCHAR},
+#{TeleplayRecordResult.episodes,jdbcType=VARCHAR},
+#{TeleplayRecordResult.shooting_date,jdbcType=VARCHAR},
+#{TeleplayRecordResult.prod_cycle,jdbcType=VARCHAR},
+#{TeleplayRecordResult.content,jdbcType=VARCHAR},
+#{TeleplayRecordResult.pro_opi,jdbcType=VARCHAR},
+#{TeleplayRecordResult.dept_opi,jdbcType=VARCHAR},
+#{TeleplayRecordResult.remarks,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

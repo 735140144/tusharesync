@@ -3,7 +3,6 @@ package luckyboy.service;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.params.fut.*;
-import luckyboy.result.fut.FutWsrResult;
 import luckyboy.util.Result;
 
 @Api(value = "期货数据",tags = "期货数据")

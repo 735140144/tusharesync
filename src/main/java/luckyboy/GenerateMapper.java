@@ -9,23 +9,30 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import com.google.common.base.CaseFormat;
-import luckyboy.result.fund.*;
-import luckyboy.result.fut.*;
-import luckyboy.result.hsStock.BrokerRecommendResult;
-import luckyboy.result.index.*;
-import luckyboy.result.opt.OptBasicResult;
-import luckyboy.result.opt.OptDailyResult;
-import luckyboy.result.sge.SgeBasicResult;
-import luckyboy.result.sge.SgeDailyResult;
+import luckyboy.result.tmt.BoCinemaResult;
+import luckyboy.result.us.UsTradecalResult;
+import luckyboy.util.GetResults;
 
 
 public class GenerateMapper {
     public static void main(String[] args) throws Exception {
-        Class<?> resultClass = OptDailyResult.class;
-        GenerateSql.doSql(resultClass);
-        generateMapper(resultClass,"opt");
+        String pkg = "tmt";
+        String url = "/Users/mtlroyal/opt/tusharesynchronous/src/main/java/luckyboy/result/" + pkg;
+        GetResults getResults = new GetResults();
+        List<String> fileNames = getResults.getFileNames(url);
+        for (String fileName : fileNames) {
+            String resultName = fileName.split("Result")[0];
+            Class<?> resultClass = Class.forName("luckyboy.result." + pkg + "." + resultName + "Result");
+            GenerateSql.doSql(resultClass);
+            generateMapper(resultClass,pkg);
+        }
+        GetResults.generateService(pkg);
+        GetResults.generateServiceImpl(pkg);
+        GetResults.generateApi(pkg);
+        GetResults.generateApiServvice(pkg);
 
     }
 

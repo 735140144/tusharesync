@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.hk.HkMinsMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into HK_MINS
+        (ts_code,trade_time,open,close,high,low,vol,amount)
+        values
+        <foreach collection="list" item="HkMinsResult" separator=",">
+           (#{HkMinsResult.ts_code,jdbcType=VARCHAR},
+#{HkMinsResult.trade_time,jdbcType=VARCHAR},
+#{HkMinsResult.open,jdbcType=VARCHAR},
+#{HkMinsResult.close,jdbcType=VARCHAR},
+#{HkMinsResult.high,jdbcType=VARCHAR},
+#{HkMinsResult.low,jdbcType=VARCHAR},
+#{HkMinsResult.vol,jdbcType=VARCHAR},
+#{HkMinsResult.amount,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.us.UsBasicMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into US_BASIC
+        (ts_code,name,enname,classify,list_date,delist_date)
+        values
+        <foreach collection="list" item="UsBasicResult" separator=",">
+           (#{UsBasicResult.ts_code,jdbcType=VARCHAR},
+#{UsBasicResult.name,jdbcType=VARCHAR},
+#{UsBasicResult.enname,jdbcType=VARCHAR},
+#{UsBasicResult.classify,jdbcType=VARCHAR},
+#{UsBasicResult.list_date,jdbcType=VARCHAR},
+#{UsBasicResult.delist_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

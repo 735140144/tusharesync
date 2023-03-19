@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.cb.CbShareMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into CB_SHARE
+        (ts_code,publish_date,bond_short_name,end_date,issue_size,convert_price_initial,convert_price,convert_val,convert_vol,convert_ratio,acc_convert_val,acc_convert_vol,acc_convert_ratio,remain_size,total_shares)
+        values
+        <foreach collection="list" item="CbShareResult" separator=",">
+           (#{CbShareResult.ts_code,jdbcType=VARCHAR},
+#{CbShareResult.publish_date,jdbcType=VARCHAR},
+#{CbShareResult.bond_short_name,jdbcType=VARCHAR},
+#{CbShareResult.end_date,jdbcType=VARCHAR},
+#{CbShareResult.issue_size,jdbcType=VARCHAR},
+#{CbShareResult.convert_price_initial,jdbcType=VARCHAR},
+#{CbShareResult.convert_price,jdbcType=VARCHAR},
+#{CbShareResult.convert_val,jdbcType=VARCHAR},
+#{CbShareResult.convert_vol,jdbcType=VARCHAR},
+#{CbShareResult.convert_ratio,jdbcType=VARCHAR},
+#{CbShareResult.acc_convert_val,jdbcType=VARCHAR},
+#{CbShareResult.acc_convert_vol,jdbcType=VARCHAR},
+#{CbShareResult.acc_convert_ratio,jdbcType=VARCHAR},
+#{CbShareResult.remain_size,jdbcType=VARCHAR},
+#{CbShareResult.total_shares,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

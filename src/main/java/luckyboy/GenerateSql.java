@@ -4,7 +4,6 @@ import com.google.common.base.CaseFormat;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
-import luckyboy.result.*;
 import luckyboy.util.MysqlUtil;
 
 import java.lang.reflect.Field;
@@ -32,12 +31,12 @@ public class GenerateSql {
             Field field = declaredFields[i];
             //设置私有熟悉可访问
             field.setAccessible(true);
-            create.append("`").append(field.getName()).append("`").append(" varchar(255) ");
             //获取字段上注解
             ExplainAnnotation annotation = field.getAnnotation(ExplainAnnotation.class);
             if (annotation != null) {
+                create.append("`").append(field.getName()).append("` ").append(annotation.colType());
                 String comment = annotation.comment();
-                create.append("comment \"").append(comment).append("\"");
+                create.append(" comment \"").append(comment).append("\"");
             }
             create.append(" ,\n");
         }

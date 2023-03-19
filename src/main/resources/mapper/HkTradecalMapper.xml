@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.hk.HkTradecalMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into HK_TRADECAL
+        (cal_date,is_open,pretrade_date)
+        values
+        <foreach collection="list" item="HkTradecalResult" separator=",">
+           (#{HkTradecalResult.cal_date,jdbcType=VARCHAR},
+#{HkTradecalResult.is_open,jdbcType=VARCHAR},
+#{HkTradecalResult.pretrade_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

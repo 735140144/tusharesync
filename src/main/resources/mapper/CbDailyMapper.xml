@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.cb.CbDailyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into CB_DAILY
+        (ts_code,trade_date,pre_close,open,high,low,close,change,pct_chg,vol,amount,bond_value,bond_over_rate,cb_value,cb_over_rate)
+        values
+        <foreach collection="list" item="CbDailyResult" separator=",">
+           (#{CbDailyResult.ts_code,jdbcType=VARCHAR},
+#{CbDailyResult.trade_date,jdbcType=VARCHAR},
+#{CbDailyResult.pre_close,jdbcType=VARCHAR},
+#{CbDailyResult.open,jdbcType=VARCHAR},
+#{CbDailyResult.high,jdbcType=VARCHAR},
+#{CbDailyResult.low,jdbcType=VARCHAR},
+#{CbDailyResult.close,jdbcType=VARCHAR},
+#{CbDailyResult.change,jdbcType=VARCHAR},
+#{CbDailyResult.pct_chg,jdbcType=VARCHAR},
+#{CbDailyResult.vol,jdbcType=VARCHAR},
+#{CbDailyResult.amount,jdbcType=VARCHAR},
+#{CbDailyResult.bond_value,jdbcType=VARCHAR},
+#{CbDailyResult.bond_over_rate,jdbcType=VARCHAR},
+#{CbDailyResult.cb_value,jdbcType=VARCHAR},
+#{CbDailyResult.cb_over_rate,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

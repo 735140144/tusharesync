@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.tmt.FilmRecordMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FILM_RECORD
+        (rec_no,film_name,rec_org,script_writer,rec_result,rec_area,classified,date_range,ann_date)
+        values
+        <foreach collection="list" item="FilmRecordResult" separator=",">
+           (#{FilmRecordResult.rec_no,jdbcType=VARCHAR},
+#{FilmRecordResult.film_name,jdbcType=VARCHAR},
+#{FilmRecordResult.rec_org,jdbcType=VARCHAR},
+#{FilmRecordResult.script_writer,jdbcType=VARCHAR},
+#{FilmRecordResult.rec_result,jdbcType=VARCHAR},
+#{FilmRecordResult.rec_area,jdbcType=VARCHAR},
+#{FilmRecordResult.classified,jdbcType=VARCHAR},
+#{FilmRecordResult.date_range,jdbcType=VARCHAR},
+#{FilmRecordResult.ann_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

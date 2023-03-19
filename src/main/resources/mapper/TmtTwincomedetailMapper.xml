@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.tmt.TmtTwincomedetailMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into TMT_TWINCOMEDETAIL
+        (date,item,symbol,op_income,consop_income)
+        values
+        <foreach collection="list" item="TmtTwincomedetailResult" separator=",">
+           (#{TmtTwincomedetailResult.date,jdbcType=VARCHAR},
+#{TmtTwincomedetailResult.item,jdbcType=VARCHAR},
+#{TmtTwincomedetailResult.symbol,jdbcType=VARCHAR},
+#{TmtTwincomedetailResult.op_income,jdbcType=VARCHAR},
+#{TmtTwincomedetailResult.consop_income,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

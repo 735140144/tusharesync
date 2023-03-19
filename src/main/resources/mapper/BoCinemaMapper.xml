@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.tmt.BoCinemaMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into BO_CINEMA
+        (date,c_name,aud_count,att_ratio,day_amount,day_showcount,avg_price,p_pc,rank)
+        values
+        <foreach collection="list" item="BoCinemaResult" separator=",">
+           (#{BoCinemaResult.date,jdbcType=VARCHAR},
+#{BoCinemaResult.c_name,jdbcType=VARCHAR},
+#{BoCinemaResult.aud_count,jdbcType=VARCHAR},
+#{BoCinemaResult.att_ratio,jdbcType=VARCHAR},
+#{BoCinemaResult.day_amount,jdbcType=VARCHAR},
+#{BoCinemaResult.day_showcount,jdbcType=VARCHAR},
+#{BoCinemaResult.avg_price,jdbcType=VARCHAR},
+#{BoCinemaResult.p_pc,jdbcType=VARCHAR},
+#{BoCinemaResult.rank,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

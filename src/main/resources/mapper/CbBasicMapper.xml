@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.cb.CbBasicMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into CB_BASIC
+        (ts_code,bond_full_name,bond_short_name,cb_code,stk_code,stk_short_name,maturity,par,issue_price,issue_size,remain_size,value_date,maturity_date,rate_type,coupon_rate,add_rate,pay_per_year,list_date,delist_date,exchange,conv_start_date,conv_end_date,conv_stop_date,first_conv_price,conv_price,rate_clause,put_clause,maturity_put_price,call_clause,reset_clause,conv_clause,guarantor,guarantee_type,issue_rating,newest_rating,rating_comp)
+        values
+        <foreach collection="list" item="CbBasicResult" separator=",">
+           (#{CbBasicResult.ts_code,jdbcType=VARCHAR},
+#{CbBasicResult.bond_full_name,jdbcType=VARCHAR},
+#{CbBasicResult.bond_short_name,jdbcType=VARCHAR},
+#{CbBasicResult.cb_code,jdbcType=VARCHAR},
+#{CbBasicResult.stk_code,jdbcType=VARCHAR},
+#{CbBasicResult.stk_short_name,jdbcType=VARCHAR},
+#{CbBasicResult.maturity,jdbcType=VARCHAR},
+#{CbBasicResult.par,jdbcType=VARCHAR},
+#{CbBasicResult.issue_price,jdbcType=VARCHAR},
+#{CbBasicResult.issue_size,jdbcType=VARCHAR},
+#{CbBasicResult.remain_size,jdbcType=VARCHAR},
+#{CbBasicResult.value_date,jdbcType=VARCHAR},
+#{CbBasicResult.maturity_date,jdbcType=VARCHAR},
+#{CbBasicResult.rate_type,jdbcType=VARCHAR},
+#{CbBasicResult.coupon_rate,jdbcType=VARCHAR},
+#{CbBasicResult.add_rate,jdbcType=VARCHAR},
+#{CbBasicResult.pay_per_year,jdbcType=VARCHAR},
+#{CbBasicResult.list_date,jdbcType=VARCHAR},
+#{CbBasicResult.delist_date,jdbcType=VARCHAR},
+#{CbBasicResult.exchange,jdbcType=VARCHAR},
+#{CbBasicResult.conv_start_date,jdbcType=VARCHAR},
+#{CbBasicResult.conv_end_date,jdbcType=VARCHAR},
+#{CbBasicResult.conv_stop_date,jdbcType=VARCHAR},
+#{CbBasicResult.first_conv_price,jdbcType=VARCHAR},
+#{CbBasicResult.conv_price,jdbcType=VARCHAR},
+#{CbBasicResult.rate_clause,jdbcType=VARCHAR},
+#{CbBasicResult.put_clause,jdbcType=VARCHAR},
+#{CbBasicResult.maturity_put_price,jdbcType=VARCHAR},
+#{CbBasicResult.call_clause,jdbcType=VARCHAR},
+#{CbBasicResult.reset_clause,jdbcType=VARCHAR},
+#{CbBasicResult.conv_clause,jdbcType=VARCHAR},
+#{CbBasicResult.guarantor,jdbcType=VARCHAR},
+#{CbBasicResult.guarantee_type,jdbcType=VARCHAR},
+#{CbBasicResult.issue_rating,jdbcType=VARCHAR},
+#{CbBasicResult.newest_rating,jdbcType=VARCHAR},
+#{CbBasicResult.rating_comp,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

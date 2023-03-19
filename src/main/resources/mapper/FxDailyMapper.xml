@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fx.FxDailyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FX_DAILY
+        (ts_code,trade_date,bid_open,bid_close,bid_high,bid_low,ask_open,ask_close,ask_high,ask_low,tick_qty,exchange)
+        values
+        <foreach collection="list" item="FxDailyResult" separator=",">
+           (#{FxDailyResult.ts_code,jdbcType=VARCHAR},
+#{FxDailyResult.trade_date,jdbcType=VARCHAR},
+#{FxDailyResult.bid_open,jdbcType=VARCHAR},
+#{FxDailyResult.bid_close,jdbcType=VARCHAR},
+#{FxDailyResult.bid_high,jdbcType=VARCHAR},
+#{FxDailyResult.bid_low,jdbcType=VARCHAR},
+#{FxDailyResult.ask_open,jdbcType=VARCHAR},
+#{FxDailyResult.ask_close,jdbcType=VARCHAR},
+#{FxDailyResult.ask_high,jdbcType=VARCHAR},
+#{FxDailyResult.ask_low,jdbcType=VARCHAR},
+#{FxDailyResult.tick_qty,jdbcType=VARCHAR},
+#{FxDailyResult.exchange,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

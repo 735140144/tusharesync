@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.fx.FxObasicMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into FX_OBASIC
+        (ts_code,name,classify,exchange,min_unit,max_unit,pip,pip_cost,traget_spread,min_stop_distance,trading_hours,break_time)
+        values
+        <foreach collection="list" item="FxObasicResult" separator=",">
+           (#{FxObasicResult.ts_code,jdbcType=VARCHAR},
+#{FxObasicResult.name,jdbcType=VARCHAR},
+#{FxObasicResult.classify,jdbcType=VARCHAR},
+#{FxObasicResult.exchange,jdbcType=VARCHAR},
+#{FxObasicResult.min_unit,jdbcType=VARCHAR},
+#{FxObasicResult.max_unit,jdbcType=VARCHAR},
+#{FxObasicResult.pip,jdbcType=VARCHAR},
+#{FxObasicResult.pip_cost,jdbcType=VARCHAR},
+#{FxObasicResult.traget_spread,jdbcType=VARCHAR},
+#{FxObasicResult.min_stop_distance,jdbcType=VARCHAR},
+#{FxObasicResult.trading_hours,jdbcType=VARCHAR},
+#{FxObasicResult.break_time,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

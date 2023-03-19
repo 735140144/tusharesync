@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.cb.CbCallMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into CB_CALL
+        (ts_code,ann_date,call_type,is_call,call_date,call_price,call_price_tax,call_vol,call_amount,payment_date,call_reg_date)
+        values
+        <foreach collection="list" item="CbCallResult" separator=",">
+           (#{CbCallResult.ts_code,jdbcType=VARCHAR},
+#{CbCallResult.ann_date,jdbcType=VARCHAR},
+#{CbCallResult.call_type,jdbcType=VARCHAR},
+#{CbCallResult.is_call,jdbcType=VARCHAR},
+#{CbCallResult.call_date,jdbcType=VARCHAR},
+#{CbCallResult.call_price,jdbcType=VARCHAR},
+#{CbCallResult.call_price_tax,jdbcType=VARCHAR},
+#{CbCallResult.call_vol,jdbcType=VARCHAR},
+#{CbCallResult.call_amount,jdbcType=VARCHAR},
+#{CbCallResult.payment_date,jdbcType=VARCHAR},
+#{CbCallResult.call_reg_date,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

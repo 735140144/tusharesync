@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.hk.HkBasicMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into HK_BASIC
+        (ts_code,name,fullname,enname,cn_spell,market,list_status,list_date,delist_date,trade_unit,isin,curr_type)
+        values
+        <foreach collection="list" item="HkBasicResult" separator=",">
+           (#{HkBasicResult.ts_code,jdbcType=VARCHAR},
+#{HkBasicResult.name,jdbcType=VARCHAR},
+#{HkBasicResult.fullname,jdbcType=VARCHAR},
+#{HkBasicResult.enname,jdbcType=VARCHAR},
+#{HkBasicResult.cn_spell,jdbcType=VARCHAR},
+#{HkBasicResult.market,jdbcType=VARCHAR},
+#{HkBasicResult.list_status,jdbcType=VARCHAR},
+#{HkBasicResult.list_date,jdbcType=VARCHAR},
+#{HkBasicResult.delist_date,jdbcType=VARCHAR},
+#{HkBasicResult.trade_unit,jdbcType=VARCHAR},
+#{HkBasicResult.isin,jdbcType=VARCHAR},
+#{HkBasicResult.curr_type,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

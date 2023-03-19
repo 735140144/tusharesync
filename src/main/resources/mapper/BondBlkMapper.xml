@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.cb.BondBlkMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into BOND_BLK
+        (trade_date,ts_code,name,price,vol,amount)
+        values
+        <foreach collection="list" item="BondBlkResult" separator=",">
+           (#{BondBlkResult.trade_date,jdbcType=VARCHAR},
+#{BondBlkResult.ts_code,jdbcType=VARCHAR},
+#{BondBlkResult.name,jdbcType=VARCHAR},
+#{BondBlkResult.price,jdbcType=VARCHAR},
+#{BondBlkResult.vol,jdbcType=VARCHAR},
+#{BondBlkResult.amount,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

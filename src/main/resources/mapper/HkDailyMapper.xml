@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.hk.HkDailyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into HK_DAILY
+        (ts_code,trade_date,open,high,low,close,pre_close,change,pct_chg,vol,amount)
+        values
+        <foreach collection="list" item="HkDailyResult" separator=",">
+           (#{HkDailyResult.ts_code,jdbcType=VARCHAR},
+#{HkDailyResult.trade_date,jdbcType=VARCHAR},
+#{HkDailyResult.open,jdbcType=VARCHAR},
+#{HkDailyResult.high,jdbcType=VARCHAR},
+#{HkDailyResult.low,jdbcType=VARCHAR},
+#{HkDailyResult.close,jdbcType=VARCHAR},
+#{HkDailyResult.pre_close,jdbcType=VARCHAR},
+#{HkDailyResult.change,jdbcType=VARCHAR},
+#{HkDailyResult.pct_chg,jdbcType=VARCHAR},
+#{HkDailyResult.vol,jdbcType=VARCHAR},
+#{HkDailyResult.amount,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

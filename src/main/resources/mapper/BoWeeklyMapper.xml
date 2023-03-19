@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.tmt.BoWeeklyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into BO_WEEKLY
+        (date,name,avg_price,week_amount,total,list_day,p_pc,wom_index,up_ratio,rank)
+        values
+        <foreach collection="list" item="BoWeeklyResult" separator=",">
+           (#{BoWeeklyResult.date,jdbcType=VARCHAR},
+#{BoWeeklyResult.name,jdbcType=VARCHAR},
+#{BoWeeklyResult.avg_price,jdbcType=VARCHAR},
+#{BoWeeklyResult.week_amount,jdbcType=VARCHAR},
+#{BoWeeklyResult.total,jdbcType=VARCHAR},
+#{BoWeeklyResult.list_day,jdbcType=VARCHAR},
+#{BoWeeklyResult.p_pc,jdbcType=VARCHAR},
+#{BoWeeklyResult.wom_index,jdbcType=VARCHAR},
+#{BoWeeklyResult.up_ratio,jdbcType=VARCHAR},
+#{BoWeeklyResult.rank,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

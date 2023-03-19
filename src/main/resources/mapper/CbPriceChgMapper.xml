@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.cb.CbPriceChgMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into CB_PRICE_CHG
+        (ts_code,publish_date,bond_short_name,change_date,convert_price_initial,convertprice_bef,convertprice_aft)
+        values
+        <foreach collection="list" item="CbPriceChgResult" separator=",">
+           (#{CbPriceChgResult.ts_code,jdbcType=VARCHAR},
+#{CbPriceChgResult.publish_date,jdbcType=VARCHAR},
+#{CbPriceChgResult.bond_short_name,jdbcType=VARCHAR},
+#{CbPriceChgResult.change_date,jdbcType=VARCHAR},
+#{CbPriceChgResult.convert_price_initial,jdbcType=VARCHAR},
+#{CbPriceChgResult.convertprice_bef,jdbcType=VARCHAR},
+#{CbPriceChgResult.convertprice_aft,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

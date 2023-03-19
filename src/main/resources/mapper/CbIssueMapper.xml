@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.cb.CbIssueMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into CB_ISSUE
+        (ts_code,ann_date,res_ann_date,plan_issue_size,issue_size,issue_price,issue_type,issue_cost,onl_code,onl_name,onl_date,onl_size,onl_pch_vol,onl_pch_num,onl_pch_excess,onl_winning_rate,shd_ration_code,shd_ration_name,shd_ration_date,shd_ration_record_date,shd_ration_pay_date,shd_ration_price,shd_ration_ratio,shd_ration_size,shd_ration_vol,shd_ration_num,shd_ration_excess,offl_size,offl_deposit,offl_pch_vol,offl_pch_num,offl_pch_excess,offl_winning_rate,lead_underwriter,lead_underwriter_vol)
+        values
+        <foreach collection="list" item="CbIssueResult" separator=",">
+           (#{CbIssueResult.ts_code,jdbcType=VARCHAR},
+#{CbIssueResult.ann_date,jdbcType=VARCHAR},
+#{CbIssueResult.res_ann_date,jdbcType=VARCHAR},
+#{CbIssueResult.plan_issue_size,jdbcType=VARCHAR},
+#{CbIssueResult.issue_size,jdbcType=VARCHAR},
+#{CbIssueResult.issue_price,jdbcType=VARCHAR},
+#{CbIssueResult.issue_type,jdbcType=VARCHAR},
+#{CbIssueResult.issue_cost,jdbcType=VARCHAR},
+#{CbIssueResult.onl_code,jdbcType=VARCHAR},
+#{CbIssueResult.onl_name,jdbcType=VARCHAR},
+#{CbIssueResult.onl_date,jdbcType=VARCHAR},
+#{CbIssueResult.onl_size,jdbcType=VARCHAR},
+#{CbIssueResult.onl_pch_vol,jdbcType=VARCHAR},
+#{CbIssueResult.onl_pch_num,jdbcType=VARCHAR},
+#{CbIssueResult.onl_pch_excess,jdbcType=VARCHAR},
+#{CbIssueResult.onl_winning_rate,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_code,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_name,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_date,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_record_date,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_pay_date,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_price,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_ratio,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_size,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_vol,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_num,jdbcType=VARCHAR},
+#{CbIssueResult.shd_ration_excess,jdbcType=VARCHAR},
+#{CbIssueResult.offl_size,jdbcType=VARCHAR},
+#{CbIssueResult.offl_deposit,jdbcType=VARCHAR},
+#{CbIssueResult.offl_pch_vol,jdbcType=VARCHAR},
+#{CbIssueResult.offl_pch_num,jdbcType=VARCHAR},
+#{CbIssueResult.offl_pch_excess,jdbcType=VARCHAR},
+#{CbIssueResult.offl_winning_rate,jdbcType=VARCHAR},
+#{CbIssueResult.lead_underwriter,jdbcType=VARCHAR},
+#{CbIssueResult.lead_underwriter_vol,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

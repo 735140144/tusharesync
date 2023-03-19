@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.tmt.BoMonthlyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into BO_MONTHLY
+        (date,name,list_date,avg_price,month_amount,list_day,p_pc,wom_index,m_ratio,rank)
+        values
+        <foreach collection="list" item="BoMonthlyResult" separator=",">
+           (#{BoMonthlyResult.date,jdbcType=VARCHAR},
+#{BoMonthlyResult.name,jdbcType=VARCHAR},
+#{BoMonthlyResult.list_date,jdbcType=VARCHAR},
+#{BoMonthlyResult.avg_price,jdbcType=VARCHAR},
+#{BoMonthlyResult.month_amount,jdbcType=VARCHAR},
+#{BoMonthlyResult.list_day,jdbcType=VARCHAR},
+#{BoMonthlyResult.p_pc,jdbcType=VARCHAR},
+#{BoMonthlyResult.wom_index,jdbcType=VARCHAR},
+#{BoMonthlyResult.m_ratio,jdbcType=VARCHAR},
+#{BoMonthlyResult.rank,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

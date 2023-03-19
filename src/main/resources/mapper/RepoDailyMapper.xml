@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.cb.RepoDailyMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into REPO_DAILY
+        (ts_code,trade_date,repo_maturity,pre_close,open,high,low,close,weight,weight_r,amount,num)
+        values
+        <foreach collection="list" item="RepoDailyResult" separator=",">
+           (#{RepoDailyResult.ts_code,jdbcType=VARCHAR},
+#{RepoDailyResult.trade_date,jdbcType=VARCHAR},
+#{RepoDailyResult.repo_maturity,jdbcType=VARCHAR},
+#{RepoDailyResult.pre_close,jdbcType=VARCHAR},
+#{RepoDailyResult.open,jdbcType=VARCHAR},
+#{RepoDailyResult.high,jdbcType=VARCHAR},
+#{RepoDailyResult.low,jdbcType=VARCHAR},
+#{RepoDailyResult.close,jdbcType=VARCHAR},
+#{RepoDailyResult.weight,jdbcType=VARCHAR},
+#{RepoDailyResult.weight_r,jdbcType=VARCHAR},
+#{RepoDailyResult.amount,jdbcType=VARCHAR},
+#{RepoDailyResult.num,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

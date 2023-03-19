@@ -2,8 +2,6 @@ package luckyboy.api;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import luckyboy.params.sge.SgeBasicParams;
-import luckyboy.params.sge.SgeDailyParams;
 import luckyboy.util.Result;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestMapping;
