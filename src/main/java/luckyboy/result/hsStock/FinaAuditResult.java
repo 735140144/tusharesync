@@ -4,9 +4,11 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 
 @Data
+@ResultComment(comment = "财务审计意见")
 public class FinaAuditResult extends Formart {
     @ExplainAnnotation(comment = "股票代码")
     @KeyAnnotation

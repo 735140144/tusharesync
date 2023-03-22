@@ -1,79 +1,64 @@
 package luckyboy.result.hsStock;
 
 import lombok.Data;
+import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "每日指标")
 public class DailyBasicResult extends Formart {
-    /**
-     * TS股票代码
-     */
+
+    @ExplainAnnotation(comment = " TS股票代码")
     private String ts_code;
-    /**
-     * 交易日期
-     */
+
+    @ExplainAnnotation(comment = " 交易日期")
     private String trade_date;
-    /**
-     *当日收盘价
-     */
+
+    @ExplainAnnotation(comment = "当日收盘价")
     private String close;
-    /**
-     *换手率（%）
-     */
+
+    @ExplainAnnotation(comment = "换手率（%）")
     private String turnover_rate;
-    /**
-     *换手率（自由流通股）
-     */
+
+    @ExplainAnnotation(comment = "换手率（自由流通股）")
     private String turnover_rate_f;
-    /**
-     *量比
-     */
+
+    @ExplainAnnotation(comment = "量比")
     private String volume_ratio;
-    /**
-     *市盈率（总市值/净利润， 亏损的PE为空）
-     */
+
+    @ExplainAnnotation(comment = "市盈率（总市值/净利润， 亏损的PE为空）")
     private String pe;
-    /**
-     *市盈率（TTM，亏损的PE为空）
-     */
+
+    @ExplainAnnotation(comment = "市盈率（TTM，亏损的PE为空）")
     private String pe_ttm;
-    /**
-     *市净率（总市值/净资产）
-     */
+
+    @ExplainAnnotation(comment = "市净率（总市值/净资产）")
     private String pb;
-    /**
-     *市销率
-     */
+
+    @ExplainAnnotation(comment = "市销率")
     private String ps;
-    /**
-     *市销率（TTM）
-     */
+
+    @ExplainAnnotation(comment = "市销率（TTM）")
     private String ps_ttm;
-    /**
-     *股息率 （%）
-     */
+
+    @ExplainAnnotation(comment = "股息率 （%）")
     private String dv_ratio;
-    /**
-     *股息率（TTM）（%）
-     */
+
+    @ExplainAnnotation(comment = "股息率（TTM）（%）")
     private String dv_ttm;
-    /**
-     *总股本 （万股）
-     */
+
+    @ExplainAnnotation(comment = "总股本 （万股）")
     private String total_share;
-    /**
-     *流通股本 （万股）
-     */
+
+    @ExplainAnnotation(comment = "流通股本 （万股）")
     private String float_share;
-    /**
-     *自由流通股本 （万）
-     */
+
+    @ExplainAnnotation(comment = "自由流通股本 （万）")
     private String free_share;
-    /**
-     *总市值 （万元）
-     */
+
+    @ExplainAnnotation(comment = "总市值 （万元）")
     private String total_mv;
-    /**
-     *流通市值（万元）
-     */
+
+    @ExplainAnnotation(comment = "流通市值（万元）")
     private String circ_mv;
 }

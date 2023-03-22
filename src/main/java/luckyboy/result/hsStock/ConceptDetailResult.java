@@ -4,8 +4,10 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "概念股列表")
 public class ConceptDetailResult extends Formart {
     @ExplainAnnotation(comment = "概念代码")
     @KeyAnnotation

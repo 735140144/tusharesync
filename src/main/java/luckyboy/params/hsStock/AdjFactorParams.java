@@ -2,25 +2,18 @@ package luckyboy.params.hsStock;
 
 import lombok.Builder;
 import lombok.Data;
+import luckyboy.common.ExplainAnnotation;
 import luckyboy.util.Formart;
 @Data
 @Builder
 public class AdjFactorParams extends Formart {
-    /**
-     * 股票代码
-     */
+     @ExplainAnnotation(comment = "股票代码")
     private String ts_code;
-    /**
-     * 交易日期(YYYYMMDD，下同)
-     */
+     @ExplainAnnotation(comment = "交易日期(YYYYMMDD，下同)")
     private String trade_date;
-    /**
-     * 开始日期
-     */
+     @ExplainAnnotation(comment = "开始日期")
     private String start_date;
-    /**
-     * 结束日期
-     */
+     @ExplainAnnotation(comment = "结束日期")
     private String end_date;
 
 }

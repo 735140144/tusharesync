@@ -1,51 +1,43 @@
 package luckyboy.result.hsStock;
 
 import lombok.Data;
+import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "沪深股通十大成交股")
 public class HsgtTop10Result extends Formart {
-    /**
-     *交易日期
-     */
+    
+    @ExplainAnnotation(comment="交易日期")
     private String trade_date;
-    /**
-     *股票代码
-     */
+    
+    @ExplainAnnotation(comment="股票代码")
     private String ts_code;
-    /**
-     *股票名称
-     */
+    
+    @ExplainAnnotation(comment="股票名称")
     private String name;
-    /**
-     *收盘价
-     */
+    
+    @ExplainAnnotation(comment="收盘价")
     private String close;
-    /**
-     *涨跌额
-     */
+    
+    @ExplainAnnotation(comment="涨跌额")
     private String change;
-    /**
-     *资金排名
-     */
+    
+    @ExplainAnnotation(comment="资金排名")
     private String rank;
-    /**
-     *市场类型（1：沪市 3：深市）
-     */
+    
+    @ExplainAnnotation(comment="市场类型（1：沪市 3：深市）")
     private String market_type;
-    /**
-     *成交金额（元）
-     */
+    
+    @ExplainAnnotation(comment="成交金额（元）")
     private String amount;
-    /**
-     *净成交金额（元）
-     */
+    
+    @ExplainAnnotation(comment="净成交金额（元）")
     private String net_amount;
-    /**
-     *买入金额（元）
-     */
+    
+    @ExplainAnnotation(comment="买入金额（元）")
     private String buy;
-    /**
-     *卖出金额（元）
-     */
+    
+    @ExplainAnnotation(comment="卖出金额（元）")
     private String sell;
 }

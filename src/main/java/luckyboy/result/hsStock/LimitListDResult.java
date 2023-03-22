@@ -4,8 +4,10 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "涨跌停和炸板数据")
 public class LimitListDResult extends Formart {
     @ExplainAnnotation(comment = "交易日期")
     @KeyAnnotation
