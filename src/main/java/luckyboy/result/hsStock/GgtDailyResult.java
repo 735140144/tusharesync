@@ -1,7 +1,9 @@
 package luckyboy.result.hsStock;
 
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
 import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
@@ -9,6 +11,8 @@ import luckyboy.util.Formart;
 public class GgtDailyResult extends Formart {
 
     @ExplainAnnotation(comment = " 交易日期")
+    @KeyAnnotation
+    @BucketAnnotation
     private String trade_date;
 
     @ExplainAnnotation(comment = "买入成交金额（亿元）")

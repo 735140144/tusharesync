@@ -1,35 +1,36 @@
 package luckyboy.result.hsStock;
 
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
+import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "管理层薪酬和持股信息")
 public class StkRewardsResult extends Formart {
-    /**
-     * TS股票代码
-     */
+
+    @ExplainAnnotation(comment = "TS股票代码")
+    @KeyAnnotation
     private String ts_code;
-    /**
-     * 公告日期
-     */
+
+    @ExplainAnnotation(comment = "公告日期")
+    @KeyAnnotation
+    @BucketAnnotation
     private String ann_date;
-    /**
-     * 截止日期
-     */
+
+    @ExplainAnnotation(comment = "截止日期")
     private String end_date;
-    /**
-     * 姓名
-     */
+
+    @ExplainAnnotation(comment = "姓名")
     private String name;
-    /**
-     * 职务
-     */
+
+    @ExplainAnnotation(comment = "职务")
     private String title;
-    /**
-     * 报酬
-     */
+
+    @ExplainAnnotation(comment = "报酬")
     private String reward;
-    /**
-     * 持股数
-     */
+
+    @ExplainAnnotation(comment = "持股数")
     private String hold_vol;
 }

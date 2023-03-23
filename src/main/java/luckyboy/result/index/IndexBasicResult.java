@@ -4,8 +4,10 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "指数基本信息")
 public class IndexBasicResult extends Formart {
     @ExplainAnnotation(comment = "TS代码")
     @KeyAnnotation

@@ -1,7 +1,9 @@
 package luckyboy.result.hsStock;
 
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
 import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
@@ -9,9 +11,12 @@ import luckyboy.util.Formart;
 public class HsConstResult extends Formart {
     
     @ExplainAnnotation(comment=" TS代码")
+    @KeyAnnotation
+    @BucketAnnotation
     private String ts_code;
     
     @ExplainAnnotation(comment=" 沪深港通类型SH沪SZ深")
+    @KeyAnnotation
     private String hs_type;
     
     @ExplainAnnotation(comment=" 纳入日期")

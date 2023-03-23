@@ -73,7 +73,7 @@ public class GenerateSql {
                         "  \"replication_num\" = \"3\"\n" +
                         ")");
         System.out.println(create.toString());
-        MysqlUtil.createTable(create.toString());
+//        MysqlUtil.createTable(create.toString());
     }
 
 }

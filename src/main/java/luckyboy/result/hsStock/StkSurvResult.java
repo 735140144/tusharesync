@@ -4,8 +4,10 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "机构调研数据")
 public class StkSurvResult extends Formart {
     @ExplainAnnotation(comment = "股票代码")
     @KeyAnnotation

@@ -4,8 +4,10 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "现货黄金日行情")
 public class SgeDailyResult extends Formart {
     @ExplainAnnotation(comment = "现货合约代码")
     @KeyAnnotation

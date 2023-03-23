@@ -50,10 +50,9 @@ public class BasicDataServiceImpl implements BasicDataService {
     public static final String SH = "SH";
 
     @Override
-    public Result<?> StockBasic() {
+    public Result<?> StockBasic(StockBasicParams params) {
         log.info("开始拉取股票列表,时间戳：{}",System.currentTimeMillis());
-        StockBasicParams basicParams = StockBasicParams.builder().build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_basic").params(basicParams.toJSONObject()).fields(new StockBasicResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_basic").params(params.toJSONObject()).fields(new StockBasicResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StockBasicResult> trans = transResult.trans(jsonObject, StockBasicResult.class);
         if (trans.size() > 0) {
@@ -67,10 +66,9 @@ public class BasicDataServiceImpl implements BasicDataService {
     }
 
     @Override
-    public Result<?> TradeCal(String start,String end) {
-        log.info("开始拉取交易日历,时间戳：{},开始时间：{},结束时间：{}",System.currentTimeMillis(),start,end);
-        TradeCalParams tradeCalParams = TradeCalParams.builder().start_date(start).end_date(end).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("trade_cal").params(tradeCalParams.toJSONObject()).fields(new TraderCalResult().getFields()).build();
+    public Result<?> TradeCal(TradeCalParams params) {
+        log.info("开始拉取交易日历,时间戳：{}",System.currentTimeMillis());
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("trade_cal").params(params.toJSONObject()).fields(new TraderCalResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<TraderCalResult> trans = transResult.trans(jsonObject, TraderCalResult.class);
         if (trans.size() > 0) {
@@ -84,10 +82,9 @@ public class BasicDataServiceImpl implements BasicDataService {
     }
 
     @Override
-    public Result<?> NameChange(String ts_code,String start,String end) {
-        log.info("开始拉取股票曾用名,时间戳：{},代码：{}",System.currentTimeMillis(),ts_code);
-        NameChangeParams nameChangeParams = NameChangeParams.builder().ts_code(ts_code).start_date(start).end_date(end).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("namechange").params(nameChangeParams.toJSONObject()).fields(new NameChangeResult().getFields()).build();
+    public Result<?> NameChange(NameChangeParams params) {
+        log.info("开始拉取股票曾用名,时间戳：{}",System.currentTimeMillis());
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("namechange").params(params.toJSONObject()).fields(new NameChangeResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<NameChangeResult> trans = transResult.trans(jsonObject, NameChangeResult.class);
         if (trans.size() > 0) {
@@ -101,15 +98,14 @@ public class BasicDataServiceImpl implements BasicDataService {
     }
 
     @Override
-    public Result<?> HsConst(String hs_type) {
-        log.info("开始拉取沪股通、深股通成分数据,时间戳：{},类型：{}",System.currentTimeMillis(),hs_type);
-        HsConstParams hsConstParams = HsConstParams.builder().hs_type(hs_type).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("hs_const").params(hsConstParams.toJSONObject()).fields(new HsConstResult().getFields()).build();
+    public Result<?> HsConst(HsConstParams params) {
+        log.info("开始拉取沪股通、深股通成分数据,时间戳：{},类型：{}",System.currentTimeMillis(),params.getHs_type());
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("hs_const").params(params.toJSONObject()).fields(new HsConstResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<HsConstResult> trans = transResult.trans(jsonObject, HsConstResult.class);
         if (trans.size() > 0) {
             log.info("开始写入数据库，时间戳：{}",System.currentTimeMillis());
-            if (SH.equals(hs_type)){
+            if (SH.equals(params.getHs_type())){
                 hsConstMapper.h_insert(trans);
             }else {
                 hsConstMapper.s_insert(trans);
@@ -122,10 +118,9 @@ public class BasicDataServiceImpl implements BasicDataService {
     }
 
     @Override
-    public Result<?> StockCompany(String exchange) {
+    public Result<?> StockCompany(StockCompanyParams params) {
         log.info("开始拉取上市公司基本信息,时间戳：{}",System.currentTimeMillis());
-        StockCompanyParams companyParams = StockCompanyParams.builder().exchange(exchange).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_company").params(companyParams.toJSONObject()).fields(new StockCompanyResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stock_company").params(params.toJSONObject()).fields(new StockCompanyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StockCompanyResult> trans = transResult.trans(jsonObject, StockCompanyResult.class);
         if (trans.size() > 0) {
@@ -139,10 +134,9 @@ public class BasicDataServiceImpl implements BasicDataService {
     }
 
     @Override
-    public Result<?> StkManagers(String ts_code,String start) {
-        log.info("开始拉取上市公司管理层信息,时间戳：{},代码：{},开始时间：{}",System.currentTimeMillis(),ts_code,start);
-        StkManagersParams managersParams = StkManagersParams.builder().ts_code(ts_code).start_date(start).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stk_managers").params(managersParams.toJSONObject()).fields(new StkManagersResult().getFields()).build();
+    public Result<?> StkManagers(StkManagersParams params) {
+        log.info("开始拉取上市公司管理层信息,时间戳：{},代码：{},开始时间：{}",System.currentTimeMillis(),params.getTs_code(),params.getStart_date());
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stk_managers").params(params.toJSONObject()).fields(new StkManagersResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StkManagersResult> trans = transResult.trans(jsonObject, StkManagersResult.class);
         if (trans.size() > 0) {
@@ -156,10 +150,9 @@ public class BasicDataServiceImpl implements BasicDataService {
     }
 
     @Override
-    public Result<?> StkRewards(String ts_code,String ann_date) {
-        log.info("开始拉取管理层薪酬和持股信息,时间戳：{},代码：{},结束时间：{}",System.currentTimeMillis(),ts_code,ann_date);
-        StkRewardsParams rewardsParams = StkRewardsParams.builder().ts_code(ts_code).ann_date(ann_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stk_rewards").params(rewardsParams.toJSONObject()).fields(new StkRewardsResult().getFields()).build();
+    public Result<?> StkRewards(StkRewardsParams params) {
+        log.info("开始拉取管理层薪酬和持股信息,时间戳：{},代码：{},结束时间：{}",System.currentTimeMillis(),params.getTs_code(),params.getAnn_date());
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stk_rewards").params(params.toJSONObject()).fields(new StkRewardsResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StkRewardsResult> trans = transResult.trans(jsonObject, StkRewardsResult.class);
         if (trans.size() > 0) {
@@ -173,10 +166,9 @@ public class BasicDataServiceImpl implements BasicDataService {
     }
 
     @Override
-    public Result<?> NewShare(String start,String end) {
-        log.info("开始拉取IPO新股列表信息,时间戳：{},开始时间：{},结束时间：{}",System.currentTimeMillis(),start,end);
-        NewShareParams newShareParams = NewShareParams.builder().start_date(start).end_date(end).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("new_share").params(newShareParams.toJSONObject()).fields(new NewShareResult().getFields()).build();
+    public Result<?> NewShare(NewShareParams params) {
+        log.info("开始拉取IPO新股列表信息,时间戳：{},开始时间：{},结束时间：{}",System.currentTimeMillis(),params.getStart_date(),params.getEnd_date());
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("new_share").params(params.toJSONObject()).fields(new NewShareResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<NewShareResult> trans = transResult.trans(jsonObject, NewShareResult.class);
         if (trans.size() > 0) {

@@ -14,8 +14,12 @@ import java.util.List;
 @Slf4j
 public class test {
     public static void main(String[] args) throws ClassNotFoundException {
-        Class classobj2 = Class.forName("luckyboy.result.cb.BondBlkResult");
-        System.out.println(classobj2.getSimpleName());
+        String pkg = "stock";
+        String property = System.getProperty("user.dir");
+        String pkgUrl = property+"/src/main/java/luckyboy/result";
+        GetResults getResults = new GetResults();
+        List<String> fileNames = getResults.getFileNames(pkgUrl);
+
     }
 
     private Result<?> dothis(){

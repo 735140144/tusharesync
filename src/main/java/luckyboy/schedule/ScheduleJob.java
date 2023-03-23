@@ -27,31 +27,36 @@ public class ScheduleJob {
 
     @Scheduled(cron = "0 0 9 ? * 1-5")
     public void StockBasic(){
-        basicDataService.StockBasic();
+        StockBasicParams build = StockBasicParams.builder().build();
+        basicDataService.StockBasic(build);
     }
 
     @Scheduled(cron = "0 0 9 1 1 ?")
     public void TradeCal(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        basicDataService.TradeCal(s,null);
+        TradeCalParams build = TradeCalParams.builder().start_date(DataFormat.NowDay()).build();
+        basicDataService.TradeCal(build);
     }
 
     @Scheduled(cron = "30 0 9 ? * 1-5")
     public void NameChange(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        basicDataService.NameChange(null,s,null);
+        NameChangeParams build = NameChangeParams.builder().start_date(DataFormat.NowDay()).build();
+        basicDataService.NameChange(build);
     }
 
     @Scheduled(cron = "0 0 15 ? * 1")
     public void HsConst(){
-        basicDataService.HsConst("SH");
-        basicDataService.HsConst("SZ");
+        HsConstParams sh = HsConstParams.builder().hs_type("SH").build();
+        basicDataService.HsConst(sh);
+        HsConstParams sz = HsConstParams.builder().hs_type("SZ").build();
+        basicDataService.HsConst(sz);
     }
 
     @Scheduled(cron = "0 0 9 ? * 7")
     public void StockCompany(){
-        basicDataService.StockCompany("SSE");
-        basicDataService.StockCompany("SZSE");
+        StockCompanyParams sse = StockCompanyParams.builder().exchange("SSE").build();
+        basicDataService.StockCompany(sse);
+        StockCompanyParams szse = StockCompanyParams.builder().exchange("SZSE").build();
+        basicDataService.StockCompany(szse);
     }
 
 //    @Scheduled(cron = "0 0 8 * * ?")
@@ -62,86 +67,87 @@ public class ScheduleJob {
 
     @Scheduled(cron = "0 30 8 * * ?")
     public void NewShare(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        basicDataService.NewShare(s,s);
+        NewShareParams build = NewShareParams.builder().start_date(DataFormat.NowDay()).end_date(DataFormat.NowDay()).build();
+        basicDataService.NewShare(build);
     }
 
     @Scheduled(cron = "0 0 19 ? * 1-5")
     public void daily(){
         String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.daily(null,s,null,null);
+        DailyWeeklyMonthlyParams build = DailyWeeklyMonthlyParams.builder().trade_date(DataFormat.NowDay()).build();
+        marketDataService.daily(build);
     }
 
     @Scheduled(cron = "30 0 19 ? * 6")
     public void weekly(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis()-86400000);
-        marketDataService.weekly(null,s,null,null);
+        DailyWeeklyMonthlyParams build = DailyWeeklyMonthlyParams.builder().trade_date(DataFormat.YesterDay()).build();
+        marketDataService.weekly(build);
     }
 
     @Scheduled(cron = "0 1 19 1 * ?")
     public void monthly(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis()-86400000);
-        marketDataService.monthly(null,s,null,null);
+        DailyWeeklyMonthlyParams build = DailyWeeklyMonthlyParams.builder().trade_date(DataFormat.YesterDay()).build();
+        marketDataService.monthly(build);
     }
 
     @Scheduled(cron = "0 2 19 ? * 1-5")
     public void adjFactor(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.adjFactor(null,s,null,null);
+        AdjFactorParams build = AdjFactorParams.builder().trade_date(DataFormat.NowDay()).build();
+        marketDataService.adjFactor(build);
     }
 
     @Scheduled(cron = "0 3 19 ? * 1-5")
     public void suspendD(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.suspendD(null,s,null,null);
+        SuspendDParams build = SuspendDParams.builder().trade_date(DataFormat.NowDay()).build();
+        marketDataService.suspendD(build);
     }
 
     @Scheduled(cron = "0 4 19 ? * 1-5")
     public void daily_basic(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.daily_basic(null,s,null,null);
+        DailyBasicParams build = DailyBasicParams.builder().trade_date(DataFormat.NowDay()).build();
+        marketDataService.daily_basic(build);
     }
 
     @Scheduled(cron = "0 4 19 ? * 1-5")
     public void moneyflow(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.moneyflow(null,s,null,null);
+        MoneyFlowParams build = MoneyFlowParams.builder().trade_date(DataFormat.NowDay()).build();
+        marketDataService.moneyflow(build);
     }
 
     @Scheduled(cron = "0 20 9 ? * 1-5")
     public void stkLimit(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.stkLimit(null,s,null,null);
+        StkLimitParams build = StkLimitParams.builder().trade_date(DataFormat.NowDay()).build();
+        marketDataService.stkLimit(build);
     }
 
     @Scheduled(cron = "30 4 22 ? * 1-5")
     public void moneyflowHsgt(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.moneyflowHsgt(s,null,null);
+        MoneyFlowHsgtParams build = MoneyFlowHsgtParams.builder().trade_date(DataFormat.NowDay()).build();
+        marketDataService.moneyflowHsgt(build);
     }
 
     @Scheduled(cron = "0 5 23 ? * 1-5")
     public void hsgtTop10(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.hsgtTop10(null,s,null,null);
+        HsgtTop10Params build = HsgtTop10Params.builder().trade_date(DataFormat.NowDay()).build();
+        marketDataService.hsgtTop10(build);
     }
 
     @Scheduled(cron = "0 6 23 ? * 1-5")
     public void ggtTop10(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.ggtTop10(null,s,null,null);
+        GgtTop10Params build = GgtTop10Params.builder().trade_date(DataFormat.NowDay()).build();
+        marketDataService.ggtTop10(build);
     }
 
     @Scheduled(cron = "0 7 23 ? * 1-5")
     public void ggtDaily(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis());
-        marketDataService.ggtDaily(s,null,null);
+        GgtDailyParams build = GgtDailyParams.builder().trade_date(DataFormat.NowDay()).build();
+        marketDataService.ggtDaily(build);
     }
 
     @Scheduled(cron = "0 5 9 1 * ?")
     public void ggtMonthly(){
-        String s = DataFormat.DTFormat(System.currentTimeMillis()-86400000);
-        marketDataService.ggtMonthly(s,null,null);
+        GgtMonthlyParams build = GgtMonthlyParams.builder().month(DataFormat.NowMonth()).build();
+        marketDataService.ggtMonthly(build);
     }
 
     /**

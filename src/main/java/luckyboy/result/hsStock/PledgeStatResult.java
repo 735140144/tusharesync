@@ -4,9 +4,11 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 
 @Data
+@ResultComment(comment = "股权质押统计数据")
 public class PledgeStatResult extends Formart {
     @ExplainAnnotation(comment = "代码")
     @KeyAnnotation

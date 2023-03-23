@@ -1,35 +1,35 @@
 package luckyboy.result.hsStock;
 
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
+import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "沪深港通资金流向")
 public class MoneyFlowHsgtResult extends Formart {
-    /**
-     *交易日期
-     */
+    
+    @ExplainAnnotation(comment="交易日期")
+    @KeyAnnotation
+    @BucketAnnotation
     private String trade_date;
-    /**
-     *港股通（上海）
-     */
+    
+    @ExplainAnnotation(comment="港股通（上海）")
     private String ggt_ss;
-    /**
-     *港股通（深圳）
-     */
+    
+    @ExplainAnnotation(comment="港股通（深圳）")
     private String ggt_sz;
-    /**
-     *沪股通（百万元）
-     */
+    
+    @ExplainAnnotation(comment="沪股通（百万元）")
     private String hgt;
-    /**
-     *深股通（百万元）
-     */
+    
+    @ExplainAnnotation(comment="深股通（百万元）")
     private String sgt;
-    /**
-     *北向资金（百万元）
-     */
+    
+    @ExplainAnnotation(comment="北向资金（百万元）")
     private String north_money;
-    /**
-     *南向资金（百万元）
-     */
+    
+    @ExplainAnnotation(comment="南向资金（百万元）")
     private String south_money;
 }

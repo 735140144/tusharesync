@@ -57,10 +57,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     private FailLogMapper failLogMapper;
 
     @Override
-    public Result<?> daily(String ts_code, String trade_date, String start_date, String end_date) {
+    public Result<?> daily(DailyWeeklyMonthlyParams params) {
         log.info("开始拉取日线行情列表,时间戳：{}",System.currentTimeMillis());
-        DailyWeeklyMonthlyParams dailyWeeklyMonthlyParams = DailyWeeklyMonthlyParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("daily").params(dailyWeeklyMonthlyParams.toJSONObject()).fields(new DailyResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("daily").params(params.toJSONObject()).fields(new DailyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<DailyResult> trans = transResult.trans(jsonObject, DailyResult.class);
         if (trans.size() > 0){
@@ -75,10 +74,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> weekly(String ts_code, String trade_date, String start_date, String end_date) {
+    public Result<?> weekly(DailyWeeklyMonthlyParams params) {
         log.info("开始拉取周线行情列表,时间戳：{}",System.currentTimeMillis());
-        DailyWeeklyMonthlyParams dailyWeeklyMonthlyParams = DailyWeeklyMonthlyParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("weekly").params(dailyWeeklyMonthlyParams.toJSONObject()).fields(new WeeklyResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("weekly").params(params.toJSONObject()).fields(new WeeklyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<WeeklyResult> trans = transResult.trans(jsonObject, WeeklyResult.class);
         if (trans.size() > 0) {
@@ -92,10 +90,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> monthly(String ts_code, String trade_date, String start_date, String end_date) {
+    public Result<?> monthly(DailyWeeklyMonthlyParams params) {
         log.info("开始拉取月线行情列表,时间戳：{}",System.currentTimeMillis());
-        DailyWeeklyMonthlyParams dailyWeeklyMonthlyParams = DailyWeeklyMonthlyParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("monthly").params(dailyWeeklyMonthlyParams.toJSONObject()).fields(new MonthlyResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("monthly").params(params.toJSONObject()).fields(new MonthlyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<MonthlyResult> trans = transResult.trans(jsonObject, MonthlyResult.class);
         if (trans.size() > 0) {
@@ -109,10 +106,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> adjFactor(String ts_code, String trade_date, String start_date, String end_date) {
+    public Result<?> adjFactor(AdjFactorParams params) {
         log.info("开始拉取复权因子列表,时间戳：{}",System.currentTimeMillis());
-        AdjFactorParams factorParams = AdjFactorParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("adj_factor").params(factorParams.toJSONObject()).fields(new AdjFactorResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("adj_factor").params(params.toJSONObject()).fields(new AdjFactorResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<AdjFactorResult> trans = transResult.trans(jsonObject, AdjFactorResult.class);
         if (trans.size() > 0) {
@@ -126,10 +122,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> suspendD(String ts_code, String trade_date, String start_date, String end_date) {
+    public Result<?> suspendD(SuspendDParams params) {
         log.info("开始拉取每日停复牌信息,时间戳：{}",System.currentTimeMillis());
-        SuspendDParams suspendDParams = SuspendDParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("suspend_d").params(suspendDParams.toJSONObject()).fields(new SuspendDResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("suspend_d").params(params.toJSONObject()).fields(new SuspendDResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<SuspendDResult> trans = transResult.trans(jsonObject, SuspendDResult.class);
         if (trans.size() > 0) {
@@ -143,10 +138,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> daily_basic(String ts_code, String trade_date, String start_date, String end_date) {
+    public Result<?> daily_basic(DailyBasicParams params) {
         log.info("开始拉取每日指标信息,时间戳：{}",System.currentTimeMillis());
-        DailyBasicParams dailyBasicParams = DailyBasicParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("daily_basic").params(dailyBasicParams.toJSONObject()).fields(new DailyBasicResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("daily_basic").params(params.toJSONObject()).fields(new DailyBasicResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<DailyBasicResult> trans = transResult.trans(jsonObject, DailyBasicResult.class);
         if (trans.size() > 0) {
@@ -160,10 +154,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> moneyflow(String ts_code, String trade_date, String start_date, String end_date) {
+    public Result<?> moneyflow(MoneyFlowParams params) {
         log.info("开始拉取个股资金流向信息,时间戳：{}",System.currentTimeMillis());
-        MoneyFlowParams moneyFlowParams = MoneyFlowParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("moneyflow").params(moneyFlowParams.toJSONObject()).fields(new MoneyFlowResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("moneyflow").params(params.toJSONObject()).fields(new MoneyFlowResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<MoneyFlowResult> trans = transResult.trans(jsonObject, MoneyFlowResult.class);
         if (trans.size() > 0) {
@@ -177,10 +170,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> stkLimit(String ts_code, String trade_date, String start_date, String end_date) {
+    public Result<?> stkLimit(StkLimitParams params) {
         log.info("开始拉取每日涨跌停价格信息,时间戳：{}",System.currentTimeMillis());
-        StkLimitParams stkLimitParams = StkLimitParams.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stk_limit").params(stkLimitParams.toJSONObject()).fields(new StkLimitResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("stk_limit").params(params.toJSONObject()).fields(new StkLimitResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<StkLimitResult> trans = transResult.trans(jsonObject, StkLimitResult.class);
         if (trans.size() > 0) {
@@ -194,10 +186,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> moneyflowHsgt(String trade_date, String start_date, String end_date) {
+    public Result<?> moneyflowHsgt(MoneyFlowHsgtParams params) {
         log.info("开始拉取沪深港通资金流向信息,时间戳：{}",System.currentTimeMillis());
-        MoneyFlowHsgtParams moneyFlowHsgtParams = MoneyFlowHsgtParams.builder().trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("moneyflow_hsgt").params(moneyFlowHsgtParams.toJSONObject()).fields(new MoneyFlowHsgtResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("moneyflow_hsgt").params(params.toJSONObject()).fields(new MoneyFlowHsgtResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<MoneyFlowHsgtResult> trans = transResult.trans(jsonObject, MoneyFlowHsgtResult.class);
         if (trans.size() > 0) {
@@ -211,10 +202,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> hsgtTop10(String ts_code, String trade_date, String start_date, String end_date) {
+    public Result<?> hsgtTop10(HsgtTop10Params params) {
         log.info("开始拉取沪深股通十大成交股信息,时间戳：{}",System.currentTimeMillis());
-        HsgtTop10Params hsgtTop10Params = HsgtTop10Params.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("hsgt_top10").params(hsgtTop10Params.toJSONObject()).fields(new HsgtTop10Result().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("hsgt_top10").params(params.toJSONObject()).fields(new HsgtTop10Result().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<HsgtTop10Result> trans = transResult.trans(jsonObject, HsgtTop10Result.class);
         if (trans.size() > 0) {
@@ -228,10 +218,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> ggtTop10(String ts_code, String trade_date, String start_date, String end_date) {
+    public Result<?> ggtTop10(GgtTop10Params params) {
         log.info("开始拉取港股通十大成交股信息,时间戳：{}",System.currentTimeMillis());
-        GgtTop10Params ggtTop10Params = GgtTop10Params.builder().ts_code(ts_code).trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("ggt_top10").params(ggtTop10Params.toJSONObject()).fields(new GgtTop10Result().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("ggt_top10").params(params.toJSONObject()).fields(new GgtTop10Result().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<GgtTop10Result> trans = transResult.trans(jsonObject, GgtTop10Result.class);
         if (trans.size() > 0) {
@@ -245,10 +234,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> ggtDaily(String trade_date, String start_date, String end_date) {
+    public Result<?> ggtDaily(GgtDailyParams params) {
         log.info("开始拉取港股通每日成交统计信息,时间戳：{}",System.currentTimeMillis());
-        GgtDailyParams ggtDailyParams = GgtDailyParams.builder().trade_date(trade_date).start_date(start_date).end_date(end_date).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("ggt_daily").params(ggtDailyParams.toJSONObject()).fields(new GgtDailyResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("ggt_daily").params(params.toJSONObject()).fields(new GgtDailyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<GgtDailyResult> trans = transResult.trans(jsonObject, GgtDailyResult.class);
         if (trans.size() > 0) {
@@ -262,10 +250,9 @@ public class MarketDataServiceImpl implements MarketDataService {
     }
 
     @Override
-    public Result<?> ggtMonthly(String month, String start_month, String end_month) {
+    public Result<?> ggtMonthly(GgtMonthlyParams params) {
         log.info("开始拉取港股通每月成交统计信息,时间戳：{}",System.currentTimeMillis());
-        GgtMonthlyParams ggtMonthlyParams = GgtMonthlyParams.builder().month(month).start_month(start_month).end_month(end_month).build();
-        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("ggt_monthly").params(ggtMonthlyParams.toJSONObject()).fields(new GgtMonthlyResult().getFields()).build();
+        TusharePostParam tusharePostParam = TusharePostParam.builder().api_name("ggt_monthly").params(params.toJSONObject()).fields(new GgtMonthlyResult().getFields()).build();
         JSONObject jsonObject = TusharePost.httpPostForStockList(tusharePostParam);
         List<GgtMonthlyResult> trans = transResult.trans(jsonObject, GgtMonthlyResult.class);
         if (trans.size() > 0) {

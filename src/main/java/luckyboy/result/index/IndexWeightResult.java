@@ -4,8 +4,10 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "指数成分和权重")
 public class IndexWeightResult extends Formart {
     @ExplainAnnotation(comment = "指数代码")
     @KeyAnnotation

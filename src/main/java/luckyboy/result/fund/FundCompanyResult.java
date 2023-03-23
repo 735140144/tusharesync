@@ -4,8 +4,10 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "公募基金公司")
 public class FundCompanyResult extends Formart {
     @ExplainAnnotation(comment = "基金公司名称")
     @KeyAnnotation

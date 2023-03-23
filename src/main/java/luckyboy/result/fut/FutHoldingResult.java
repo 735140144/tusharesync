@@ -4,8 +4,10 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "每日成交持仓排名")
 public class FutHoldingResult extends Formart {
     @ExplainAnnotation(comment = "交易日期")
     @KeyAnnotation

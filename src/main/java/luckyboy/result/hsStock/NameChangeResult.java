@@ -1,32 +1,33 @@
 package luckyboy.result.hsStock;
 
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
+import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 
 @Data
+@ResultComment(comment = "股票曾用名")
 public class NameChangeResult extends Formart {
-    /**
-     * TS代码
-     */
+
+     @ExplainAnnotation(comment = "TS代码")
+     @KeyAnnotation
+     @BucketAnnotation
     private String ts_code;
-    /**
-     * 证券名称
-     */
+
+     @ExplainAnnotation(comment = "证券名称")
     private String name;
-    /**
-     * 开始日期
-     */
+
+     @ExplainAnnotation(comment = "开始日期")
     private String start_date;
-    /**
-     * 结束日期
-     */
+
+     @ExplainAnnotation(comment = "结束日期")
     private String end_date;
-    /**
-     * 公告日期
-     */
+
+     @ExplainAnnotation(comment = "公告日期")
     private String ann_date;
-    /**
-     * 变更原因
-     */
+
+     @ExplainAnnotation(comment = "变更原因")
     private String change_reason;
 }

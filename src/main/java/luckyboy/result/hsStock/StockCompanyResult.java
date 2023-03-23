@@ -1,71 +1,62 @@
 package luckyboy.result.hsStock;
 
 import lombok.Data;
+import luckyboy.common.BucketAnnotation;
+import luckyboy.common.ExplainAnnotation;
+import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "上市公司基本信息")
 public class StockCompanyResult extends Formart {
-    /**
-     * 股票代码
-     */
+
+    @ExplainAnnotation(comment = "股票代码")
+    @KeyAnnotation
+    @BucketAnnotation
     private String ts_code;
-    /**
-     * 交易所代码 ，SSE上交所 SZSE深交所
-     */
+
+    @ExplainAnnotation(comment = "交易所代码 ，SSE上交所 SZSE深交所")
     private String exchange;
-    /**
-     * 法人代表
-     */
+
+    @ExplainAnnotation(comment = "法人代表")
     private String chairman;
-    /**
-     * 总经理
-     */
+
+    @ExplainAnnotation(comment = "总经理")
     private String manager;
-    /**
-     * 董秘
-     */
+
+    @ExplainAnnotation(comment = "董秘")
     private String secretary;
-    /**
-     * 注册资本
-     */
+
+    @ExplainAnnotation(comment = "注册资本")
     private String reg_capital;
-    /**
-     * 注册日期
-     */
+
+    @ExplainAnnotation(comment = "注册日期")
     private String setup_date;
-    /**
-     * 所在省份
-     */
+
+    @ExplainAnnotation(comment = "所在省份")
     private String province;
-    /**
-     * 所在城市
-     */
+
+    @ExplainAnnotation(comment = "所在城市")
     private String city;
-    /**
-     * 公司介绍
-     */
+
+    @ExplainAnnotation(comment = "公司介绍")
     private String introduction;
-    /**
-     * 公司主页
-     */
+
+    @ExplainAnnotation(comment = "公司主页")
     private String website;
-    /**
-     * 电子邮件
-     */
+
+    @ExplainAnnotation(comment = "电子邮件")
     private String email;
-    /**
-     * 办公室
-     */
+
+    @ExplainAnnotation(comment = "办公室")
     private String office;
-    /**
-     * 员工人数
-     */
+
+    @ExplainAnnotation(comment = "员工人数")
     private String employees;
-    /**
-     * 主要业务及产品
-     */
+
+    @ExplainAnnotation(comment = "主要业务及产品")
     private String main_business;
-    /**
-     * 经营范围
-     */
+
+    @ExplainAnnotation(comment = "经营范围")
     private String business_scope;
 }

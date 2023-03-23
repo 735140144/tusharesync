@@ -4,8 +4,10 @@ import lombok.Data;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.common.ResultComment;
 import luckyboy.util.Formart;
 @Data
+@ResultComment(comment = "大盘指数每日指标")
 public class IndexDailybasicResult extends Formart {
     @ExplainAnnotation(comment = "TS代码")
     @KeyAnnotation
