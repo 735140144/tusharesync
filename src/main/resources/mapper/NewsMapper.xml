@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="luckyboy.mapper.news.NewsMapper">
+<insert id="insert" parameterType="java.util.List">
+insert into NEWS
+        (datetime,content,title,channels)
+        values
+        <foreach collection="list" item="NewsResult" separator=",">
+           (#{NewsResult.datetime,jdbcType=VARCHAR},
+#{NewsResult.content,jdbcType=VARCHAR},
+#{NewsResult.title,jdbcType=VARCHAR},
+#{NewsResult.channels,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>
