@@ -5,7 +5,9 @@ import luckyboy.params.hsStock.*;
 import luckyboy.service.MarketDataService;
 import luckyboy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MarketDataApiImpl implements MarketDataApi {
     @Autowired
     private MarketDataService marketDataService;
