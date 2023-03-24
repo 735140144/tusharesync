@@ -35,4 +35,7 @@ insert into FUND_BASIC
 #{FundBasicResult.market,jdbcType=VARCHAR})
         </foreach>
     </insert>
+    <select id="allbasic" resultType="luckyboy.result.fund.FundBasicResult">
+        select * from FUND_BASIC
+    </select>
 </mapper>

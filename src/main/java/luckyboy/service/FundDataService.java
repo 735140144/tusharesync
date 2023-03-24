@@ -3,10 +3,13 @@ package luckyboy.service;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.params.fund.*;
+import luckyboy.result.fund.FundBasicResult;
 import luckyboy.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Api(value = "基金数据",tags = "基金数据")
 public interface FundDataService {
@@ -37,4 +40,6 @@ public interface FundDataService {
 
     @ApiOperation("基金复权因子")
     Result<?> fund_adj(FundAdjParams params);
+
+    List<FundBasicResult> allfund();
 }

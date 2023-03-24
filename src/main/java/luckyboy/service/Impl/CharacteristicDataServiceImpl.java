@@ -65,7 +65,7 @@ public class CharacteristicDataServiceImpl implements CharacteristicDataService 
             reportRcMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("卖方盈利预测数据").build());
+            failLogMapper.insert(FailLog.builder().pkg("characteristic").params(JSONObject.toJSONString(params)).api(apiName).comment("卖方盈利预测数据").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -82,7 +82,7 @@ public class CharacteristicDataServiceImpl implements CharacteristicDataService 
             cyqPerfMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("每日筹码及胜率").build());
+            failLogMapper.insert(FailLog.builder().pkg("characteristic").params(JSONObject.toJSONString(params)).api(apiName).comment("每日筹码及胜率").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -99,7 +99,7 @@ public class CharacteristicDataServiceImpl implements CharacteristicDataService 
             cyqChipsMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("每日筹码分布").build());
+            failLogMapper.insert(FailLog.builder().pkg("characteristic").params(JSONObject.toJSONString(params)).api(apiName).comment("每日筹码分布").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -116,7 +116,7 @@ public class CharacteristicDataServiceImpl implements CharacteristicDataService 
             stkFactorMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("股票技术面因子").build());
+            failLogMapper.insert(FailLog.builder().pkg("characteristic").params(JSONObject.toJSONString(params)).api(apiName).comment("股票技术面因子").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -133,7 +133,7 @@ public class CharacteristicDataServiceImpl implements CharacteristicDataService 
             ccassHoldMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("中央结算系统持股统计").build());
+            failLogMapper.insert(FailLog.builder().pkg("characteristic").params(JSONObject.toJSONString(params)).api(apiName).comment("中央结算系统持股统计").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -150,7 +150,7 @@ public class CharacteristicDataServiceImpl implements CharacteristicDataService 
             ccassHoldDetailMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("中央结算系统持股明细").build());
+            failLogMapper.insert(FailLog.builder().pkg("characteristic").params(JSONObject.toJSONString(params)).api(apiName).comment("中央结算系统持股明细").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -167,7 +167,7 @@ public class CharacteristicDataServiceImpl implements CharacteristicDataService 
             hkHoldMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("沪深股通持股明细").build());
+            failLogMapper.insert(FailLog.builder().pkg("characteristic").params(JSONObject.toJSONString(params)).api(apiName).comment("沪深股通持股明细").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -184,7 +184,7 @@ public class CharacteristicDataServiceImpl implements CharacteristicDataService 
             limitListDMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("涨跌停和炸板数据").build());
+            failLogMapper.insert(FailLog.builder().pkg("characteristic").params(JSONObject.toJSONString(params)).api(apiName).comment("涨跌停和炸板数据").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -201,7 +201,7 @@ public class CharacteristicDataServiceImpl implements CharacteristicDataService 
             stkSurvMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("机构调研数据").build());
+            failLogMapper.insert(FailLog.builder().pkg("characteristic").params(JSONObject.toJSONString(params)).api(apiName).comment("机构调研数据").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -218,7 +218,7 @@ public class CharacteristicDataServiceImpl implements CharacteristicDataService 
             brokerRecommendMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("券商月度金股").build());
+            failLogMapper.insert(FailLog.builder().pkg("characteristic").params(JSONObject.toJSONString(params)).api(apiName).comment("券商月度金股").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

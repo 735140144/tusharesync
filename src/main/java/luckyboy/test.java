@@ -2,24 +2,27 @@ package luckyboy;
 
 import com.baomidou.mybatisplus.core.toolkit.ClassUtils;
 import lombok.extern.slf4j.Slf4j;
+import luckyboy.result.news.CctvNewsResult;
+import luckyboy.result.news.NewsResult;
 import luckyboy.util.*;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Slf4j
 public class test {
-    public static void main(String[] args) throws ClassNotFoundException {
-        String pkg = "stock";
-        String property = System.getProperty("user.dir");
-        String pkgUrl = property+"/src/main/java/luckyboy/result";
-        GetResults getResults = new GetResults();
-        List<String> fileNames = getResults.getFileNames(pkgUrl);
-
+    public static void main(String[] args) throws Exception {
+//        String pkg = "stock";
+//        String property = System.getProperty("user.dir");
+//        String pkgUrl = property+"/src/main/java/luckyboy/result";
+//        GetResults getResults = new GetResults();
+//        List<String> fileNames = getResults.getFileNames(pkgUrl);
+//        GenerateSql.doSql(NewsResult.class);
+        GregorianCalendar g = new GregorianCalendar();
+        g.setTime(new Date());
+        System.out.println(g.get(Calendar.WEEK_OF_YEAR)); //获得周数
     }
 
     private Result<?> dothis(){

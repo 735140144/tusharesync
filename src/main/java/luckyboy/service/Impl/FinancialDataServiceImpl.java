@@ -67,7 +67,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
             inComeMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("利润表").build());
+            failLogMapper.insert(FailLog.builder().pkg("financial").params(JSONObject.toJSONString(params)).api(apiName).comment("利润表").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -84,7 +84,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
             balanceSheetMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("资产负债表").build());
+            failLogMapper.insert(FailLog.builder().pkg("financial").params(JSONObject.toJSONString(params)).api(apiName).comment("资产负债表").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -101,7 +101,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
             cashFlowMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("现金流量表").build());
+            failLogMapper.insert(FailLog.builder().pkg("financial").params(JSONObject.toJSONString(params)).api(apiName).comment("现金流量表").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -118,7 +118,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
             forcecastMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("业绩预告").build());
+            failLogMapper.insert(FailLog.builder().pkg("financial").params(JSONObject.toJSONString(params)).api(apiName).comment("业绩预告").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -135,7 +135,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
             expressMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("业绩快报").build());
+            failLogMapper.insert(FailLog.builder().pkg("financial").params(JSONObject.toJSONString(params)).api(apiName).comment("业绩快报").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -152,7 +152,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
             dividendMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("分红送股信息").build());
+            failLogMapper.insert(FailLog.builder().pkg("financial").params(JSONObject.toJSONString(params)).api(apiName).comment("分红送股信息").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -169,7 +169,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
             finaIndicatorMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("财务指标数据").build());
+            failLogMapper.insert(FailLog.builder().pkg("financial").params(JSONObject.toJSONString(params)).api(apiName).comment("财务指标数据").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -186,7 +186,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
             finaAuditMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("财务审计意见").build());
+            failLogMapper.insert(FailLog.builder().pkg("financial").params(JSONObject.toJSONString(params)).api(apiName).comment("财务审计意见").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -203,7 +203,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
             finaMainbzMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("主营业务构成").build());
+            failLogMapper.insert(FailLog.builder().pkg("financial").params(JSONObject.toJSONString(params)).api(apiName).comment("主营业务构成").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -220,7 +220,7 @@ public class FinancialDataServiceImpl implements FinancialDataService {
             disclosureDateMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("财报披露计划").build());
+            failLogMapper.insert(FailLog.builder().pkg("financial").params(JSONObject.toJSONString(params)).api(apiName).comment("财报披露计划").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

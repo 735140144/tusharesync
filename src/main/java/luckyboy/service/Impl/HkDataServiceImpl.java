@@ -41,7 +41,7 @@ public class HkDataServiceImpl implements HkDataService {
             hkBasicMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("港股列表").build());
+            failLogMapper.insert(FailLog.builder().pkg("hk").params(JSONObject.toJSONString(params)).api(apiName).comment("港股列表").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -58,7 +58,7 @@ public class HkDataServiceImpl implements HkDataService {
             hkDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("港股行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("hk").params(JSONObject.toJSONString(params)).api(apiName).comment("港股行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -75,7 +75,7 @@ public class HkDataServiceImpl implements HkDataService {
             hkTradecalMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("港股交易日历").build());
+            failLogMapper.insert(FailLog.builder().pkg("hk").params(JSONObject.toJSONString(params)).api(apiName).comment("港股交易日历").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -92,7 +92,7 @@ public class HkDataServiceImpl implements HkDataService {
             hkMinsMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("港股分钟行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("hk").params(JSONObject.toJSONString(params)).api(apiName).comment("港股分钟行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

@@ -67,7 +67,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             dailyWeeklyMonthlyMapper.insertDaily(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("daily").comment("日线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("daily").comment("日线行情").build());
         }
 
         return Result.ok(jsonObject.getString("msg"));
@@ -84,7 +84,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             dailyWeeklyMonthlyMapper.insertWeekly(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("weekly").comment("周线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("weekly").comment("周线行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -100,7 +100,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             dailyWeeklyMonthlyMapper.insertMonthly(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("monthly").comment("月线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("monthly").comment("月线行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -116,7 +116,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             adjFactorMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("adj_factor").comment("复权因子").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("adj_factor").comment("复权因子").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -132,7 +132,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             suspendDMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("suspend_d").comment("每日停复牌").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("suspend_d").comment("每日停复牌").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -148,7 +148,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             dailyBasicMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("daily_basic").comment("每日指标").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("daily_basic").comment("每日指标").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -164,7 +164,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             moneyFlowMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("moneyflow").comment("个股资金流向").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("moneyflow").comment("个股资金流向").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -180,7 +180,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             stkLimitMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("stk_limit").comment("每日涨跌停价格").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("stk_limit").comment("每日涨跌停价格").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -196,7 +196,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             moneyflowHsgtMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("moneyflow_hsgt").comment("沪深港通资金流向").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("moneyflow_hsgt").comment("沪深港通资金流向").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -212,7 +212,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             hsgtTop10Mapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("hsgt_top10").comment("沪深股通十大成交股").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("hsgt_top10").comment("沪深股通十大成交股").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -228,7 +228,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             ggtTop10Mapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("ggt_top10").comment("港股通十大成交股").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("ggt_top10").comment("港股通十大成交股").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -244,7 +244,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             ggtDailyMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("ggt_daily").comment("港股通每日成交统计").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("ggt_daily").comment("港股通每日成交统计").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -260,7 +260,7 @@ public class MarketDataServiceImpl implements MarketDataService {
             ggtMonthlyMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("ggt_monthly").comment("港股通每月成交统计").build());
+            failLogMapper.insert(FailLog.builder().pkg("market").params(JSONObject.toJSONString(params)).api("ggt_monthly").comment("港股通每月成交统计").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

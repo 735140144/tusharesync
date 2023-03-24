@@ -64,7 +64,7 @@ public class FundDataServiceImpl implements FundDataService {
             fundBasicMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("公募基金列表").build());
+            failLogMapper.insert(FailLog.builder().pkg("fund").params(JSONObject.toJSONString(params)).api(apiName).comment("公募基金列表").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -81,7 +81,7 @@ public class FundDataServiceImpl implements FundDataService {
             fundCompanyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("公募基金公司").build());
+            failLogMapper.insert(FailLog.builder().pkg("fund").params(JSONObject.toJSONString(params)).api(apiName).comment("公募基金公司").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -98,7 +98,7 @@ public class FundDataServiceImpl implements FundDataService {
             fundManagerMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("基金经理").build());
+            failLogMapper.insert(FailLog.builder().pkg("fund").params(JSONObject.toJSONString(params)).api(apiName).comment("基金经理").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -115,7 +115,7 @@ public class FundDataServiceImpl implements FundDataService {
             fundShareMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("基金规模数据").build());
+            failLogMapper.insert(FailLog.builder().pkg("fund").params(JSONObject.toJSONString(params)).api(apiName).comment("基金规模数据").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -132,7 +132,7 @@ public class FundDataServiceImpl implements FundDataService {
             fundNavMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("公募基金净值").build());
+            failLogMapper.insert(FailLog.builder().pkg("fund").params(JSONObject.toJSONString(params)).api(apiName).comment("公募基金净值").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -149,7 +149,7 @@ public class FundDataServiceImpl implements FundDataService {
             fundDivMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("公募基金分红").build());
+            failLogMapper.insert(FailLog.builder().pkg("fund").params(JSONObject.toJSONString(params)).api(apiName).comment("公募基金分红").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -166,7 +166,7 @@ public class FundDataServiceImpl implements FundDataService {
             fundPortfolioMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("公募基金持仓数据").build());
+            failLogMapper.insert(FailLog.builder().pkg("fund").params(JSONObject.toJSONString(params)).api(apiName).comment("公募基金持仓数据").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -183,7 +183,7 @@ public class FundDataServiceImpl implements FundDataService {
             fundDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("场内基金日线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("fund").params(JSONObject.toJSONString(params)).api(apiName).comment("场内基金日线行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -200,8 +200,13 @@ public class FundDataServiceImpl implements FundDataService {
             fundAdjMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("基金复权因子").build());
+            failLogMapper.insert(FailLog.builder().pkg("fund").params(JSONObject.toJSONString(params)).api(apiName).comment("基金复权因子").build());
         }
         return Result.ok(jsonObject.getString("msg"));
+    }
+
+    @Override
+    public List<FundBasicResult> allfund() {
+        return fundBasicMapper.allbasic();
     }
 }

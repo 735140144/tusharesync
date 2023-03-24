@@ -76,7 +76,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             indexBasicMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("指数基本信息").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("指数基本信息").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -93,7 +93,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             indexDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("指数日线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("指数日线行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -110,7 +110,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             indexWeeklyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("指数周线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("指数周线行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -127,7 +127,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             indexMonthlyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("指数月线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("指数月线行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -144,7 +144,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             indexWeightMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("指数成分和权重").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("指数成分和权重").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -161,7 +161,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             indexDailybasicMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("大盘指数每日指标").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("大盘指数每日指标").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -178,7 +178,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             indexClassifyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("申万行业分类").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("申万行业分类").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -195,7 +195,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             indexMemberMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("申万行业成分构成").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("申万行业成分构成").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -212,7 +212,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             dailyInfoMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("市场交易统计").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("市场交易统计").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -229,7 +229,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             szDailyInfoMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("深圳市场每日交易概况").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("深圳市场每日交易概况").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -246,7 +246,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             thsIndexMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("同花顺概念和行业指数").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("同花顺概念和行业指数").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -263,7 +263,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             thsDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("同花顺板块指数行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("同花顺板块指数行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -280,7 +280,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             thsMemberMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("同花顺概念板块成分").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("同花顺概念板块成分").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -297,7 +297,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             indexGlobalMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("国际指数").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("国际指数").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

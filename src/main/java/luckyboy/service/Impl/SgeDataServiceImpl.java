@@ -44,7 +44,7 @@ public class SgeDataServiceImpl implements SgeDataService {
             sgeBasicMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("黄金现货基础信息").build());
+            failLogMapper.insert(FailLog.builder().pkg("sge").params(JSONObject.toJSONString(params)).api(apiName).comment("黄金现货基础信息").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -61,7 +61,7 @@ public class SgeDataServiceImpl implements SgeDataService {
             sgeDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("现货黄金日行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("sge").params(JSONObject.toJSONString(params)).api(apiName).comment("现货黄金日行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

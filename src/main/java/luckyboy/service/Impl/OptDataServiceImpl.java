@@ -45,7 +45,7 @@ public class OptDataServiceImpl implements OptDataService {
             optBasicMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("期权合约信息").build());
+            failLogMapper.insert(FailLog.builder().pkg("opt").params(JSONObject.toJSONString(params)).api(apiName).comment("期权合约信息").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -62,7 +62,7 @@ public class OptDataServiceImpl implements OptDataService {
             optDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("期权日线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("opt").params(JSONObject.toJSONString(params)).api(apiName).comment("期权日线行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

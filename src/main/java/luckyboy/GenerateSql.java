@@ -4,6 +4,7 @@ import com.google.common.base.CaseFormat;
 import luckyboy.common.BucketAnnotation;
 import luckyboy.common.ExplainAnnotation;
 import luckyboy.common.KeyAnnotation;
+import luckyboy.result.news.CctvNewsResult;
 import luckyboy.util.MysqlUtil;
 
 import java.lang.reflect.Field;

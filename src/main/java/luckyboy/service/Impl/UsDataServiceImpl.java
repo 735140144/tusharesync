@@ -39,7 +39,7 @@ public class UsDataServiceImpl implements UsDataService {
             usDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("美股交易日历").build());
+            failLogMapper.insert(FailLog.builder().pkg("us").params(JSONObject.toJSONString(params)).api(apiName).comment("美股交易日历").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -56,7 +56,7 @@ public class UsDataServiceImpl implements UsDataService {
             usBasicMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("美股列表").build());
+            failLogMapper.insert(FailLog.builder().pkg("us").params(JSONObject.toJSONString(params)).api(apiName).comment("美股列表").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -73,7 +73,7 @@ public class UsDataServiceImpl implements UsDataService {
             usTradecalMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("美股行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("us").params(JSONObject.toJSONString(params)).api(apiName).comment("美股行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

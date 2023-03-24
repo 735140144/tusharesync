@@ -62,7 +62,7 @@ public class FutDataServiceImpl implements FutDataService {
             futBasicMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("期货合约信息表").build());
+            failLogMapper.insert(FailLog.builder().pkg("fut").params(JSONObject.toJSONString(params)).api(apiName).comment("期货合约信息表").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -79,7 +79,7 @@ public class FutDataServiceImpl implements FutDataService {
             futTradeCalMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("期货交易日历").build());
+            failLogMapper.insert(FailLog.builder().pkg("fut").params(JSONObject.toJSONString(params)).api(apiName).comment("期货交易日历").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -96,7 +96,7 @@ public class FutDataServiceImpl implements FutDataService {
             futDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("期货日线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("fut").params(JSONObject.toJSONString(params)).api(apiName).comment("期货日线行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -113,7 +113,7 @@ public class FutDataServiceImpl implements FutDataService {
             futHoldingMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("每日成交持仓排名").build());
+            failLogMapper.insert(FailLog.builder().pkg("fut").params(JSONObject.toJSONString(params)).api(apiName).comment("每日成交持仓排名").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -130,7 +130,7 @@ public class FutDataServiceImpl implements FutDataService {
             futWsrMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("期货仓单日报").build());
+            failLogMapper.insert(FailLog.builder().pkg("fut").params(JSONObject.toJSONString(params)).api(apiName).comment("期货仓单日报").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -147,7 +147,7 @@ public class FutDataServiceImpl implements FutDataService {
             futSettleMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("期货结算参数").build());
+            failLogMapper.insert(FailLog.builder().pkg("fut").params(JSONObject.toJSONString(params)).api(apiName).comment("期货结算参数").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -164,7 +164,7 @@ public class FutDataServiceImpl implements FutDataService {
             futIndexDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("南华期货指数日线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("fut").params(JSONObject.toJSONString(params)).api(apiName).comment("南华期货指数日线行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -181,7 +181,7 @@ public class FutDataServiceImpl implements FutDataService {
             futMappingMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("期货主力与连续合约").build());
+            failLogMapper.insert(FailLog.builder().pkg("fut").params(JSONObject.toJSONString(params)).api(apiName).comment("期货主力与连续合约").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -198,7 +198,7 @@ public class FutDataServiceImpl implements FutDataService {
             futWeeklyDetailMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("期货主要品种交易周报").build());
+            failLogMapper.insert(FailLog.builder().pkg("fut").params(JSONObject.toJSONString(params)).api(apiName).comment("期货主要品种交易周报").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

@@ -4,4 +4,6 @@ import java.util.List;
 
 public interface FundBasicMapper {
     int insert (List<FundBasicResult> fundbasicresultList);
+
+    List<FundBasicResult> allbasic();
 }

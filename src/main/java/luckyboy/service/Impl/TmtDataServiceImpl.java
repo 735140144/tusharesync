@@ -49,7 +49,7 @@ public class TmtDataServiceImpl implements TmtDataService {
             boWeeklyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("电影周度票房").build());
+            failLogMapper.insert(FailLog.builder().pkg("tmt").params(JSONObject.toJSONString(params)).api(apiName).comment("电影周度票房").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -66,7 +66,7 @@ public class TmtDataServiceImpl implements TmtDataService {
             tmtTwincomedetailMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("台湾电子产业月营收明细").build());
+            failLogMapper.insert(FailLog.builder().pkg("tmt").params(JSONObject.toJSONString(params)).api(apiName).comment("台湾电子产业月营收明细").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -83,7 +83,7 @@ public class TmtDataServiceImpl implements TmtDataService {
             boDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("电影日度票房").build());
+            failLogMapper.insert(FailLog.builder().pkg("tmt").params(JSONObject.toJSONString(params)).api(apiName).comment("电影日度票房").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -100,7 +100,7 @@ public class TmtDataServiceImpl implements TmtDataService {
             teleplayRecordMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("全国拍摄制作电视剧备案公示数据").build());
+            failLogMapper.insert(FailLog.builder().pkg("tmt").params(JSONObject.toJSONString(params)).api(apiName).comment("全国拍摄制作电视剧备案公示数据").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -117,7 +117,7 @@ public class TmtDataServiceImpl implements TmtDataService {
             boMonthlyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("电影月度票房").build());
+            failLogMapper.insert(FailLog.builder().pkg("tmt").params(JSONObject.toJSONString(params)).api(apiName).comment("电影月度票房").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -134,7 +134,7 @@ public class TmtDataServiceImpl implements TmtDataService {
             filmRecordMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("全国电影剧本备案数据").build());
+            failLogMapper.insert(FailLog.builder().pkg("tmt").params(JSONObject.toJSONString(params)).api(apiName).comment("全国电影剧本备案数据").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -151,7 +151,7 @@ public class TmtDataServiceImpl implements TmtDataService {
             boCinemaMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("影院每日票房").build());
+            failLogMapper.insert(FailLog.builder().pkg("tmt").params(JSONObject.toJSONString(params)).api(apiName).comment("影院每日票房").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -168,7 +168,7 @@ public class TmtDataServiceImpl implements TmtDataService {
             tmtTwincomeMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("台湾电子产业月营收").build());
+            failLogMapper.insert(FailLog.builder().pkg("tmt").params(JSONObject.toJSONString(params)).api(apiName).comment("台湾电子产业月营收").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

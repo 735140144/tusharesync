@@ -83,7 +83,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             marginMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("融资融券交易汇总").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("融资融券交易汇总").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -100,7 +100,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             marginDetailMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("融资融券交易明细").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("融资融券交易明细").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -117,7 +117,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             marginTargetMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("融资融券标的").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("融资融券标的").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -134,7 +134,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             top10HoldersMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("前十大股东").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("前十大股东").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -151,7 +151,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             top10FloatholdersMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("前十大流通股东").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("前十大流通股东").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -168,7 +168,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             topListMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("龙虎榜每日明细").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("龙虎榜每日明细").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -185,7 +185,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             topInstMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("龙虎榜机构明细").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("龙虎榜机构明细").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -206,7 +206,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             }
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("股权质押统计数据").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("股权质押统计数据").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -223,7 +223,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             pledgeDetailMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("股权质押明细").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("股权质押明细").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -240,7 +240,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             repurchaseMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("股票回购").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("股票回购").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -261,7 +261,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             }
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("概念股分类").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("概念股分类").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -278,7 +278,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             conceptDetailMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("概念股列表").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("概念股列表").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -295,7 +295,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             shareFloatMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("限售股解禁").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("限售股解禁").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -312,7 +312,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             blockTradeMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("大宗交易").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("大宗交易").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -329,7 +329,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             stkHoldernumberMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("股东人数").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("股东人数").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -346,7 +346,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
             stkHoldertradeMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("股东增减持").build());
+            failLogMapper.insert(FailLog.builder().pkg("reference").params(JSONObject.toJSONString(params)).api(apiName).comment("股东增减持").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

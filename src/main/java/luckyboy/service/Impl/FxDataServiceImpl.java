@@ -37,7 +37,7 @@ public class FxDataServiceImpl implements FxDataService {
             fxObasicMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("外汇基础信息（海外）").build());
+            failLogMapper.insert(FailLog.builder().pkg("fx").params(JSONObject.toJSONString(params)).api(apiName).comment("外汇基础信息（海外）").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -54,7 +54,7 @@ public class FxDataServiceImpl implements FxDataService {
             fxDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("外汇日线行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("fx").params(JSONObject.toJSONString(params)).api(apiName).comment("外汇日线行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

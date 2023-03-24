@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class DataFormat {
     public static String DateTimeFormat(Long time) {
@@ -65,5 +68,11 @@ public class DataFormat {
         }else {
             return year+"1231";
         }
+    }
+
+    public static String curWeek(){
+        GregorianCalendar g = new GregorianCalendar();
+        g.setTime(new Date());
+        return String.valueOf(g.get(Calendar.WEEK_OF_YEAR));
     }
 }

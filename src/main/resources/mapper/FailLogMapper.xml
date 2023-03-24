@@ -3,12 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="luckyboy.mapper.failLog.FailLogMapper">
-
+    <resultMap id="FailLogMap" type="luckyboy.common.FailLog" autoMapping="true"/>
     <insert id="insert" parameterType="luckyboy.common.FailLog">
         insert into FAIL_LOG
-            (date, api, comment)
-        values (#{date,jdbcType=TIMESTAMP},
+            (id,date, api, comment,pkg,params,if_retry)
+        values (#{id,jdbcType=BIGINT},
+                #{date,jdbcType=TIMESTAMP},
                 #{api,jdbcType=VARCHAR},
-                #{comment,jdbcType=VARCHAR})
+                #{comment,jdbcType=VARCHAR},
+                #{pkg,jdbcType=VARCHAR},
+                #{params,jdbcType=VARCHAR},
+                #{if_retry,jdbcType=INTEGER})
     </insert>
+
+    <update id="updateIf_retryAndApi" parameterType="luckyboy.common.FailLog">
+        update FAIL_LOG set if_retry = 1 where id = #{id,jdbcType=BIGINT} and api = #{api,jdbcType=VARCHAR}
+    </update>
+
+    <select id="needTry" resultMap="FailLogMap">
+        select * from FAIL_LOG where id is not null and if_retry = 0 and date_format(date,'%Y-%m-%d') != date_format(now(),'%Y-%m-%d')
+    </select>
+    <select id="check" resultMap="FailLogMap">
+        select * from FAIL_LOG where id is not null and if_retry = 0
+    </select>
+
+
 </mapper>

@@ -19,7 +19,7 @@ import luckyboy.util.GetResults;
 
 public class GenerateMapper {
     public static void main(String[] args) throws Exception {
-        String pkg = "stock";
+        String pkg = "news";
         String property = System.getProperty("user.dir");
         String url = property+"/src/main/java/luckyboy/result/" + pkg;
         GetResults getResults = new GetResults();
@@ -27,13 +27,13 @@ public class GenerateMapper {
         for (String fileName : fileNames) {
             String resultName = fileName.split("Result")[0];
             Class<?> resultClass = Class.forName("luckyboy.result." + pkg + "." + resultName + "Result");
-            GenerateSql.doSql(resultClass);
-//            generateMapper(resultClass,pkg);
+//            GenerateSql.doSql(resultClass);
+            generateMapper(resultClass,pkg);
         }
-//        GetResults.generateService(pkg);
-//        GetResults.generateServiceImpl(pkg);
-//        GetResults.generateApi(pkg);
-//        GetResults.generateApiServvice(pkg);
+        GetResults.generateService(pkg);
+        GetResults.generateServiceImpl(pkg);
+        GetResults.generateApi(pkg);
+        GetResults.generateApiServvice(pkg);
 
     }
 

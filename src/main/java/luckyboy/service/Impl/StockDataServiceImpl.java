@@ -37,7 +37,7 @@ public class StockDataServiceImpl implements StockDataService {
             stockVxMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("估值因子").build());
+            failLogMapper.insert(FailLog.builder().pkg("stock").params(JSONObject.toJSONString(params)).api(apiName).comment("估值因子").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -54,7 +54,7 @@ public class StockDataServiceImpl implements StockDataService {
             stockMxMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("动能因子").build());
+            failLogMapper.insert(FailLog.builder().pkg("stock").params(JSONObject.toJSONString(params)).api(apiName).comment("动能因子").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

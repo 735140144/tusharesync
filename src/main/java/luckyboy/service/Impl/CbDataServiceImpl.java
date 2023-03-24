@@ -53,7 +53,7 @@ public class CbDataServiceImpl implements CbDataService {
             bondBlkDetailMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("大宗交易明细").build());
+            failLogMapper.insert(FailLog.builder().pkg("cb").params(JSONObject.toJSONString(params)).api(apiName).comment("大宗交易明细").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -70,7 +70,7 @@ public class CbDataServiceImpl implements CbDataService {
             repoDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("债券回购日行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("cb").params(JSONObject.toJSONString(params)).api(apiName).comment("债券回购日行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -87,7 +87,7 @@ public class CbDataServiceImpl implements CbDataService {
             cbDailyMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("可转债行情").build());
+            failLogMapper.insert(FailLog.builder().pkg("cb").params(JSONObject.toJSONString(params)).api(apiName).comment("可转债行情").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -104,7 +104,7 @@ public class CbDataServiceImpl implements CbDataService {
             cbBasicMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("可转债基本信息").build());
+            failLogMapper.insert(FailLog.builder().pkg("cb").params(JSONObject.toJSONString(params)).api(apiName).comment("可转债基本信息").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -121,7 +121,7 @@ public class CbDataServiceImpl implements CbDataService {
             ecoCalMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("财经日历").build());
+            failLogMapper.insert(FailLog.builder().pkg("cb").params(JSONObject.toJSONString(params)).api(apiName).comment("财经日历").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -138,7 +138,7 @@ public class CbDataServiceImpl implements CbDataService {
             cbIssueMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("可转债发行").build());
+            failLogMapper.insert(FailLog.builder().pkg("cb").params(JSONObject.toJSONString(params)).api(apiName).comment("可转债发行").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -155,7 +155,7 @@ public class CbDataServiceImpl implements CbDataService {
             cbShareMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("可转债转股结果").build());
+            failLogMapper.insert(FailLog.builder().pkg("cb").params(JSONObject.toJSONString(params)).api(apiName).comment("可转债转股结果").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -172,7 +172,7 @@ public class CbDataServiceImpl implements CbDataService {
             bondBlkMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("债券大宗交易").build());
+            failLogMapper.insert(FailLog.builder().pkg("cb").params(JSONObject.toJSONString(params)).api(apiName).comment("债券大宗交易").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -189,7 +189,7 @@ public class CbDataServiceImpl implements CbDataService {
             cbCallMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("可转债赎回信息").build());
+            failLogMapper.insert(FailLog.builder().pkg("cb").params(JSONObject.toJSONString(params)).api(apiName).comment("可转债赎回信息").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -206,7 +206,7 @@ public class CbDataServiceImpl implements CbDataService {
             cbPriceChgMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api(apiName).comment("可转债转股价变动").build());
+            failLogMapper.insert(FailLog.builder().pkg("cb").params(JSONObject.toJSONString(params)).api(apiName).comment("可转债转股价变动").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }

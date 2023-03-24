@@ -60,7 +60,7 @@ public class BasicDataServiceImpl implements BasicDataService {
             stockBasicMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("stock_basic").comment("股票列表").build());
+            failLogMapper.insert(FailLog.builder().pkg("basic").params(JSONObject.toJSONString(params)).api("stock_basic").comment("股票列表").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -76,7 +76,7 @@ public class BasicDataServiceImpl implements BasicDataService {
             traderCalMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("trade_cal").comment("交易日历").build());
+            failLogMapper.insert(FailLog.builder().pkg("basic").params(JSONObject.toJSONString(params)).api("trade_cal").comment("交易日历").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -92,7 +92,7 @@ public class BasicDataServiceImpl implements BasicDataService {
             nameChangeMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("namechange").comment("股票曾用名").build());
+            failLogMapper.insert(FailLog.builder().pkg("basic").params(JSONObject.toJSONString(params)).api("namechange").comment("股票曾用名").if_retry(2).build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -112,7 +112,7 @@ public class BasicDataServiceImpl implements BasicDataService {
             }
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("hs_const").comment("沪股通、深股通成分").build());
+            failLogMapper.insert(FailLog.builder().pkg("basic").params(JSONObject.toJSONString(params)).api("hs_const").comment("沪股通、深股通成分").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -128,7 +128,7 @@ public class BasicDataServiceImpl implements BasicDataService {
             stockComponyMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("stock_company").comment("上市公司基本信息").build());
+            failLogMapper.insert(FailLog.builder().pkg("basic").params(JSONObject.toJSONString(params)).api("stock_company").comment("上市公司基本信息").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -144,7 +144,7 @@ public class BasicDataServiceImpl implements BasicDataService {
             stkManagersMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("stk_managers").comment("上市公司管理层信息").build());
+            failLogMapper.insert(FailLog.builder().pkg("basic").params(JSONObject.toJSONString(params)).api("stk_managers").comment("上市公司管理层信息").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -160,7 +160,7 @@ public class BasicDataServiceImpl implements BasicDataService {
             stkRewardsMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("stk_rewards").comment("管理层薪酬和持股信息").build());
+            failLogMapper.insert(FailLog.builder().pkg("basic").params(JSONObject.toJSONString(params)).api("stk_rewards").comment("管理层薪酬和持股信息").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
@@ -176,7 +176,7 @@ public class BasicDataServiceImpl implements BasicDataService {
             newShareMapper.insert(trans);
         }else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().api("new_share").comment("IPO新股列表").build());
+            failLogMapper.insert(FailLog.builder().pkg("basic").params(JSONObject.toJSONString(params)).api("new_share").comment("IPO新股列表").if_retry(2).build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
