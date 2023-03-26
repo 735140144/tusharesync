@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/data/init",method = RequestMethod.GET)
 public interface InitApi {
-    @ApiOperation("指数基本信息")
+    @ApiOperation("初始化表")
     @RequestMapping("/table")
     Result<?> initSql(@Param("dbtype") String dbtype);
 
-    @ApiOperation("指数基本信息")
+    @ApiOperation("初始化数据")
     @RequestMapping("/data")
     Result<?> initData();
 }
