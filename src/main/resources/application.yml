@@ -9,6 +9,7 @@ server:
 #    luckyboy.mapper: trace
 shareDb:
   db: share
+  token: xxx
 spring:
   application:
     name: share.luckyboy.cc
@@ -16,9 +17,9 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.16.0.103:19030/ashare?characterEncoding=utf-8&useSSL=false
-    username: root
-    password: Ssymhp12#$
+    url: jdbc:mysql://ip:port/ashare?characterEncoding=utf-8&useSSL=false
+    username: username
+    password: password
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8

@@ -2,12 +2,13 @@ package luckyboy.common;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Builder;
+import org.springframework.beans.factory.annotation.Value;
 
 @Builder
 public class TusharePostParam {
 
-    @Builder.Default
-    private String token = "945e12f7dc5e197133193578440a4d3db4f83bd20c0aa641043a9739";
+    @Value("${shareDb.token}")
+    private String token;
     private String api_name;
     private JSONObject params;
     private String fields;
