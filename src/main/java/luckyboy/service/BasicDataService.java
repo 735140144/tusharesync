@@ -3,11 +3,14 @@ package luckyboy.service;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.params.hsStock.*;
+import luckyboy.result.hsStock.StockBasicResult;
 import luckyboy.util.Result;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Api(value = "基础数据",tags = "基础数据")
 @RestController
@@ -36,4 +39,6 @@ public interface BasicDataService {
 
     @ApiOperation("IPO新股列表")
     Result<?> NewShare(NewShareParams params);
+
+    List<StockBasicResult> getAllStock();
 }

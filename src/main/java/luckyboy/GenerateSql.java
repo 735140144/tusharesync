@@ -14,10 +14,9 @@ import java.lang.reflect.Field;
  * @CreateTime: 2023-02-27  20:44
  */
 public class GenerateSql {
-    public static void doSql(Class<?> className) throws Exception {
+    public static void doSql(Class<?> className,String Dbname) throws Exception {
         Class<?> resultClass = className;
         Field[] declaredFields = resultClass.getDeclaredFields();
-        String Dbname = "ashare";
         String TableName = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, resultClass.getSimpleName().replace("Result",""));
 
 
@@ -74,7 +73,36 @@ public class GenerateSql {
                         "  \"replication_num\" = \"3\"\n" +
                         ")");
         System.out.println(create.toString());
-//        MysqlUtil.createTable(create.toString());
+        MysqlUtil.createTable(create.toString());
+    }
+
+    public static void mysql(Class<?> className,String Dbname) throws Exception{
+        Class<?> resultClass = className;
+        Field[] declaredFields = resultClass.getDeclaredFields();
+        String TableName = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, resultClass.getSimpleName().replace("Result",""));
+
+
+        StringBuffer create = new StringBuffer();
+        create.append("create table if not exists ");
+        create.append(Dbname);
+        create.append(".");
+        create.append(TableName);
+        create.append(" (\n");
+        for (int i = 0; i < declaredFields.length; i++) {
+            //获取字段
+            Field field = declaredFields[i];
+            //设置私有熟悉可访问
+            field.setAccessible(true);
+            //获取字段上注解
+            ExplainAnnotation annotation = field.getAnnotation(ExplainAnnotation.class);
+            if (annotation != null) {
+                create.append("`").append(field.getName()).append("` ").append(annotation.colType());
+                String comment = annotation.comment();
+                create.append(" comment \"").append(comment).append("\"");
+            }
+            create.append(" ,\n");
+        }
+        create.delete(create.length()-2,create.length());
     }
 
 }

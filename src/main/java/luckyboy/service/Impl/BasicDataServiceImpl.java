@@ -180,4 +180,9 @@ public class BasicDataServiceImpl implements BasicDataService {
         }
         return Result.ok(jsonObject.getString("msg"));
     }
+
+    @Override
+    public List<StockBasicResult> getAllStock() {
+        return stockBasicMapper.getAll();
+    }
 }

@@ -7,6 +7,8 @@ server:
 #  config: main/resources/logback-spring.xml
 #  level:
 #    luckyboy.mapper: trace
+shareDb:
+  db: share
 spring:
   application:
     name: share.luckyboy.cc

@@ -4,4 +4,6 @@ import java.util.List;
 
 public interface FutBasicMapper {
     int insert (List<FutBasicResult> futbasicresultList);
+
+    List<FutBasicResult> getall();
 }

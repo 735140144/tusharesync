@@ -8,4 +8,6 @@ import java.util.List;
 public interface StockBasicMapper {
 
     int insert(List<StockBasicResult> stockBasicResultList);
+
+    List<StockBasicResult> getAll();
 }

@@ -202,4 +202,9 @@ public class FutDataServiceImpl implements FutDataService {
         }
         return Result.ok(jsonObject.getString("msg"));
     }
+
+    @Override
+    public List<FutBasicResult> getall() {
+        return futBasicMapper.getall();
+    }
 }

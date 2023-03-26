@@ -3,7 +3,10 @@ package luckyboy.service;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import luckyboy.params.fut.*;
+import luckyboy.result.fut.FutBasicResult;
 import luckyboy.util.Result;
+
+import java.util.List;
 
 @Api(value = "期货数据",tags = "期货数据")
 public interface FutDataService {
@@ -33,5 +36,7 @@ public interface FutDataService {
 
     @ApiOperation("期货主要品种交易周报")
     Result<?> fut_weekly_detail (FutWeeklyDetailParams params);
+
+    List<FutBasicResult> getall();
 
 }

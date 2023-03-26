@@ -26,4 +26,7 @@ insert into FUT_BASIC
 #{FutBasicResult.trade_time_desc,jdbcType=VARCHAR})
         </foreach>
     </insert>
+    <select id="getall" resultType="luckyboy.result.fut.FutBasicResult">
+        select * from FUT_BASIC
+    </select>
 </mapper>
