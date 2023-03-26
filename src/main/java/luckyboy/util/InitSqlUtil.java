@@ -26,6 +26,9 @@ public class InitSqlUtil {
         MysqlUtil.createTable("create table if not exists "+Dbname+ CommonSql.scheduledJobDoris);
         MysqlUtil.createTable("create table if not exists "+Dbname+ CommonSql.scheduledCornDoris);
         MysqlUtil.createTable("create table if not exists "+Dbname+ CommonSql.scheduledCornJobDoris);
+        MysqlUtil.createTable("insert into "+Dbname+CommonSql.jobInit);
+        MysqlUtil.createTable("insert into "+Dbname+CommonSql.cornInit);
+        MysqlUtil.createTable("insert into "+Dbname+CommonSql.cornJobInit);
     }
 
     public static void initMysql(String Dbname) throws Exception{
@@ -45,5 +48,8 @@ public class InitSqlUtil {
         MysqlUtil.createTable("create table if not exists "+Dbname+ CommonSql.scheduledJobMysql);
         MysqlUtil.createTable("create table if not exists "+Dbname+ CommonSql.scheduledCornmysql);
         MysqlUtil.createTable("create table if not exists "+Dbname+ CommonSql.scheduledCornJobMysql);
+        MysqlUtil.createTable("insert into "+Dbname+CommonSql.jobInit);
+        MysqlUtil.createTable("insert into "+Dbname+CommonSql.cornInit);
+        MysqlUtil.createTable("insert into "+Dbname+CommonSql.cornJobInit);
     }
 }
