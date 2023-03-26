@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "",tags = "")
+@Api(value = "新闻数据",tags = "新闻数据")
 @RestController
 @RequestMapping(value = "/data/news",method = RequestMethod.GET)
 public interface NewsDataApi {

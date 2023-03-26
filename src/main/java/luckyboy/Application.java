@@ -19,10 +19,10 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    public TaskScheduler taskScheduler() {
-        ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
-        taskScheduler.setPoolSize(50);
-        return taskScheduler;
-    }
+//    @Bean
+//    public TaskScheduler taskScheduler() {
+//        ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
+//        taskScheduler.setPoolSize(50);
+//        return taskScheduler;
+//    }
 }

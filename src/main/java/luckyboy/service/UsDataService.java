@@ -7,7 +7,7 @@ import luckyboy.util.Result;
 
 @Api(value = "美股数据",tags = "美股数据")
 public interface UsDataService {
-	@ApiOperation("美股交易日历")
+	@ApiOperation("美股行情")
 	Result<?> us_daily (UsDailyParams params);
 
 
@@ -15,7 +15,7 @@ public interface UsDataService {
 	Result<?> us_basic (UsBasicParams params);
 
 
-	@ApiOperation("美股行情")
+	@ApiOperation("美股交易日历")
 	Result<?> us_tradecal (UsTradecalParams params);
 
 

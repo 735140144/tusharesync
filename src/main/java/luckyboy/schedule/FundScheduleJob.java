@@ -5,70 +5,78 @@ import luckyboy.result.fund.FundBasicResult;
 import luckyboy.service.FundDataService;
 import luckyboy.util.DataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@SpringBootConfiguration
 public class FundScheduleJob {
     @Autowired
     private FundDataService fundDataService;
 
-    @Scheduled(cron = "0 25 22 ? * 1-5")
-    public void job1(){
-        FundBasicParams build = FundBasicParams.builder().build();
-        fundDataService.fund_basic(build);
+    @Bean(name = "fund_basic")
+    public Worker job1() {
+        return () -> {
+            FundBasicParams build = FundBasicParams.builder().build();
+            fundDataService.fund_basic(build);
+        };
     }
 
-    @Scheduled(cron = "2 25 22 ? * 1-5")
-    public void job2(){
-        FundCompanyParams build = FundCompanyParams.builder().build();
-        fundDataService.fund_company(build);
+    @Bean(name = "fund_company")
+    public Worker job2() {
+        return ()-> {
+            FundCompanyParams build = FundCompanyParams.builder().build();
+            fundDataService.fund_company(build);
+        };
     }
 
-    @Scheduled(cron = "4 25 22 ? * 1-5")
-    public void job3(){
-        fundDataService.fund_manager(FundManagerParams.builder().ann_date(DataFormat.NowDay()).build());
-    }
-
-
-    @Scheduled(cron = "6 25 22 ? * 1-5")
-    public void job4(){
-        fundDataService.fund_share(FundShareParams.builder().trade_date(DataFormat.NowDay()).build());
-    }
-
-
-    @Scheduled(cron = "8 25 22 ? * 1-5")
-    public void job5(){
-        fundDataService.fund_nav(FundNavParams.builder().nav_date(DataFormat.NowDay()).build());
+    @Bean(name = "fund_manager")
+    public Worker job3() {
+        return () -> fundDataService.fund_manager(FundManagerParams.builder().ann_date(DataFormat.NowDay()).build());
     }
 
 
-    @Scheduled(cron = "10 25 22 ? * 1-5")
-    public void job6(){
-        fundDataService.fund_div(FundDivParams.builder().ann_date(DataFormat.NowDay()).build());
+    @Bean(name = "fund_share")
+    public Worker job4() {
+        return () -> fundDataService.fund_share(FundShareParams.builder().trade_date(DataFormat.NowDay()).build());
     }
 
 
-    @Scheduled(cron = "0 0 22 1 * ?")
-    public void job7() throws InterruptedException {
-        List<FundBasicResult> allfund = fundDataService.allfund();
-        for (FundBasicResult fundBasicResult : allfund) {
-            FundPortfolioParams build = FundPortfolioParams.builder().ts_code(fundBasicResult.getTs_code()).build();
-            fundDataService.fund_portfolio(build);
-            Thread.sleep(400);
-        }
+    @Bean(name = "fund_nav")
+    public Worker job5() {
+        return () -> fundDataService.fund_nav(FundNavParams.builder().nav_date(DataFormat.NowDay()).build());
     }
 
 
-    @Scheduled(cron = "12 25 22 ? * 1-5")
-    public void job8(){
-        fundDataService.fund_daily(FundDailyParams.builder().trade_date(DataFormat.NowDay()).build());
+    @Bean(name = "fund_div")
+    public Worker job6() {
+        return () -> fundDataService.fund_div(FundDivParams.builder().ann_date(DataFormat.NowDay()).build());
     }
 
-    @Scheduled(cron = "14 25 22 ? * 1-5")
-    public void job9(){
-        fundDataService.fund_adj(FundAdjParams.builder().trade_date(DataFormat.NowDay()).build());
+
+    @Bean(name = "fund_portfolio")
+    public Worker job7() throws InterruptedException {
+        return () -> {
+            List<FundBasicResult> allfund = fundDataService.allfund();
+            for (FundBasicResult fundBasicResult : allfund) {
+                FundPortfolioParams build = FundPortfolioParams.builder().ts_code(fundBasicResult.getTs_code()).build();
+                fundDataService.fund_portfolio(build);
+                Thread.sleep(400);
+            }
+        };
+    }
+
+
+    @Bean(name = "fund_daily")
+    public Worker job8() {
+        return () -> fundDataService.fund_daily(FundDailyParams.builder().trade_date(DataFormat.NowDay()).build());
+    }
+
+    @Bean(name = "fund_adj")
+    public Worker job9() {
+        return () -> fundDataService.fund_adj(FundAdjParams.builder().trade_date(DataFormat.NowDay()).build());
     }
 }

@@ -65,10 +65,16 @@ public class FailLogServiceImpl implements FailLogService {
             for (FailLog failLog : failLogs) {
                 if (ck.getPkg().equals(failLog.getPkg()) && ck.getApi().equals(failLog.getApi()) && ck.getParams().equals(failLog.getParams())){
                     log.info("无需再次重试数据：{}",ck.toString());
+                    ck.setIf_retry(2);
                     failLogMapper.updateIf_retryAndApi(ck);
                     break;
                 }
             }
         }
+    }
+
+    @Override
+    public List<FailLog> failJob() {
+        return failLogMapper.needTry();
     }
 }

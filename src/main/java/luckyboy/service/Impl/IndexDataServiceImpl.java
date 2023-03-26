@@ -297,7 +297,7 @@ public class IndexDataServiceImpl implements IndexDataService {
             indexGlobalMapper.insert(trans);
         } else {
             log.info("未获取到数据！");
-            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).comment("国际指数").build());
+            failLogMapper.insert(FailLog.builder().pkg("index").params(JSONObject.toJSONString(params)).api(apiName).if_retry(2).comment("国际指数").build());
         }
         return Result.ok(jsonObject.getString("msg"));
     }
