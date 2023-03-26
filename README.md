@@ -1,6 +1,7 @@
 # 项目简介
 用于同步tushare的数据
 其中初始化和自动同步涵盖大部分数据（非全部），如有需求可提交issues
+作者基于doirs数据库开发，建议使用doris，同时接受mysql
 
 # 配置
 修改resource.application.yml中的
@@ -10,3 +11,4 @@ shareDb.db和sping.datasource
 
 本项目端口为8000，接口文档可访问http://ip:8000/doc.html
 定时任务在数据库scheduled表中
+初始化可在文档中进行
